@@ -8,6 +8,9 @@ using namespace std;
 int diameter(int u, int par, vector<vector<int> >&adj, int* curr_max)
 {
     int max1 = 0, max2 = 0, total = 0;
+    
+    // total will contain the length of longest path in the subtree rooted at u.
+    // curr_max will maintain length of longest path starting from u in that subtree.
 
     for(auto v:adj[u])
     {
@@ -24,9 +27,9 @@ int diameter(int u, int par, vector<vector<int> >&adj, int* curr_max)
             max2 = max(max2, *curr_max);
     }
 
-    total = max(total, max1 + max2); // total will maintain length of the longest path in subtree rooted at that node.
+    total = max(total, max1 + max2);
  
-    *curr_max = max1 + 1;   // curr_max will maintain length of longest path in subtree rooted at that node and starting from that node.
+    *curr_max = max1 + 1;
 
     return total;
 
