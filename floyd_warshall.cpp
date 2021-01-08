@@ -58,8 +58,25 @@ void solve(int test)
        }
    }
 
-   for(i=0;i<n;i++)if(d[i][i]<0){cout<<"Negative cycle found";return;}
-
+   bool flag = 0;
+    
+   for(k=0;k<n;k++)
+   {
+       if(d[k][k]>=0)continue;
+       flag = 1;
+       for(i=0;i<n;i++)
+       {
+           for(j=0;j<n;j++)
+           {
+               if(d[i][k]<INF && d[k][j] < INF && d[k][k]<0)
+               {
+                   d[i][j] = -INF;
+               }
+           }
+       }
+   }
+   if(flag){cout<<"Negative cycle found"; return;}
+      
    for(i=0;i<n;i++){
     for(j=0;j<n;j++)cout<<d[i][j]<<" ";cout<<endl;}
 
