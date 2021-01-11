@@ -10,6 +10,16 @@ using namespace std;
 // Time Complexity = O(m + nlogn)
 // In directed graph, It will be O(m) using adjacency list representation
 // In adjacency matrix representation, it will O(m + n*n)
+// Following cases arise - 
+// 1). If number of odd degree vertices is greater than 2 then no euler path or cycle
+// 2). If no odd degree vertices then there exist a Euler cycle.
+// 3). If odd degree vertices are 2 then there exist a Euler path. In this case add an edge between odd vertices and find euler cycle. 
+// Now in cycle when both odd vertices are even break from there and print the path
+
+// Algorithm - 
+// Use multiset adj list so easy to update.
+// Now push random node in stack. while stack is not empty pop from it, visit that vertexs neighbor if any and push them in stack after deleting them from adjlist
+// else if no neighbors then pop and print.
 
 void solve(int test)
 {
