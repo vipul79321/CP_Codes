@@ -1,3 +1,10 @@
+// Condition for Euler path or cycle in directed graph is 
+// 1). Indegree[u] == outdegree[u] for atleast n-2 vertices
+// 2). All vertices should be part of same SCC.
+// For undirected graph
+// 1). All vertices should have even degree, atleast n-2 vertices.
+// 2). All vertices should be connected.
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
