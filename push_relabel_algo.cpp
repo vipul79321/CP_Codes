@@ -1,3 +1,4 @@
+// link to video lecture - https://www.youtube.com/watch?v=xcqZyG9CEAw
 // Algorithm description - see in notes
 // version 1 - Time Complexity - O(V^2 * E)
 // version 2 - Time Complexity - O(VE + V^2 * E^0.5) ~= O(V^3)
