@@ -22,7 +22,7 @@ int sum(int id)
 {
     id++;
     int s = 0;
-    while(id<=n)
+    while(id>0)
     {
         s+= bit[id];
         id -= id&(-id);
