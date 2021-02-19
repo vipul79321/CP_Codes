@@ -24,4 +24,10 @@ Different Data type and their size or range -  [Link](https://docs.microsoft.com
 
 ---
 
-1). cout is an object while printf() is a function. Function is always accompanied with parenthesis.
+1). cout, cin is an object while printf(), scanf() is a function. Function is always accompanied with parenthesis. \
+2). cout is accompanied by insertion operator <<. \
+3). cin is accompanied by extraction operator >>. \
+4). endl is manipulator which puts cursor in the next line. endl flush the output buffer everytime it is called. \
+5). iostream.h contains declaration of cin, cout, >>, <<, endl.
+
+**Note : Predefined function are declared in header file, but there coding is in library file.**
