@@ -13,4 +13,6 @@ Different Data type and their size or range -  [Link](https://docs.microsoft.com
 4). int : size = 4 Byte \
 5). float : size = 4 Byte , upto 7 digits in decimal \
 6). double or long double : size = 8 Byte, upto 15 digits in decimal \
-7). long long : size = 8 Byte
+7). long long : size = 8 Byte \
+
+**Note : Compiler by default treat them as signed if not mentioned.**
