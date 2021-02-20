@@ -31,3 +31,30 @@ Different Data type and their size or range -  [Link](https://docs.microsoft.com
 5). iostream.h contains declaration of cin, cout, >>, <<, endl.
 
 **Note : Predefined function are declared in header file, but there coding is in library file.**
+
+---
+
+1). int &y = x; , Here y is reference variable to x. So whenever we will use y, x will be used automatically.  \
+2). Reference variable is an internal pointer. \ 
+3). Reference variable should be intialized at the time declaration with help of already declared variable only. .i.e. int &y = 6; will be invalid statement. \
+4). Reference variable once intialized cannot be updated. \
+5). There is no difference in  `int*p and int *p`.
+
+
+**Note: See following lines of code**
+```c++
+int x = 5;
+int *p = &x;
+int *t;
+*t = x;   // t doesnt point to x, its dereferenced position will contain value equal to x. 
+*t = *t + 1;
+*p = 10;
+
+cout<<*t<<endl;
+cout<<*p<<endl;
+cout<<x<<endl;
+
+output will be = 6, 10, 10
+```
+
+
