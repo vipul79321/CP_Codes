@@ -92,9 +92,27 @@ Three difference between struct in c and c++ - \
 
 ---
 
-
- 
-
-
-
-
+1). In class everything is private by default. \
+2). Instance member function can access any instance member variable. \
+See the code below, which runs perfectly fine - \
+```c++
+class temp
+{ 
+   private:
+   int a,b;
+   public:
+   void set_data(int x,int y)
+   {a=x,b=y;}
+   void display()
+   {cout<<a<<" "<<b<<endl;}
+   
+   temp add(temp &c)
+   {
+	   temp t;
+	   c.a = c.a - 1;   // We can change value of argument object also. 
+	   t.a = a + c.a;
+	   t.b = a + c.b;
+	   return t;
+   }
+};
+```
