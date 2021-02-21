@@ -61,5 +61,11 @@ output will be = 6, 10, 10
 1). Function can be called by value, by reference , by address. And it can be identified by seeing functions declaration. \
 2). inline is request to compiler not a command. Inline function is a function that is expanded in line when it is called. When the inline function is called whole code of the inline function gets inserted or substituted at the point of inline function call. This substitution is performed by the C++ compiler at **compile time**. Inline function may increase efficiency if it is small. See following link for more information on inline functions [Link](https://www.geeksforgeeks.org/inline-functions-cpp/) \
 3). All functions inside class are implicitly inline, except virtual function. Because inlining is at compile time while virtual is at runtime. \
-4)
+
+**Rules of resolving Function overloading -** \
+1). Firstly, c++ tries to find the exact match. This is the case where actual arguments exactly matches the parameter type of one of the overloaded function. \
+2). If no match is found then integral conversion is performed i.e char, unsigned char, short are converted to int and float is converted to double. \
+3). If nothing works then standard conversion/ user defined conversion are tried. (i.e. int to long, int to unsigned long etc.)
+
+
 
