@@ -67,5 +67,23 @@ output will be = 6, 10, 10
 2). If no match is found then integral conversion is performed i.e char, unsigned char, short are converted to int and float is converted to double. \
 3). If nothing works then standard conversion/ user defined conversion are tried. (i.e. int to long, int to unsigned long etc.)
 
+---
+```c++
+struct temp
+{ 
+   int a,b;
+};
+
+int main()
+{
+ temp t1 = {1,2};   // Works fine
+ temp t2 = {};   // works fine with t.a = 0, t.b = 0;
+ temp t3;   // works fine with t.a, t.b are garbage values
+ temp t4 = {1};  // works fine t.a = 1, t.b =0
+ return 0;
+}
+```
+
+
 
 
