@@ -68,6 +68,7 @@ output will be = 6, 10, 10
 3). If nothing works then standard conversion/ user defined conversion are tried. (i.e. int to long, int to unsigned long etc.)
 
 ---
+
 ```c++
 struct temp
 { 
@@ -83,6 +84,16 @@ int main()
  return 0;
 }
 ```
+
+Three difference between struct in c and c++ - \
+1). In c++, no need for struct keyword whenever creating variable of that struct type. \
+2). Encapsulation possible in c++, i.e. inside struct we can define functions. \
+3). Access specifier in c++ (private, protected, public). By default everything is public in struct.
+
+---
+
+
+ 
 
 
 
