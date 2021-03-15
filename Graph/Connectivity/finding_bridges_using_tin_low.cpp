@@ -2,6 +2,7 @@
 // 1). Idea is that if there is a back edge from a vertex v to any of its ancestor then edge between parent[v]  and v is not a bridge.
 // 2). To check if there is a back edge or not we can use concept of tin and low, here parent represent parent in dfs tree.
 // 3). If there is a bridge then low[v] > tin[parent[v]].
+// This code ignore the case of multiple edge. For that we can check additionally check that reported bridge is not a multiple edge. Because no multiple edge can be a bridge.
 
 
 #include<bits/stdc++.h>
@@ -30,7 +31,7 @@ void dfs(int u, vector<vector<int> > &adj, int par)
         {
             dfs(v,adj,u);
             low[u] = min(low[u],low[v]);
-            if(tin[u] < low[v])bridges.pb(mp(u,v));
+            if(tin[u] < low[v])bridges.pb(mp(u,v));  // Here check that u,v is not a multiple edge, by making map<pair<int,int>, int>edges and check if edges[mp(u,v)]>1 || edges[mp(v,u)]>1
         }
     }
 }
