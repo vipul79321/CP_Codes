@@ -32,3 +32,30 @@ for(i=1;i<=n;i++)
    }
  }
   ```
+---
+
+## Subset Sum problem - 
+
+```c++
+dp[n+1][sum+1] = {0};
+
+for(i=0;i<=n;i++)dp[i][0] = 1;
+
+for(i=1;i<=n;i++)
+{
+   for(j=1;j<=sum;j++)
+   {
+      dp[i][j] = dp[i-1][j];
+      if(j>=arr[i-1])dp[i][j] = dp[i][j] || dp[i-1][j-arr[i-1]];
+   }
+}
+
+// Since we only need last row for dp transition we can reduce space complexity by making dp[2][sum+1] array and using curr and prev variables.
+```
+---
+
+## Domino Tiling - Fill 3xN profile with 2x1 tile
+[Link](https://www.geeksforgeeks.org/tiling-with-dominoes/)
+
+---
+
