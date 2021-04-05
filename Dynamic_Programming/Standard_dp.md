@@ -68,3 +68,29 @@ Hint - Think of minimum number of players required so that winner plays i games.
 ## Maxium sum increasing subsequence from a prefix and a given element after prefix is must - 
 [link](https://www.geeksforgeeks.org/maximum-sum-increasing-subsequence-from-a-prefix-and-a-given-element-after-prefix-is-must/)
 
+## Maximum sum contiguous subarray - Kadane's algo 
+
+```c++
+   int start = 0,s,e;
+   int max_so_far = INT_MIN;
+   int curr = 0;
+   
+   for(i=0;i<n;i++)
+   {
+       curr += a[i];
+       if(curr >= max_so_far)
+       {
+           s = start;
+           e = i;
+           max_so_far = curr;
+       }
+       if(curr < 0)
+       {
+           start = i+1;
+           curr = 0;
+       }
+   }
+   
+   return e-s+1;
+   ```
+
