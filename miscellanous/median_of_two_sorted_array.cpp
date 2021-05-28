@@ -6,6 +6,7 @@ using namespace std;
 // 3) Now to obtain partition do binary search on smaller array and obtain corresponding partition in larger array.
 // 4) To check if partition is valid or not. Check left_1 <= right_2 && left_2 <= right_1
 // 5) After finding optimal partition obtain required median based on size.
+// 6) Time complexity = O(log(min(n,m)))
 
 void solve(int test)
 {
