@@ -7,6 +7,7 @@ using namespace std;
 // 4) To check if partition is valid or not. Check left_1 <= right_2 && left_2 <= right_1
 // 5) After finding optimal partition obtain required median based on size.
 // 6) Time complexity = O(log(min(n,m)))
+// Link to youtube tutorial - https://www.youtube.com/watch?v=LPFhl65R7ww
 
 void solve(int test)
 {
