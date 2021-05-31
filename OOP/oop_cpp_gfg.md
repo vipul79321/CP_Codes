@@ -167,6 +167,103 @@ class Test {
 };
 ```
 
+---
+
+[Link](https://www.geeksforgeeks.org/friend-class-function-cpp/) 
+
+**Friend class** - 
+1. A friend class can access all the members(private, public, and protected) of other class in which it is declared as friend.
+2. Friendship is not mutual. If class A is a friend of B, then B doesn’t become a friend of A automatically.
+3. Friendship should be avoided as much as possible, as it goes against encapsulation.
+4. Friendship is not inherited. Friend class of Base class is not Friend of Child class.
+
+**Friend Function** - 
+1. Friendship is not inherited. That is friend function of base class cant access private or protected members of child class.
+2. Friend function can be member of other class or a normal function.
+3. Friend function is always inline.
+4. Friend function is non-member function.
+
+---
+
+[Link](https://www.geeksforgeeks.org/local-class-in-c/)
+
+**Local class** - 
+1. A class declared inside a function becomes local to that function and is called Local Class in C++.
+2. A local class type name can only be used in the enclosing function.
+3. All the methods of Local classes must be defined inside the class only.
+4. A Local class cannot contain static data members. It may contain static functions though.
+5. Member methods of local class can only access static and enum variables of the enclosing function.
+6. Local classes can access global types, variables and functions. 
+7. Local classes can access other local classes of same functions.
+See this code for e.g. - 
+```c++
+int x;
+void fun()  
+{
+      
+      class Test1 {  // local class
+      public:
+         static int st;                         // will give an error. Local class cant have static variable.
+         static Test1() { cout << "Test1::Test1()" << endl; }    // Works fine. local class can have static method.
+         void temp();
+      };
+      
+      void Test1::temp() {cout<<"something";}   // will give an error. All the class method should be declared inside class.
+  
+      // Second Local class
+      class Test2
+      {
+           Test1 t1;             // A local class can use other local classes of same function
+      public:
+          void method() {
+              cout<< x << endl;   // local class can access global variables.
+              cout<< y << endl;  // works fine because y is static variable of enclosing function
+              cout<< z << endl;  // Throws an error, because z is not static and enum type.
+          }
+      };
+  
+      Test2 t;
+      t.method();
+}
+
+Test1 t;                        // will give an error, accessing class outside enclosing function
+```
+
+---
+
+[Link](https://www.geeksforgeeks.org/nested-classes-in-c/) 
+
+**Nested Class** :
+1. Nested class is a class which is declared in another enclosing class.
+2. A nested class is a member and as such has the same access rights as any other member. 
+3. The members of an enclosing class have no special access to members of a nested class; the usual access rules shall be obeyed.
+
+```c++
+class Enclosing {      
+   private:   
+       int x;
+   /* start of Nested class declaration */  
+   class Nested {
+      int y;   
+      void NestedFun(Enclosing *e) {
+        cout<<e->x;  // works fine: nested class can access private members of Enclosing class
+      }
+   }; // declaration Nested class ends here
+   void EnclosingFun(Nested *n) {
+       cout<<n->y;   // Will give an error, Enclosing cant access private members of Nested class.
+   }
+}; // declaration Enclosing class ends here
+```
+
+---
+
+### Simulate Final Class in C++ ###
+
+1. Now we have **final** keyword available.
+2. Without using final keyword, we can follow these steps - 
+    1. Create a class *MakeFinal*, whose **constructor is private**.
+    2. Make a class *Final*, which is **Friend class** of *MakeFinal* and **virtually inherits** *MakeFinal*.
+    3. Now *Final* cant be inherited, because on inheriting, the child class will directly call constructor of *MakeFinal*, and since friendship is not inherited. It will give an error.
 
 
 
