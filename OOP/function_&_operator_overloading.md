@@ -96,3 +96,40 @@ int main()
 }
 ```
 
+---
+
+[Link](https://www.geeksforgeeks.org/can-main-overloaded-c/)
+
+1. main can be overloaded only as a member function. 
+```c++
+class Test
+{
+public:
+	void main(int s){cout<<s<<endl;}
+};
+int main()
+{
+	Test obj;
+	obj.main(3);
+	return 0;
+}
+```
+**Note** - Main is not a reserved keyword in c++, c, java. there can be variable named main too.
+
+---
+
+[Link](https://www.geeksforgeeks.org/g-fact-30-function-overloading-and-float-in-c/)
+
+### Problem with float in overloading ###
+
+```c++
+void test(float s){cout << "Function with float called ";}
+void test(int s){cout << "Function with int called ";}
+int main()
+{
+	test(3.5f); // Added suffix "f" to tell compiler its float value
+	test(3.5); // will treat as double and will give error of ambiguity
+	return 0;
+}
+```
+
