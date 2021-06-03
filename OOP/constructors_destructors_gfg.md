@@ -96,3 +96,211 @@ Properties of Destructors -
 * When a class contains a pointer to memory allocated in class, we should write a destructor to release memory before the class instance is destroyed. 
 * This must be done to avoid memory leak.
 
+---
+
+[Link](https://www.geeksforgeeks.org/g-fact-93/) 
+
+### Use explicit Keyword ###
+1. When a class contains default constructor, then there maybe chance of implicit typecasting of **single parameter** (wont work with multiple parameter implicit typecasting). See this code - 
+```c++
+class A {
+    public:
+    int a,b;
+    A(int x=0, int y=0) {
+        a = x; b = y;
+    }
+    
+    bool operator == (A x) {
+        return(a == x.a && b == x.b);
+    }
+};
+int main()
+{
+	A a(3,0);
+
+	if (a == 3)   // Condition will be true, because 3 will be type casted to A(3,0) and hence equal to a;
+	cout << "Same";
+ if (a == (3,0))  // condition will be false (3,0) will be implicitly typecasted to A(0,0) and hence not equal to a;
+ if (a == (0,3))  // Condition will be true, because (0,3) will be type casted to A(3,0) and hence equal to a;
+ 
+	return 0;
+}
+```
+2. To avoid such typecasting we can use **explicit** keyword with constructor. 
+
+---
+
+[Link](https://www.geeksforgeeks.org/c-internals-default-constructors-set-1/)
+
+### Inside Default constructor during inheritance ###
+1. A constructor without any arguments or with default value for every argument, is said to be default constructor.
+2. In inherited class, if no call provided then compiler will try to call Default Constructor of base class. See this code - 
+```c++
+class A {
+public:
+	// User defined constructor
+	A()
+	{
+		cout << "A Constructor" << endl;
+	}
+	// uninitialized
+	int size;
+};
+
+class B : public A {
+	// compiler defines default constructor of B, and inserts stub to call A constructor
+
+	// compiler won't initialize any data of A
+};
+
+class C : public A {
+public:
+	C()
+	{
+		// User defined default constructor of C Compiler inserts stub to call A's construtor
+		cout << "C Constructor" << endl;
+
+		// compiler won't initialize any data of A
+	}
+};
+
+class D {
+public:
+	D()
+	{
+		// User defined default constructor of D, a - constructor to be called, compiler inserts stub to call A constructor
+		cout << "D Constructor" << endl;
+
+		// compiler won't initialize any data of 'a'
+	}
+
+private:
+	A a;   // A is declared here. 
+};
+
+int main()
+{
+	B b;	 // output - > A Constructor
+	C c;  // output - > A Constructor C Constructor
+	D d;  // output - > A Constructor D Constructor
+	return 0;
+}
+```
+
+---
+
+[Link](https://www.geeksforgeeks.org/private-destructor/)
+
+### Private Destructor ###
+1. A destructor can be private. 
+2. When a Destructor is private only dynamically created object of that class can be made.
+3. For deleting dynamic created object of that class, we can make friend function like this - 
+```c++
+void destructTest(Test* ptr)
+{
+    delete ptr;   // desctructor will be called.
+}
+```
+
+---
+
+[Link](https://www.geeksforgeeks.org/playing-with-destructors-in-c/)
+
+```c++
+int i;
+class A
+{
+public:
+    ~A(){i=10;}
+};
+  
+int foo()
+{
+    i=3;
+    A ob;
+    return i;
+}
+// output of foo() will be 3, because destructor will be called as the last function. So before that return value(3) will already be copied.
+```
+
+---
+
+[Link](https://www.geeksforgeeks.org/copy-elision-in-c/)
+
+1. Copy elision (or Copy omission) is a compiler optimization technique that avoids unnecessary copying of objects.
+See this code - 
+```c++
+class B
+{
+public:	
+	B(int x = 0){cout << "Constructor called" << endl;}	
+	
+	B(const B &b){cout << "Copy constructor called" <<endl;}
+};
+
+int main()
+{
+	B ob = 1;   // constructor called output
+	return 0;
+}
+
+Normally:
+B ob = 1 is equivalent to - B ob = B(1);
+But in copy elison it is  - B ob(1);
+```
+
+---
+
+[Link](https://www.geeksforgeeks.org/does-compiler-always-create-a-copy-constructor/)
+
+**What happens when we write only a copy constructor – does compiler create default constructor?**
+Ans. Compiler doesn’t create a default constructor if we write any constructor even if it is copy constructor.
+
+**What about reverse – what happens when we write a normal constructor and don’t write a copy constructor?**
+Ans. Reverse is not true.
+
+---
+
+[Link](https://www.geeksforgeeks.org/static-objects-destroyed/)
+
+### Static Objects ###
+1. Static objects are allocated storage in static storage area.
+2. Static object is destroyed at the termination of program. 
+3. C++ supports both local static object and global static object.
+
+**Note** - To sum up once declared static objects live till the end of the program. But there scope can be restricted.
+
+---
+
+[Link](https://www.geeksforgeeks.org/possible-call-constructor-destructor-explicitly/)
+**Is it possible to call constructor and destructor explicitly?**
+Ans. Yes
+See this code - 
+```c++
+class Test
+{
+public:
+    int x;
+	Test(int x) { this->x = x;cout << "Constructor is executed\n";}
+	~Test() { cout<<this->x<<" ";cout << "Destructor is executed\n"; }
+};
+
+int main()
+{
+	Test(3);    // c++ temporary object will be deleted immediately. // constructor called explicitly.
+	Test t(4);
+	t.~Test();  // Destructor called explicitly.  // Destructor will be called again, because it is automatic object and c++ will also try to delete it.
+	return 0;
+}
+
+Output will be -
+Constructor is executed
+3 Destructor is executed
+Constructor is executed
+4 Destructor is executed
+4 Destructor is executed
+```
+**Note** - Once a destructor is invoked for an object, the object no longer exists; the behavior is undefined if the destructor is invoked for an object whose lifetime has ended 
+**Note** - we should never call destructor explicitly on local (automatic) object, because really bad results can be acquired by doing that.
+**Note** - For deleting dynamically created object use delete operator.
+**Note** -  delete p does two things: it calls the destructor and it deallocates the memory.
