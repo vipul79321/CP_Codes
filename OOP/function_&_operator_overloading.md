@@ -1,6 +1,6 @@
 [Link](https://www.geeksforgeeks.org/function-overloading-c/)
 
-### Function Overloading ###
+## Function Overloading ##
 Function overloading is a feature in C++ where two or more functions can have the same name but different parameters.
 
 See this link for exact working of overloading, how decision is made which function is to be executed - https://docs.microsoft.com/en-us/cpp/cpp/function-overloading?view=msvc-160
@@ -133,3 +133,103 @@ int main()
 }
 ```
 
+---
+
+## Operator Overloading ##
+
+[Link](https://www.geeksforgeeks.org/operator-overloading-c/)
+
+In C++, we can change the way operators work for user-defined types like objects and structures. This is known as operator overloading. 
+```c++
+return-type operator symbol (parameters)
+```
+
+Example of binary operator overloading - 
+```c++
+class C {
+private:
+	int a;
+public:
+	C(int x = 0) {a = x;}
+	C operator + (C const &obj) {
+		C res;
+		res.a = a + obj.a;
+		return res;
+	}
+	void print() { cout << a << endl; }
+};
+int main()
+{
+	C c1(10), c2(2);
+	C c3 = c1 + c2; // An example call to "operator+"   // imagine it as c1.operator+(c2);
+	c3.print();
+}
+```
+
+Example of unary operator overloading - 
+```c++
+class Check
+{
+  private:
+    int i;
+  public:
+    Check(): i(0) {  }
+    Check operator ++ ()                             // ++obj
+    {
+        Check temp;
+        temp.i = ++i;
+        return temp;
+    }
+
+    // Notice int inside barcket which indicates postfix increment.  obj++;
+    Check operator ++ (int)
+    {
+        Check temp;
+        temp.i = i++;
+        return temp;
+    }
+ 
+    void Display()
+    { cout << "i = "<< i <<endl; }
+};
+```
+
+**NOTE** - Following operators cannot be overloaded :
+1. .(dot)   -->  Fundamentally possible, but will raise questions whether an operation is meant for the object overloading . or an object referred to by.
+2. ::    --> its scope resolution, not expression evaluation.
+3. ?:    --> never felt the need.
+4. sizeof   --> will give fundamental error, as sizeof should represent address difference between two consecutive elements of array, not some user-defined value.
+
+**NOTE** - Any constructor that can be called with a single argument works as a conversion constructor, means it can also be used for implicit conversion to the class being constructed.
+
+---
+
+[Link](https://www.geeksforgeeks.org/assignment-operator-overloading-in-c/)
+
+**When should we write our own assignment operator?**
+Ans. When there is memory allocation at runtime.
+
+---
+
+[Link](https://www.geeksforgeeks.org/advanced-c-conversion-operators/)
+
+### conversion operator ###
+
+```c++
+class Fraction
+{
+    int num, den;
+public:
+    Fraction(int n, int d) { num = n; den = d; }
+    // conversion operator: return float value of fraction
+    operator float() const {return float(num) / float(den);}
+};
+
+int main() {
+    Fraction f(2, 5);
+    float val = f;
+    cout << val<<endl;
+    cout<<f<<endl;    // f converted to float.
+    return 0;
+}
+```
