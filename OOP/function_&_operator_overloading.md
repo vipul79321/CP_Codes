@@ -206,7 +206,7 @@ class Check
 
 [Link](https://www.geeksforgeeks.org/assignment-operator-overloading-in-c/)
 
-**When should we write our own assignment operator?**
+**When should we write our own assignment operator?** \
 Ans. When there is memory allocation at runtime.
 
 ---
@@ -233,3 +233,74 @@ int main() {
     return 0;
 }
 ```
+
+---
+
+[Link](https://www.geeksforgeeks.org/default-assignment-operator-and-references/)
+
+### Assignment Operator and Reference variables ###
+
+Compiler doesn’t creates default assignment operator in following cases:
+1. Class has a nonstatic data member of a const type or a reference type
+2. Class has a nonstatic data member of a type which has an inaccessible copy assignment operator
+3. Class is derived from a base class with an inaccessible copy assignment operator
+
+```c++
+class Test
+{
+	int x;
+	int &ref;
+public:
+	Test (int i):x(i), ref(x) {}
+};
+int main()
+{
+	Test t1(10);
+	Test t2(20);
+	t2 = t1;                   // this line will give error, as default assignment operator is not made by compiler.
+	return 0; 
+}
+```
+
+---
+
+[Link](https://www.geeksforgeeks.org/overloading-stream-insertion-operators-c/)
+
+### Overloading stream insertion (<< or >>) operators in C++ ###
+
+1. cout is an object of ostream class and cin is an object istream class
+2. These operators must be overloaded as a global function. And if we want to allow them to access private data members of class, we must make them friend.
+
+**Why these operators must be overloaded as global?** \
+**Ans**. In operator overloading, if an operator is overloaded as member, then it must be a member of the object on left side of the operator. The operators ‘<<' and '>>' are called like 'cout << ob1' and 'cin >> ob1'. So if we want to make them a member method, then they must be made members of ostream and istream classes, which is not a good option most of the time. Therefore they are overloaded as global function.
+
+```c++
+class Complex
+{
+private:
+	int real, imag;
+public:
+	Complex(int r = 0, int i =0){ real = r; imag = i; }
+	friend ostream & operator << (ostream &out, const Complex &c);
+	friend istream & operator >> (istream &in, Complex &c);
+};
+
+ostream & operator << (ostream &out, const Complex &c)
+{
+	out << c.real<<"+i" << c.imag << endl;
+	return out;
+}
+
+istream & operator >> (istream &in, Complex &c)
+{    
+    in >> c.real >> c.imag;
+    return in;
+}
+```
+
+---
+
+[Link](https://www.geeksforgeeks.org/overloading-subscript-or-array-index-operator-in-c/)
+
+
+
