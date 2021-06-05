@@ -302,5 +302,14 @@ istream & operator >> (istream &in, Complex &c)
 
 [Link](https://www.geeksforgeeks.org/overloading-subscript-or-array-index-operator-in-c/)
 
-
-
+```c++
+//sample codeblock from above link 
+int& Array::operator[](int index)
+{
+    if (index >= size) {
+        cout << "Array index out of bound, exiting";
+        exit(0);
+    }
+    return ptr[index];
+}
+```
