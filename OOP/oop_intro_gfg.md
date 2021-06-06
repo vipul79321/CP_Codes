@@ -182,6 +182,7 @@ class Test {
 2. Friend function is non-member function. 
 3. Friend function can be member of other class or a global function.
 4. Friend function defined inside class(whose friend are they) are inline. [Link](https://docs.microsoft.com/en-us/cpp/cpp/friend-cpp?view=msvc-160#inline-friend-definitions)
+5. Friend function can be useful when we want to access private member of more than one class.(by making it a friend of all the classes).
 
 ---
 
