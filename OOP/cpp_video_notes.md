@@ -134,4 +134,16 @@ class temp
 
 ---
 
+## Lecture - 14 ###
+
+#### Constructor in inheritance - ####
+1. If we dont call the constructor parent class in our derived class constructor, then compiler will automatically add code for calling zero-arg default constructor of parent class.
+2. Call to constructor order -> Child to Parent.
+3. Execution of constructor order - > Parent to Child.
+
+#### Destructor in inheritance - ####
+1. We cant call the destructor of parent class, from destructor of child class. Compiler will automatically add code for that. And also destructors doesnt recieve any arguments so it wont be an issue.
+2. Call to Destructor order - > Child to Parent.
+3. Execution of Destructor order - > Child to Parent.
+
 
