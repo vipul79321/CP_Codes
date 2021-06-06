@@ -285,7 +285,8 @@ public:
 	friend istream & operator >> (istream &in, Complex &c);
 };
 
-ostream & operator << (ostream &out, const Complex &c)
+ostream & operator << (ostream &out, const Complex &c)   --->// Note that this definition is receiving two parameters as input, as its is declared friend(not member function). 
+                                                         --->// But function calling is still the same
 {
 	out << c.real<<"+i" << c.imag << endl;
 	return out;
