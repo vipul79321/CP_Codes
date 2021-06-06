@@ -24,8 +24,8 @@ Disadvantages of OOP:
 
 1. Everything is **Private** in c++ class, by default.
 2. All functions defined inside class are implicitly **inline, except virtual function**. Because inlining is at compile time while virtual is at runtime. If a member function is declared inside class but defined outside the class then it is not inline by default.
-3. Friend function **defined** inside class is also inline.
-4. In class, all member fucntions and data members are **declared** inside class. But can be **defined** outside class.
+3. Friend function **defined** inside the class(whose, they are friend) is also inline. [see this](https://docs.microsoft.com/en-us/cpp/cpp/friend-cpp?view=msvc-160#inline-friend-definitions)
+4. In class, all member functions and data members are **declared** inside class. But can be **defined** outside class.
 
 ---
 
@@ -179,9 +179,9 @@ class Test {
 
 **Friend Function** - 
 1. Friendship is not inherited. That is friend function of base class cant access private or protected members of child class.
-2. Friend function can be member of other class or a normal function.
-3. Friend function is always inline.
-4. Friend function is non-member function.
+2. Friend function is non-member function. 
+3. Friend function can be member of other class or a global function.
+4. Friend function defined inside class(whose friend are they) are inline. [Link](https://docs.microsoft.com/en-us/cpp/cpp/friend-cpp?view=msvc-160#inline-friend-definitions)
 
 ---
 
@@ -265,5 +265,9 @@ class Enclosing {
     2. Make a class *Final*, which is **Friend class** of *MakeFinal* and **virtually inherits** *MakeFinal*.
     3. Now *Final* cant be inherited, because on inheriting, the child class will directly call constructor of *MakeFinal*, and since friendship is not inherited. It will give an error.
 
+
+
+## Note ##
+Inlining of friend function is still not clear. need to research more.
 
 
