@@ -1,8 +1,13 @@
 ---
+
+### Lecture - 1 ###
+
 C++ is middle level language, i.e. you can write normal code as well low level coding. \
 Class is blueprint of object.
 
 ---
+
+### Lecture - 1 contd. ###
 
 Steps in Software development, i.e. to make ***.exe*** file:
  1. **.cpp** file will be converted to **.i** file with help of **preprocessor**,  **.i** file will contain all header files expanded.
@@ -24,6 +29,8 @@ Different Data type and their size or range -  [Link](https://docs.microsoft.com
 
 ---
 
+### Lecture - 3 ###
+
 1. cout, cin is an object while printf(), scanf() is a function. Function is always accompanied with parenthesis.
 2. cout is accompanied by insertion operator <<.
 3. cin is accompanied by extraction operator >>.
@@ -33,6 +40,8 @@ Different Data type and their size or range -  [Link](https://docs.microsoft.com
 **Note : Predefined function are declared in header file, but there coding is in library file.**
 
 ---
+
+### Lecture - 4 ###
 
 1. int &y = x; , Here y is reference variable to x. So whenever we will use y, x will be used automatically.
 2. Reference variable is an internal pointer.
@@ -58,6 +67,8 @@ output will be = 6, 10, 10
 ```
 ---
 
+### Lecture - 5 ###
+
 1. Function can be called by value, by reference , by address. And it can be identified by seeing functions declaration.
 2. inline is request to compiler not a command. Inline function is a function that is expanded in line when it is called. When the inline function is called whole code of the inline function gets inserted or substituted at the point of inline function call. This substitution is performed by the C++ compiler at **compile time**. Inline function may increase efficiency if it is small. See following link for more information on inline functions [Link](https://www.geeksforgeeks.org/inline-functions-cpp/)
 3. All functions inside class are implicitly inline, except virtual function. Because inlining is at compile time while virtual is at runtime. If a member function of is declared inside class but defined outside the class then it is not inline by default.
@@ -68,6 +79,8 @@ output will be = 6, 10, 10
 3. If nothing works then standard conversion/ user defined conversion are tried. (i.e. int to long, int to unsigned long etc.)
 
 ---
+
+### Lecture - 6 ###
 
 ```c++
 struct temp
@@ -91,6 +104,8 @@ Three difference between struct in c and c++ -
 3. Access specifier in c++ (private, protected, public). By default everything is public in struct.
 
 ---
+
+### Lecture - 7 ###
 
 1. In class everything is private by default.
 2. Instance member function can access any instance member variable.
@@ -116,3 +131,7 @@ class temp
    }
 };
 ```
+
+---
+
+
