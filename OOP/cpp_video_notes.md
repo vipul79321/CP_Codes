@@ -146,4 +146,46 @@ class temp
 2. Call to Destructor order - > Child to Parent.
 3. Execution of Destructor order - > Child to Parent.
 
+---
 
+## Lecture - 15 ##
+
+1. **this** is a keyword.
+2. **this** is a local object pointer in every instance member function containing address of the caller object.
+3. **this** pointer can not be modified.
+
+---
+
+## Lecture - 16 ##
+
+1. int * p = new int;  // here lhs(p) has static memory allocation, while rhs has dynamic memory allocation. 
+2. new will return address of the created memory block.
+
+1. delete p; // delete wont delete p, but it will delete the memory block pointed by p.
+2. delete only works for dynamically created memory block.
+
+---
+
+## Lecture - 17 ##
+
+```c++
+class A{
+  public:
+  int a;
+  void f1(){cout<<"f1 of A\n";}
+  void f2(){cout<<"f2 of A\n";}
+};
+
+class B: public A{
+  public:
+  int a;         // Member hiding, a of A wont be available for member functions of B. If member of function of A are called from object of B then a of A will be used.
+  void f1(){cout<<"f1 of B\n";}  // Method overloading
+  void f2(int x){cout<<"f2 of B\n";}   // Method hiding, as f2() wont be available for object of B.
+};
+```
+
+---
+
+## Lecture - 18 ##
+
+1. Base class pointer can point to object of any of its descendant class. But converse is not true.
