@@ -188,4 +188,134 @@ class B: public A{
 
 ## Lecture - 18 ##
 
-1. Base class pointer can point to object of any of its descendant class. But converse is not true.
+1. Base class pointer can point to object of any of its descendant class (even if that class has mutliple parents). But converse is not true.
+
+## Lecture - 19 ##
+
+**Note** - In method hiding, method does exist in that class, but compiler doesnt bother to look for that, as it finds already defined version of it in that class.
+
+1. In C++, once a member function is declared as a virtual function in a base class, it becomes virtual in every class derived from that base class.
+2. Any class which contains a virtual function, compiler will declare an **instance** member named **vptr**.
+3. **vptr** will point to a **static** array **vtable** containing address of the virtual functions.
+4. How compiler resolves Late Binding -
+    * Late Binding happens in the case of Virtual Functions.
+    * So compiler will firstly check that caller object( not where the caller object is pointing) has that function as virtual or not.
+    * If that's virtual then late binding will happen.
+    * In late binding, compiler will go to the vptr of the object where its pointing and then to the vtable, and then make appropriate call.
+
+See this code for getting idea of how whether the called function is virtual or not is decided - 
+```c++
+class A{
+    public:
+    void fun(){cout<<"A's fun called\n";}
+};
+
+class B : public A{
+    public:
+    virtual void fun(){cout<<"B's fun called\n";}
+};
+
+int main()
+{
+   A *a;
+   B b;
+   a = &b;
+   a->fun();   // will call fun of A, as fun is non-virtual in A.
+   
+   return 0;
+}
+```
+
+**Note** - We can also call private function of derived class from a base class pointer by declaring that function in the base class as virtual. Because access specifier are checked at the compile time and virtual functions are resolved at runtime. [Link](https://www.codesdope.com/cpp-virtual-and-abstract/)
+
+**Note** - If a virtual function in base class is made hidden in child class, then that new definition will not be virtual.
+
+**How to make vtable** - 
+1. Go through all the functions in that class (whether they are hidden, overriden, private, public or anything) and put address of all virtual functions in vtable and map them.(in case of overriden it will map to latest definition, in hidden it will map to old definition(hidden one).)
+
+**Note** - Consider following code - 
+```c++
+lass A{
+    protected:
+    virtual void fun(){cout<<"A's fun called\n";}
+};
+
+class B : public A{
+    public:
+    void fun(){cout<<"B's fun called\n";}
+};
+
+int main()
+{
+   A *a;
+   B b;
+   a = &b;
+   a->fun();               ------------> This will give error that fun is private in A
+   return 0;
+}
+```
+[Link to stackoverflow answer for above scenario](https://stackoverflow.com/a/3786209/14137254)
+```
+Explaination for above error - 
+If name lookup determines a viable function to be a virtual function, the access specifier of the virtual function is checked in the scope of the static type of the object expression used to name the function.
+At run time, the actual function to be called could be defined in the derived class with a completely different access specifier. This is because 'access specifiers' are a compile time phenomonon.
+```
+see this code from video - 
+```c++
+class A{
+    public:
+    void f1(){cout<<"A::f1\n";}
+    virtual void f2(){cout<<"A::f2\n";}
+    virtual void f3(){cout<<"A::f3\n";}
+    virtual void f4(){cout<<"A::f4\n";}
+};
+
+class B : public A{
+    public:
+    void f1(){cout<<"B::f1\n";}
+    virtual void f2(){cout<<"B::f2\n";}
+    virtual void f3(int x){cout<<"B::f3\n";}
+};
+
+void testA(){
+    A a;
+    A *ptr;
+    ptr = &a;
+    ptr->f1();   // Early binding, will call A::f1();
+    ptr->f2();   // Late binding, will call A::f2();
+    ptr->f3();   // Late binding will call A::f3();
+    ptr->f4();   // Late binding will call A::f4();
+    ptr->f3(5);   // Error, no such function in A;
+    
+    //vtable - A::f2, A::f3, A::f4
+}
+
+void testB(){
+    B b;
+    A *ptr;
+    ptr = &b;
+    
+    ptr->f1();   // Early binding, will call A::f1();
+    ptr->f2();   // Late binding, will call B::f2();
+    ptr->f3();   // Late binding will call A::f3();, as no f3() in B
+    ptr->f4();   // Late binding will call A::f4(), because no f4 in B;
+    ptr->f3(5);   // Error, will look into A class couldnt find any such function
+    
+    B *bptr;
+    bptr = &b;
+    bptr->f3(5);  // will work fine.
+    
+    // vtable - B::f2(), A::f3(), B::f3(int), A::f4()
+    
+}
+
+int main()
+{
+   testA();
+   testB();
+   return 0;
+}
+```
+
+
+
