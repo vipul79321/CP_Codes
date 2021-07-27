@@ -43,5 +43,16 @@ while(x>0 && y>0)
      lcs[i][j] = max(lcs[i-1][j],lcs[i][j-1]);
   }
  ```
+ ---
  
+ ## Longest Common Substring
+ ```c++
+ LCSuff[i][j] : Max length common suffix for S[0..i-1] & T[0..j-1]
  
+ LCSuff[i][j] = LCSuff[i-1][j-1] + 1 if S[i-1] == T[j-1]
+ LCSuff[i][j] = 0 otherwise
+ 
+ Length of longest common substring between S & T == max(LCS[i][j])
+ ```
+ 
+ ---
