@@ -1,4 +1,4 @@
-## Coin Change problem
+## Coin Change problem (Similar to finding number of solutions of given linear equation)
 
 ```c++
 n = target;
