@@ -1,4 +1,4 @@
-## Coin Change problem - 
+## Coin Change problem
 
 ```c++
 n = target;
@@ -34,7 +34,7 @@ for(i=1;i<=n;i++)
   ```
 ---
 
-## Subset Sum problem - 
+## Subset Sum problem
 
 ```c++
 dp[n+1][sum+1] = {0};
@@ -112,3 +112,17 @@ while(1) {
    return e-s+1;
    ```
 ---
+
+## Maximum sum such that no two elements are adjacent using O(1) space
+[Link](https://www.geeksforgeeks.org/maximum-sum-such-that-no-two-elements-are-adjacent/)
+
+```c++
+int incl = v[0],excl = 0;
+for(int i=1;i<n;i++)
+{
+    new_excl = max(incl,excl);
+    incl = excl + v[i];
+    excl = new_excl;
+}
+return max(incl,excl);
+```
