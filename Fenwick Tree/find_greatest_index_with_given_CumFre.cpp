@@ -1,3 +1,5 @@
+// Link - https://www.topcoder.com/thrive/articles/Binary%20Indexed%20Trees#find
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
