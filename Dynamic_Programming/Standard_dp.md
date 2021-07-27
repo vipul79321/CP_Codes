@@ -56,11 +56,21 @@ for(i=1;i<=n;i++)
 
 ## Domino Tiling - Fill 3xN profile with 2x1 tile
 [Link](https://www.geeksforgeeks.org/tiling-with-dominoes/)
+* A[n] - Number of ways to completely fill 3xN profile
+* B[n] - Number of ways to fill such that first element of top column is empty
+* C[n] - Number of ways to fill such that last element of top column is empty
+
+Transitions - 
+* B[n] = C[n]
+* A[n] = A[n-2] + B[n-1] + C[n-1] or A[n-2] + 2 * B[n-1];
+* B[n] = A[n-1] + B[n-2];
+* A[0] = 1, A[1] = 0
+* B[0] = 0, B[1] = 1
 
 ---
 
 ## Maximum Games Played by winner - Good one. Have to think inversely.
-[P.s Link](https://www.geeksforgeeks.org/maximum-games-played-winner/) - Given N players, output maximum number of games played by winner, with condition that two players are allowed to compete against one another if and only if difference between number of games played by them is <=1.
+[Link](https://www.geeksforgeeks.org/maximum-games-played-winner/) - Given N players, output maximum number of games played by winner, with condition that two players are allowed to compete against one another if and only if difference between number of games played by them is <=1.
 
 Hint - Think of minimum number of players required so that winner plays i games. dp[i] = dp[i] + dp[i-1]
 ```c++
