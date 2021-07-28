@@ -70,3 +70,49 @@ for(i=1;i<n;i++)
 ```c++
 P[n][k] = P[n-1][k] + k*P[n-1][k-1]
 ```
+
+---
+
+## Lobb Number
+Lobb number `L(m,n)` counts the number of ways that `n + m open parentheses and n − m close parentheses` can be arranged to form the start of a valid sequence of balanced parentheses.
+```c++
+L[m][n] = (2m+1) * Binomial(2n,m+n) / (m+n+1)
+
+L[0][n] = Catalan[n]
+```
+
+---
+
+## Eulerian Number
+In combinatorics, the Eulerian Number `A(n, m)` is the number of permutations of the numbers 1 to n in which exactly m elements are greater than previous element.
+
+```c++
+A[n][m] = ((n-1) - (m-1))*A[n-1][m-1] + (m+1)*A[n-1][m]
+```
+
+---
+
+## Entringer Number
+The Entringer Number `E(n, k)` are the number of permutations of {1, 2, …, n + 1}, starting with k + 1, which, after initially falling, alternatively fall then rise.
+```c++
+E[n][k] = E[n][k-1] + E[n-1][n-k]
+
+E[0][0] = 1;
+E[i][0] = 0 otherwise
+```
+
+---
+
+## Calculate number of Dearangements
+[Link](https://www.geeksforgeeks.org/count-derangements-permutation-such-that-no-element-appears-in-its-original-position/)
+
+```c++
+Derangements[n] = (n-1)*(Derangements[n-1] + Derangements[n-2])
+```
+Explaination - 
+1. For last element there are n-1 places, hence the multiplication.
+2. Now, lets say if last element is placed at i<sup>th</sup> index then following cases arise-
+    * i<sup>th</sup> is placed at last index, hence it is equivalent to solving for n-2.
+    * i<sup>th</sup> is not placed at last index, hence it is equivalent to solving for n-1.
+
+---
