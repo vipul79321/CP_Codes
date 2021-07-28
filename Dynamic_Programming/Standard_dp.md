@@ -126,3 +126,15 @@ for(int i=1;i<n;i++)
 }
 return max(incl,excl);
 ```
+
+---
+
+## Count of arrays having each element from [1,k] & no two adjacent elements same & first element is 1 and last element is x
+[Link](https://www.geeksforgeeks.org/count-arrays-consecutive-element-different-values/)
+
+* Let dp[i] - number of such arrays such that last element is not equal to 1
+* Two cases to consider - 
+    * ```if x != 1 : ans = dp[i]/(k-1)```
+    * ```if x == 1 : ans = dp[i-1]```
+* Transitions - ```dp[i] = (k-1)*dp[i-2] + (k-2)*dp[i-1]```
+
