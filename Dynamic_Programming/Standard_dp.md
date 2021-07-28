@@ -35,7 +35,7 @@ for(i=1;i<=n;i++)
 ---
 
 ## Subset Sum problem
-
+* Calculations
 ```c++
 dp[n+1][sum+1] = {0};
 
@@ -51,6 +51,18 @@ for(i=1;i<=n;i++)
 }
 
 // Since we only need last row for dp transition we can reduce space complexity by making dp[2][sum+1] array and using curr and prev variables.
+```
+* Printing
+```c++
+for(i=n;i>0 && sum>0;i--)
+{
+    if(dp[i-1][sum])continue;
+    else
+    {
+        cout<<arr[i-1]<<" ";
+        sum = sum - arr[i-1];
+    }
+}
 ```
 ---
 
@@ -126,7 +138,6 @@ for(int i=1;i<n;i++)
 }
 return max(incl,excl);
 ```
-
 ---
 
 ## Count of arrays having each element from [1,k] & no two adjacent elements same & first element is 1 and last element is x
@@ -137,4 +148,143 @@ return max(incl,excl);
     * ```if x != 1 : ans = dp[i]/(k-1)```
     * ```if x == 1 : ans = dp[i-1]```
 * Transitions - ```dp[i] = (k-1)*dp[i-2] + (k-2)*dp[i-1]```
+
+---
+
+## Calculate number of Dearangements
+[Link](https://www.geeksforgeeks.org/count-derangements-permutation-such-that-no-element-appears-in-its-original-position/)
+
+```c++
+Derangements[n] = (n-1)*(Derangements[n-1] + Derangements[n-2])
+```
+Explaination - 
+1. For last element there are n-1 places, hence the multiplication.
+2. Now, lets say if last element is placed at i<sup>th</sup> index then following cases arise-
+    * i<sup>th</sup> is placed at last index, hence it is equivalent to solving for n-2.
+    * i<sup>th</sup> is not placed at last index, hence it is equivalent to solving for n-1.
+
+---
+
+## 0-1 Knapsack
+* Calculation
+```c++
+for(int i=0;i<=n;i++)
+{
+    for(int weight=0;weight<=cap;weight++)
+    {
+        if(i==0 || weight == 0)
+        {
+            dp[i][weight] = 0;
+            continue;
+        }
+ 
+        if(weight > wt[i-1])
+            dp[i][weight] = max(dp[i][weight],val[i-1] + dp[i-1][weight-wt[i-1]]);
+
+        dp[i][weight] = max(dp[i][weight], dp[i-1][weight]);
+    }
+}
+```
+
+* Printing
+```c++
+int res = dp[n][cap];
+
+for(i=n,w=cap;i>0 && res>0;i--)
+{
+    if(dp[i-1][w] == res)
+    continue;
+    else
+    {
+        cout<<i<<" ";  // include in ans
+        res = res - val[i-1];
+        w = w - wt[i-1];
+    }
+}
+```
+
+---
+
+## Dice Throw Problem
+[Link](https://www.geeksforgeeks.org/dice-throw-dp-30/)
+* Given n dice with m faces, find number of ways to achieve score x
+```c++
+dp[n+1][x+1] = {0};
+dp[0][0] = 1;
+for(i=1;i<=n;i++)
+{
+    for(j=1;j<=x;j++)
+    {
+        for(k=1;k<=m && k<=j;k++)
+        {
+            dp[i][j] += dp[i-1][j-k];
+        }
+    }
+}
+```
+
+---
+
+## Word Break Problem
+[Link](https://www.geeksforgeeks.org/word-break-problem-dp-32/)
+```c++
+dp[n+1]=0;
+dp[0] = 1;
+
+for(int i=1;i<=n;i++)
+{
+    for(j=i;j>0;j--)
+    {
+        if(dictionaryContains(s.substr(j,i-j+1)))
+        dp[i] = dp[i]|dp[j];
+    }
+}
+```
+---
+
+## Vertex Cover Problem in Binary Tree
+[Link](https://www.geeksforgeeks.org/vertex-cover-problem-set-2-dynamic-programming-solution-tree/)
+* A vertex cover of an undirected graph is a subset of its vertices such that for every edge (u, v) of the graph, either ‘u’ or ‘v’ is in vertex cover. Although the name is Vertex Cover, the set covers all edges of the given graph. 
+```c++
+int vertexCover(TreeNode* root)
+{
+    if(root == null)return 0;
+    if(root->left == null && root->right == null)return 1;
+    
+    int size_incl = 1 + vertexCover(root->left) + vertexCover(root->left);  // including root in answer
+    
+    int size_excl = 0;  // excluding root in ans
+    if(root->left!=null)
+    size_excl += 1 + vertexCover(root->left->left) + vertexCover(root->left->right);
+    
+    if(root->right!=null)
+    size_excl += 1 + vertexCover(root->right->left) + vertexCover(root->right->right);
+    
+    return min(size_excl,size_incl); 
+}
+```
+---
+## Largest Independent Set in Binary Tree
+[Link](https://www.geeksforgeeks.org/largest-independent-set-problem/)
+* Largest Independent set of nodes in binary tree is a set of maximum size such that there is no edge between any two nodes in the set.
+```c++
+int largestIndependentSet(TreeNode* root)
+{
+    if(root == null)return 0;
+    if(root->left == null && root->right == null)return 1;
+    
+    int size_excl = largestIndependentSet(root->left) + largestIndependentSet(root->left);
+    
+    int size_incl = 1;
+    if(root->left!=null)
+    size_incl += largestIndependentSet(root->left->left) + largestIndependentSet(root->left->right);
+    
+    if(root->right!=null)
+    size_incl += largestIndependentSet(root->right->left) + largestIndependentSet(root->right->right);
+    
+    return max(size_excl,size_incl);
+}
+```
+
+---
 
