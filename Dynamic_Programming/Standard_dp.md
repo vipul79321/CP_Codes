@@ -285,6 +285,27 @@ int largestIndependentSet(TreeNode* root)
     return max(size_excl,size_incl);
 }
 ```
-
 ---
 
+## Longest Alternating Subsequence
+[Link](https://www.geeksforgeeks.org/longest-alternating-subsequence/)
+
+```c++
+inc[n] = {0},dec[n] = {0};
+inc[0] = 1,dec[0] = 1;
+int ans = 1;
+for(i=1;i<n;i++)
+{
+    for(j=i-1;j>=0;j--)
+    {
+        if(arr[i] > arr[j])
+        inc[i] = max(inc[i],dec[j]);
+        if(arr[i] < arr[j])
+        dec[i] = max(dec[i],inc[j]);
+    }
+    inc[i]++;
+    dec[i]++;
+    ans = max(ans, max(inc[i],dec[i]));
+}
+return ans;
+```
