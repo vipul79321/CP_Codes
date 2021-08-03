@@ -7,10 +7,10 @@
 Idea is to find the rightmost bit that can be shifted to left, shift it and rightshift all the bits to its right completely.
 
 ```c++
-set = (1<<k)- 1;   //  set = 0011001110
+set = (1<<k)- 1;   //  set = 0000111111
 limit = (1<<n);  //  limit = 1000000000
 
-while(set<limit)
+while(set<limit) // consider set = 0011001110
 {
    int c = set&(-set);  //c = 0000000010                       // get rightmost set bit
    int r = set + c;     //r = 0011010000                      // unset rightmost cluster of set bits and set next bit to 1  
