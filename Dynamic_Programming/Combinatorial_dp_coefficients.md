@@ -116,3 +116,16 @@ Explaination -
     * i<sup>th</sup> is not placed at last index, hence it is equivalent to solving for n-1.
 
 ---
+
+## Calculate nth Row of Pascal Triangle
+
+```c++
+vector<int>row;
+row.pb(1);
+for(i=1;i<=n-1;i++)
+{
+    int val = row[i-1]*(n-i+1)/i;
+    row.pb(val);
+}
+row.pb(1);
+```
