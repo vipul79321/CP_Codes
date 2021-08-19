@@ -309,3 +309,24 @@ for(i=1;i<n;i++)
 }
 return ans;
 ```
+
+---
+
+## Minimum Number of Jumps to reach the end of an array
+[Link](https://www.interviewbit.com/problems/min-jumps-array/) | [Link](https://leetcode.com/problems/jump-game-ii/discuss/18014/Concise-O(n)-one-loop-JAVA-solution-based-on-Greedy)
+
+
+```c++
+int jumps = 0, curEnd = 0, curFarthest = 0;
+for (int i = 0; i < A.size() - 1; i++) {
+   curFarthest = max(curFarthest, i + A[i]);
+   if (i == curEnd) {
+      jumps++;
+      if(curEnd >= curFarthest)
+         return -1;
+
+      curEnd = curFarthest;
+   }
+}
+return jumps;
+```
