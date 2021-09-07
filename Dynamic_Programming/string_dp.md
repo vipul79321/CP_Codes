@@ -220,4 +220,12 @@ for(int i=1;i<=n;i++)
 
 ---
 
-## 
+## Minimum Insertions to form a palindrome
+[Link](https://www.geeksforgeeks.org/minimum-insertions-to-form-a-palindrome-dp-28/)
+
+```c++
+if (s[i] == s[j])
+dp[i][j] = dp[i+1][j-1]
+else
+dp[i][j] = min(dp[i+1][j], dp[i][j-1]) + 1;
+```
