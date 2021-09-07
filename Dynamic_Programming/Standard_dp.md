@@ -344,3 +344,31 @@ Solution -
 * Transition will be dp[i][j] = max(dp[i-1][j], dp[i-1][j + wt[i] - k * val[i]] + wt[i] )
 
 ---
+
+
+## Minimum Initial Points to reach the destination
+[Link](https://www.geeksforgeeks.org/minimum-positive-points-to-reach-destination/)
+
+```c++
+dp[n-1][m-1] = mat[n-1][m-1] > 0 ? 1 : abs(mat[n-1][m-1]) + 1;
+
+for(int i=n-1;i>=0;i--)
+{
+    for(int j=m-1;j>=0;j--)
+    {
+        if(i==n-1 || j==m-1)continue;
+
+        int min_points_on_exit = INT_MAX;
+        if(j<m-1)
+        min_points_on_exit = min(min_points_on_exit, dp[i][j+1]);
+        if(i<n-1)
+        min_points_on_exit = min(min_points_on_exit, dp[i+1][j]);
+        
+        dp[i][j] = max(min_points_on_exit - mat[i][j], 1);
+    }
+}
+
+return dp[0][0];
+```
+
+---
