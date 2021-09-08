@@ -370,5 +370,11 @@ for(int i=n-1;i>=0;i--)
 
 return dp[0][0];
 ```
+---
+
+## Number of Permutations with K inversions
+[Link](https://www.geeksforgeeks.org/number-of-permutation-with-k-inversions/)
+
+* dp[n][k] = sum(dp[n-1][j] where j = k...0)
 
 ---
