@@ -431,3 +431,32 @@ int findXorSum(vector<int>&arr, int n)
 	return sum;
 }
 ```
+
+---
+
+## Number of ways to form max-heap from N distinct integers
+[Link](https://www.geeksforgeeks.org/number-ways-form-heap-n-distinct-integers/)
+
+* Since in a max-heap structure and root node will be fixed.
+* Let number of nodes in left subtree be L and number of nodes in right subtree be R, L+R == N-1
+* dp[N] = binomial(N-1,L) * dp[L] * dp[R]
+
+---
+
+## Another variation of subset sum problem
+[Link](https://www.geeksforgeeks.org/number-ordered-pairs-ai-aj-0/)
+
+* Given an array with element in range [0,(1<<15)-1]. We need to find number of pairs (i,j) such that A[i]&A[j] == 0
+* For each i given problem can be repharsed as sum of frequency of all the elements which are subset of (mask = (A[i]^(1<<15-1)))
+* So, now for each mask we need to find number of elements which are subset of mask.
+
+DP - formulation
+* Let dp[mask][i] represents number of elements which are subset of mask and doesnt differ from mask till (i+1)th bit. May or may not differ at & after ith bit.
+* Base condition -
+    * dp[mask][0] = frequency[mask] if 0th bit is not set in mask
+    * dp[mask][0] = frequency[mask] + frequency[mask^1] if 0th bit is set in mask
+* DP transition - 
+    * dp[mask][i] = dp[mask][i-1] if ith bit is not set in mask
+    * dp[mask][i] = dp[mask][i-1] + dp[mask^(1<<i)][i-1] if ith bit is set in mask
+
+* So for each mask number of elements which are subset of it will be dp[mask][15]
