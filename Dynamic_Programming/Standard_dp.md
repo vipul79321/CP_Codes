@@ -386,3 +386,48 @@ return dp[0][0];
 * sum of all subset of size sz = (Sum of all elements) * Binomial(N-1,sz-1)
 
 ---
+
+## Sum of XOR of all subarrays
+[Link](https://www.geeksforgeeks.org/sum-of-xor-of-all-subarrays/)
+
+Algorithm - 
+* At each index we want to keep the count of how many subarrays starting from index = j has odd numbers of ith bit set.
+* Let c_odd be count of such subarrays, then we can simply add ans = ans + c_odd*(1<<i)
+
+```c++
+int findXorSum(vector<int>&arr, int n)
+{
+	// variable to store the final sum
+	int sum = 0;
+
+	for (int i = 0; i < 30; i++) {
+
+		// variable to store number of sub-arrays with odd number of elements with ith bits starting from the first
+		// element to the end of the array
+		int c_odd = 0;
+
+		// variable to check the status of the odd-even count while calculating c_odd
+		bool odd = 0;
+
+		// loop to calculate initial value of c_odd
+		for (int j = 0; j < n; j++) {
+			if ((arr[j] & (1 << i)) > 0)
+				odd = (!odd);
+			if (odd)
+				c_odd++;
+		}
+
+		// loop to iterate through all the elements of the array and update sum
+		int mul = 1<<i;
+		for (int j = 0; j < n; j++) {
+			sum += (mul * c_odd);
+
+			if ((arr[j] & (1 << i)) > 0) // Update c_odd, if ith bit was set then number of even count subarray will become number of odd count subarrays
+				c_odd = (n - j - c_odd);
+		}
+	}
+
+	// returning the sum
+	return sum;
+}
+```
