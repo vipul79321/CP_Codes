@@ -378,3 +378,11 @@ return dp[0][0];
 * dp[n][k] = sum(dp[n-1][j] where j = k...0)
 
 ---
+
+## Sum of Average of all subsets
+[Link](https://www.geeksforgeeks.org/sum-average-subsets/)
+
+* Ans = summation of (sum of all subset of size sz) / sz; for sz = 1 to sz = N;
+* sum of all subset of size sz = (Sum of all elements) * Binomial(N-1,sz-1)
+
+---
