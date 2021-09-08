@@ -229,3 +229,14 @@ dp[i][j] = dp[i+1][j-1]
 else
 dp[i][j] = min(dp[i+1][j], dp[i][j-1]) + 1;
 ```
+
+## Minimum steps to delete the string after repeated deletion of palindromic substrings
+[Link](https://www.geeksforgeeks.org/minimum-steps-to-delete-a-string-after-repeated-deletion-of-palindrome-substrings/)
+
+* Let dp[i][j] be the minimum steps required to delete the string s[i..j]
+* Following dp transition will arise
+    * dp[i][j] = min(dp[i][j], 1+dp[i+1][j]) ---> Simple deletion
+    * dp[i][j] = min(dp[i][j], dp[i+1][k-1] + dp[k+1][j]) where i+1<k<j && s[i] == s[k] ---> deleting alongwith s[i+1..k-1]
+    * dp[i][j] = min(dp[i][j], 1 + dp[i+2][j]) ---> where s[i] == s[i+1]
+    * dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j])  ---> Basic transition
+    * dp[i][j] = min(dp[i][j], dp[i+1][j-1])  ---> where s[i] == s[j]
