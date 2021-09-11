@@ -460,3 +460,5 @@ DP - formulation
     * dp[mask][i] = dp[mask][i-1] + dp[mask^(1<<i)][i-1] if ith bit is set in mask
 
 * So for each mask number of elements which are subset of it will be dp[mask][15]
+
+---
