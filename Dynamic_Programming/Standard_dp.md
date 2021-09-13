@@ -462,3 +462,66 @@ DP - formulation
 * So for each mask number of elements which are subset of it will be dp[mask][15]
 
 ---
+
+## Matrix Chain Multiplication
+[Link](https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-problem/)
+
+* **Obtaining optimal cost for given matrix chain**
+```c++
+/*
+* p[] : p[i-1]*p[i] represents dimension of A[i-1] matrix. So total number of matrix will be p.size()-1; 
+* cost[i][j] : Optimal bracketing cost for the matrix chain[i..j]
+* bracket[i][j] : Bracketing position for optimal cost of matrix chain[i..j]
+*/
+int n = p.size();
+int cost[n][n], bracket[n][n], i, j;
+for(i=0;i<n;i++)
+{
+    for(j=0;j<n;j++)
+    {
+        cost[i][j] = INT_MAX; bracket[i][j] = -1;
+    }
+}
+
+for(i=0;i<n;i++)cost[i][i] = 0;
+
+for(int len=2;len<=n-1;len++)
+{
+    for(int i=1;i<=n-len;i++)
+    {
+        int j = i+len-1;
+        
+        for(int k=i;k<=j-1;k++)
+        {
+            if(cost[i][j] > cost[i][k] + cost[k+1][j] + p[i-1]*p[k]*p[j])
+            {
+                cost[i][j] = cost[i][k] + cost[k+1][j] + p[i-1]*p[k]*p[j];
+                bracket[i][j] = k;
+            }
+        }
+    }
+}
+
+cout<<"Optimal cost for given matrix chain: "<<dp[1][n-1]<<endl;
+printingBracketSequence(1,n-1,0)
+```
+
+* **Printing Bracket Sequence**
+```c++
+printingBracketSequence(int i, int j)
+{
+    if(i==j)
+    {
+        cout<<matrixName[i-1]<<" ";
+        return;
+    }
+    
+    cout<<"(";
+    
+    printingBracketSequence(i,bracket[i][j]);
+    
+    printingBracketSequence(bracket[i][j]+1,j);
+    
+    cout<<")";
+}
+```
