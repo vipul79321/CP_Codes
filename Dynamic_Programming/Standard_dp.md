@@ -525,3 +525,43 @@ printingBracketSequence(int i, int j)
     cout<<")";
 }
 ```
+
+---
+
+## Number of Palindromic Paths in given Matrix from (0,0) to (n-1,m-1)
+[Link]()
+
+* Approach is to used memoized dp map with entries as starting cell(rs,cs) and ending cell(re,ce)
+* See code for transition details - 
+```c++
+bool solveDP(int rs, int cs, int re, int ce)
+{
+    if(rs<0 || rs>=n || cs<0 || cs >= m)return 0;
+    if(re<0 || re>=n || ce<0 || ce >= m)return 0;
+    
+    if(rs>re || cs > ce)return 0;
+    
+    if(mat[rs][cs] != mat[re][ce])return 0;
+    
+    if(dp[mp(mp(rs,cs),mp(re,ce))] != dp.end())
+    return dp[mp(mp(rs,cs),mp(re,ce))];
+    
+    if(abs(rs-re) + abs(cs-ce) == 1) // adjacent cell scenario
+    {
+        return 1;
+    }
+    
+    int ans = 0;
+    ans = ans + solveDP(rs+1,cs,re-1,ce);
+    ans = ans + solveDP(rs+1,cs,re,ce-1);
+    ans = ans + solveDP(rs,cs+1,re-1,ce);
+    ans = ans + solveDP(rs,cs+1,re,ce-1);
+    
+    dp[mp(mp(rs,cs),mp(re,ce))] = ans;
+    
+    return ans;
+    
+}
+```
+
+---
