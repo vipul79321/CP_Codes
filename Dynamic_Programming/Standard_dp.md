@@ -606,3 +606,76 @@ int countMin(int x, int y, int z)
     dp[x][y][z] = res;
 }
 ```
+
+---
+
+## Word Wrap Problem
+[Link](https://www.geeksforgeeks.org/word-wrap-problem-dp-19/)
+
+**Problem description** - 
+* Given a sequence of words, and a limit on the number of characters that can be put in one line. Assume length of each word is less than given limit.
+* Put line breaks in given sequence such that sum of (extra space)^3 for each line is minimized.
+* Extra spaces in line having limit L and number of words X is given by - `L - sum(len of each word) - X-1` if it is not the last line else 0 otherwise
+
+**Solution**
+* We will first calculate Extra[i][j], which is number of extra spaces if we put words[i..j] in one line. 
+* Then we will calculate Cost[i][j], which is (Extra[i][j])^3 if Extra[i][j] >= 0 else INF otherwise.
+* Finally we will calculate, dp[i], which contains the optimal cost of arranging words from [0..i];
+
+**Finding Optimal Cost**
+```c++
+int extra[n+1][n+1], cost[n+1][n+1], dp[n+1], prev[n+1];
+
+for(int i=1;i<=n;i++)
+{
+    extra[i][i] = limit - len(word[i-1]);
+    cost[i][j] = (extra[i][i])^3;
+
+    for(int j=i+1;j<=n;j++)
+    {
+        extra[i][j] = extra[i][j-1] - len(word[j-1]) - 1;
+        
+        if(j==n && extra[i][j] >= 0)
+        {
+            cost[i][j] = 0;
+        }
+        else if(extra[i][j] < 0)
+        {
+            cost[i][j] = INF;
+        }
+        else
+        {
+            cost[i][j] = (extra[i][j])^3;
+        }
+    }
+}
+
+dp[0] = 0;
+for(int i=1;i<=n;i++)
+{
+    dp[i] = INF;
+    for(int j=1;j<=i;j++)
+    {
+        if(dp[i] > dp[j-1] + cost[i][j]))
+        {
+            prev[i] = j;
+            dp[i] = dp[j-1] + cost[i][j];
+        }
+    }
+}
+```
+
+**Printing Solution**
+```c++
+int printSolution(int ind)
+{
+    int k;
+    if (prev[ind] == 1)
+        k = 1;
+    else
+        k = printSolution (prev[ind]-1) + 1;
+    cout<<"Line number "<<k<<": From word no. "<<prev[ind]<<" to "<<ind<<endl;
+    return k;
+}
+
+```
