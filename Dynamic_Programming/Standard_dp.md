@@ -724,6 +724,7 @@ for(int d = (minArr - maxArr); d<= (maxArr - minArr); d++)
 ---
 
 ## Length of Longest Airthmetic Progression from given set of numbers - O(n * n)
+[Link](https://www.geeksforgeeks.org/longest-arithmetic-progression-dp-35/)
 
 **Problem Description** - Given a set of numbers, find length of longest possible AP.
 
@@ -780,6 +781,7 @@ return ans;
 ---
 
 ## Balanced expressions such that given positions have opening brackets
+[Link](https://www.geeksforgeeks.org/balanced-expressions-such-that-given-positions-have-opening-brackets/)
 
 **Problem Description** - Given an integer n and positions array where 1<=position[i] <= 2 * n. Find number of proper bracket expression such that given positions have opening bracket. 
 
@@ -792,3 +794,31 @@ return ans;
     * else if i in position then dp[i][j] = dp[i-1][j-1];
     * else dp[i][j] = dp[i-1][j-1] + dp[i-1][j+1];
 * Finally ans will be dp[2n][0];
+
+---
+
+## Boolean Parenthesization Problem
+[Link](https://www.geeksforgeeks.org/boolean-parenthesization-problem-dp-37/)
+
+**Problem Description** - Given a boolean expression containing T, F, and operator &, |, ^. Find number of ways to parenthesize expression such that it evaluates to true. In other words given an symbol array containing T and F. And operator array containing &,|,^. Where operator[i] is operator between symbol[i] and symbol[i+1];
+
+**Solution Approach** - 
+* Create T[n][n] matrix where T[i][j] represents number of ways to parenthesize expression from [i..j] such that it evaluates to True.
+* Create F[n][n] matrix where F[i][j] represents number of ways to parenthesize expression from [i..j] such that it evaluates to False.
+* Create Total[n][n] matrix where Total[i][j] represents number of ways to parenthesize expression from [i..j].
+
+**Transitions** - 
+* T[i][j], for each k in range [i,j-1]
+    *  if operator[k] == '&', then T[i][j] += T[i][k] * T[k+1][j];
+    *  if operator[k] == '|, then T[i][j] += Total[i][k] * Total[k+1][j] - F[i][k] * F[k+1][j];
+    *  if operator[k] == '^' then T[i][j] += T[i][k] * F[k+1][j] + F[i][k] * T[k+1][j];
+
+* F[i][j], for each k in range [i,j-1]
+    *  if operator[k] == '&', then F[i][j] += Total[i][k] * Total[k+1][j] - T[i][k] * T[k+1][j];
+    *  if operator[k] == '|, then F[i][j] += F[i][k] * F[k+1][j];
+    *  if operator[k] == '^' then T[i][j] += T[i][k] * T[k+1][j] + F[i][k] * F[k+1][j];
+
+* Total[i][j], for each k in range[i,j-1]
+    * Total[i][j] += (T[i][k] + F[i][k] ) * (T[k+1][j] * F[k+1][j]) 
+
+---
