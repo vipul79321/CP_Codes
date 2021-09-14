@@ -776,3 +776,19 @@ for(int mid=n-2;mid>=0;mid--)
 
 return ans;
 ```
+
+---
+
+## Balanced expressions such that given positions have opening brackets
+
+**Problem Description** - Given an integer n and positions array where 1<=position[i] <= 2 * n. Find number of proper bracket expression such that given positions have opening bracket. 
+
+**Solution Approach**
+* Create a dp[2n][2n], where dp[i][j] is number of bracket expression of length i having difference between open bracket and close brackets == j; j>=0;
+* Transition - 
+    * dp[0][1] = 1;
+    * if j == 0 && i not in positions then dp[i][j] = dp[i-1][j+1], putting a close bracket.
+    * else if j == 0 && i in positions then dp[i][j] = 0, cant put a closing bracket.
+    * else if i in position then dp[i][j] = dp[i-1][j-1];
+    * else dp[i][j] = dp[i-1][j-1] + dp[i-1][j+1];
+* Finally ans will be dp[2n][0];
