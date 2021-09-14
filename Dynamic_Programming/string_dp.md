@@ -312,3 +312,16 @@ dp[i][j] = min(dp[i+1][j], dp[i][j-1]) + 1;
     * dp[i][j] = min(dp[i][j], 1 + dp[i+2][j]) ---> where s[i] == s[i+1]
     * dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j])  ---> Basic transition
     * dp[i][j] = min(dp[i][j], dp[i+1][j-1])  ---> where s[i] == s[j]
+
+---
+
+## Longest repeating and non-overlapping substring
+[Link](https://www.geeksforgeeks.org/longest-repeating-and-non-overlapping-substring/)
+
+* Let LCSRe[i][j] stores length of the matching and non-overlapping substrings ending with i'th and j'th characters.
+* Transitions - 
+    * if (s[i-1] == s[j-1]) && (i-j) > LCSRe[i-1][j-1] then LCSRe[i][j] = 1 + LCSRe[i-1][j-1];
+    * else LCSRe[i][j] = 0;
+* Ans will be max(LCSRe[i][j]);
+
+
