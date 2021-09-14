@@ -679,3 +679,100 @@ int printSolution(int ind)
 }
 
 ```
+
+---
+
+## Count number of Airthmetic Progression Subsequences in given array - O(n * range_elements)
+[Link](https://www.geeksforgeeks.org/count-arithmetic-progression-subsequences-array/)
+
+**Problem Description** - Given an array of n **positive** integers and **1<=arr[i]<=100000**. Find number of AP subsequences in it. 
+
+**Solution Approach** - 
+* Iterate over all possible common difference in range `[minArr - maxArr, maxArr - minArr]`.
+* For each common difference calculate number of APs with length >= 2
+* Intialize ans as n. As all the single elements also form an AP.
+* See code for more details
+
+```c++
+const int maxVal = 100005;
+int dp[n]; // Stores the count of AP having common difference d and having arr[i] as last element.
+int sum[maxVal];  // Stores the count of AP having common difference d and having i as last element.
+int ans = n;
+int maxArr = *max_element(arr.begin(),arr.end());
+int minArr = *min_element(arr.begin(),arr.end());
+
+for(int d = (minArr - maxArr); d<= (maxArr - minArr); d++)
+{
+    memset(sum,0,sizeof(sum));
+    
+    for(int i=0;i<n;i++)
+        dp[i] = 1;
+    
+    for(int i=0;i<n;i++)
+    {
+        int prev = arr[i] - d;
+        if(prev > 0 && prev < maxVal)
+        {
+            dp[i] = dp[i] + sum[prev];
+        }
+        sum[arr[i]] += dp[i];
+        ans = ans + dp[i] - 1; // -1 to remove single element AP.
+    }
+}
+```
+
+---
+
+## Length of Longest Airthmetic Progression from given set of numbers - O(n * n)
+
+**Problem Description** - Given a set of numbers, find length of longest possible AP.
+
+**Solution Approach** - 
+* First, we will sort all the elements.
+* Create a dp[n][n] matrix, where dp[i][j] stores length of longest AP having first two elements as arr[i] and arr[j] respectively.
+* See code for more details. 
+
+```c++
+int dp[n][n];
+memset(dp,0,sizeof(dp));
+
+for(int i=0;i<n-1;i++)
+{
+    dp[i][n-1] = 2;
+}
+
+int ans = min(n,2); // as any two elements can form an AP;
+
+for(int mid=n-2;mid>=0;mid--)
+{
+    int left = mid-1, right = mid+1;
+    
+    while(left >= 0 && right < n) // using two pointer approach to find two elements on both side of mid which satisfy property of AP.
+    {
+        if(set[left] + set[right] == 2*set[mid])
+        {
+            dp[left][mid] = dp[mid][right] + 1;
+            ans = max(ans, dp[left][mid]);
+        }
+        else if(set[left] + set[right] > 2*set[mid])
+        {
+            dp[left][mid] = 2;
+            ans = max(ans, dp[left][mid]);
+            left--;
+        }
+        else
+        {
+            right++;
+        }
+    }
+    
+    while(left > 0)
+    {
+        dp[left][mid] = 2;
+        ans = max(ans, dp[left][mid]);
+        left--;
+    }
+}
+
+return ans;
+```
