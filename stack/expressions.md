@@ -278,6 +278,23 @@ string postfixToPrefix(string postfix)
 ---
 
 
+## Notes
+[Link](https://www.geeksforgeeks.org/stack-set-4-evaluation-postfix-expression/) | [Link](https://www.geeksforgeeks.org/expression-evaluation/)
+* For evaluating a postfix expression follow below steps - 
+  * Scan the expression from left to right.
+    * If the scanned character is an operand, push it in the stack.
+    * else pop A then B from stack and push B operator A into the stack.
+  * Finally stack.top() will contain the value of the expression
+
+* For evaluating an infix expression follow below steps - 
+  * Procedure is completely similar to conversion to postfix with following modification - 
+    * Instead of printing operand, push them in value stack.
+    * Whenever performing pop operation, pop operator from operator-stack and pop A then B from value stack and push `A operator B` into value stack.
+
+
+
+  
+
 
 
 
