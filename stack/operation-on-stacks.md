@@ -144,8 +144,11 @@ void towerOfHanoi(int n, int from_rod, int auxilary_rod, int to_rod)
 ```
 
 **Iterative Solution**
-
-```c++
-
-```
-
+**Steps** - 
+* Calculate the total number of moves required i.e. "pow(2, n) - 1" here n is number of disks.
+* If number of disks (i.e. n) is even then interchange destination pole and auxiliary pole.
+* Loop i from i==1 to i==total_num_moves: 
+  * If i%3==1 : Legal movement between Source and Destination Pole
+  * If i%3==2: Legal movement between Source and Auxiliary Pole
+  * If i%3==0: Legal movement between Auxiliary and Destination Pole
+* Legal Movement means `to_rod.top() > from_rod.top()` and intially from_rod should be non-empty.
