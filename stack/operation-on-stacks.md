@@ -152,3 +152,88 @@ void towerOfHanoi(int n, int from_rod, int auxilary_rod, int to_rod)
   * If i%3==2: Legal movement between Source and Auxiliary Pole
   * If i%3==0: Legal movement between Auxiliary and Destination Pole
 * Legal Movement means `to_rod.top() > from_rod.top()` and intially from_rod should be non-empty.
+
+---
+
+## Remove brackets from given algebraic expression
+[Link](https://www.geeksforgeeks.org/remove-brackets-algebraic-string-containing-operators/)
+
+**Problem Description** - Given an algebraic expression with +,-, (, ) -> simplify it by opening(removing) brackets
+
+**Solution Approach** -
+* We will maintain an stack containing global sign and flip the local signs accordingly.
+
+```c++
+string simplifyExpression(string expr)
+{
+    stack<int>global_sign;
+    global_sign.push(0); // symbolising + sign.
+    
+    string ans = "";
+    
+    for(int i=0;i<expr.length();i++)
+    {
+        if(i==0 && expr[i] == '(')
+        continue;
+        
+        if(expr[i] == '(')
+        {
+            if(expr[i-1] == '+')
+            global_sign.push(global_sign.top());
+            else
+            global_sign.push(1 - global_sign.top());
+        }
+        else if(expr[i] == '+')
+        {
+            if(global_sign.top())ans = ans + "-";
+            else
+              ans = ans + "+";
+        }
+        else if(expr[i] == '-')
+        {
+            if(global_sign.top())ans = ans + "+";
+            else
+              ans = ans + "-";
+        }
+        else if(expr[i] == ')')
+        {
+            global_sign.pop();
+        }
+        else
+        {
+            ans = ans + expr[i];
+        }
+    }
+    return ans;
+}
+```
+
+---
+
+## Range Queries for Longest Balanced Bracket Subsequences
+[Link](https://www.geeksforgeeks.org/range-queries-longest-correct-bracket-subsequence/) | [Link](https://codeforces.com/contest/380/problem/C)
+
+**Problem Description** - Given a string containing '(' and ')'. And Q queries of type [l,r]. We need to ans length of longest balanced paranthesis subsequence in range [l,r]
+
+**Solution Description** - 
+* Make segment tree, where
+  * st[id][0] - > length of longest balanced paranthesis subsequence in interval represented by id
+  * st[id][1] - > Count of invalid open paranthesis in interval represented by id
+  * st[id][2] - > Count of invalid close paranthesis in interval represented by id
+* Merging segment tree nodes - 
+  * st[id][0] = st[left][0] + st[right][0] + 2 * min(st[left][1], st[right][2]);
+  * st[id][1] = st[left][1] + st[right][1] - min(st[left][1], st[right][2]);
+  * st[id][2] = st[left][2] + st[right][2] - min(st[left][1], st[right][2]);
+
+---
+
+## Find maximum of minimums for all window size for a given array
+[Link](https://www.hackerrank.com/challenges/min-max-riddle/problem) | [Link](https://www.geeksforgeeks.org/find-the-maximum-of-minimums-for-every-window-size-in-a-given-array/)
+
+**Solution Approach** - 
+* For each element find its next smaller element to the right and next smaller element to the left
+* Now iterate over each element, that element will be a minimum for `len = right[i] - left[i] - 1;window_size = [1,len]`, so update `ans[len] = max(ans[len],arr[i]);`
+* Now iterate from len = n-1 to len = 1: 
+  * ans[len] = max(ans[len],ans[len+1]);
+
+
