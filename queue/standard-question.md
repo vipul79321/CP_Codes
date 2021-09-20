@@ -77,5 +77,104 @@ class kQueues
 ----
 
 ## LRU Cache
+[Link](https://www.geeksforgeeks.org/lru-cache-implementation/) | [Link](https://leetcode.com/problems/lru-cache/)
+
+**Solution Approach**
+* Maintain an LRU list containing most recent used page in front and least recent use page in back.
+* Maintain an map of `<key,list::iterator>`, to get the position of that key in LRU, deletion, insertion in list are done in O(1), if we know its position.
+
+```c++
+class LRUCache {
+public:
+    list<int>lru;
+    unordered_map<int,list<int>::iterator>position;
+    unordered_map<int,int>key_to_value;
+    int capacity,sz;
+    
+    LRUCache(int capacity)
+    {
+        this->capacity = capacity;
+        lru.clear(); position.clear();
+    }
+    
+    int get(int key)
+    {
+        if(key_to_value.find(key) != key_to_value.end())
+        {
+            lru.erase(position[key]);
+            lru.push_front(key);
+            position[key] = lru.begin();
+            return key_to_value[key];
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    
+    void put(int key, int value)
+    {
+        if(key_to_value.find(key) != key_to_value.end())
+        {
+            lru.erase(position[key]);
+        }
+        
+        lru.push_front(key);
+        position[key] = lru.begin();
+        key_to_value[key] = value;
+        
+        if(lru.size() > capacity)
+        {
+            key_to_value.erase(lru.back());
+            position.erase(lru.back());
+            lru.pop_back();
+        }
+    }
+};
+```
+
+---
+
+## Find maximum of all subarrays of size k in O(n) time | Sliding Window Maximum
+[Link](https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/)
+
+**Solution Approach**
+* Maintain a deque containing elements in **non-increasing order** for finding window maximum
+
+```c++
+vector<int>kMax(vector<int>&arr, int k)
+{
+    int n = arr.size();
+    deque<int>dq;
+  
+    for(int i=0;i<k;i++)
+    {
+        while(!dq.empty() && arr[dq.back()] < arr[i])
+        {
+            dq.pop_back();
+        }
+        dq.push_back(i);
+    }
+    
+    vector<int>ans;
+    ans.push_back(arr[dq.front()]);
+    
+    for(int i=k;i<n;i++)
+    {
+        int start = i-k+1;
+        while(!dq.empty() && dq.front() < start)dq.pop_front();
+        while(!dq.empty() && arr[dq.back()] < arr[i])
+        {
+            dq.pop_back();
+        }
+        dq.push_back(i);
+        
+        ans.push_back(arr[dq.front()]);
+    }
+    
+    return ans;
+}
+```
+---
 
 
