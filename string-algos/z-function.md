@@ -1,39 +1,32 @@
-/*
-* Z-algorithm - Introduction
+## Z-algorithm - Introduction
+[Link](https://cp-algorithms.com/string/z-function.html)
 * The Z-function for a string is an array of length n where the i-th element is equal to the greatest number of characters starting from the position i that coincide with the first characters of s
 * In other words, z[i] is the length of the longest common prefix between s and the suffix of s starting at i.
 * Time and Space Complexity for Z-function = O(n)
-*/
-/******************************************************************************************************/
-/*
-* Use case - 1
+
+### Use case - 1 - Pattern Matching
 * Pattern matching - Given text and pattern string, find number of times pattern appear in text.
 * Solution - compute z-function for pat + "$" + text, ans will be count of indexes such that z[i] == pat.length();
 * Time & Space complexity - O(text.length() + pattern.length())
-*/
-/******************************************************************************************************/
-/*
-* Use case - 2
+
+### Use case - 2 - String Compression
 * String Compression - Given a string, find a string t of shortest length such that s can be represented as a concatenation of one or more copies of t.
 * Solution -
-* (i) Compute z-function of given string.
-* (ii) Iterate through all the indexes such that n%index == 0, ans will be first such index where, index + z[index] == n;
+  * Compute z-function of given string.
+  * Iterate through all the indexes such that n%index == 0, ans will be first such index where, index + z[index] == n;
 * Time & Space Complexity - O(n)
-*/
-/******************************************************************************************************/
-/*
-* Use case - 3
+
+### Use case - 3 - Number of Distinct Substring in a given string
 * Number of Distinct substring in a given string
 * Solution -
-* (i) Suppose we know, number of distinct substring till index i, say k.
-* (ii) Now for i+1 index, we want to know how many new substring ends at i+1 th index.
-* (iii) To solve (ii), make new string t = s(0..i+1) and reverse t. Compute z-function for t.
-* (iv) Now ans for (ii) will be t.length() - zmax. zmax will represent, how many prefix of t occur somewhere in middle of t and hence not unique.
+  * Suppose we know, number of distinct substring till index i, say k.
+  * Now for i+1 index, we want to know how many new substring ends at i+1 th index.
+  * To solve (ii), make new string t = s(0..i+1) and reverse t. Compute z-function for t.
+  * Now ans for (ii) will be t.length() - zmax. zmax will represent, how many prefix of t occur somewhere in middle of t and hence not unique.
 * Time Complexity = O(n^2) , Space complexity = O(n)
-*/
-/******************************************************************************************************/
 
 
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -94,3 +87,5 @@ int main()
 GEEKSFORGEEKS
 GEEKS
 */
+
+```
