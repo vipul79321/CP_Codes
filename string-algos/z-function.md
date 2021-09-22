@@ -21,8 +21,8 @@
 * Solution -
   * Suppose we know, number of distinct substring till index i, say k.
   * Now for i+1 index, we want to know how many new substring ends at i+1 th index.
-  * To solve (ii), make new string t = s(0..i+1) and reverse t. Compute z-function for t.
-  * Now ans for (ii) will be t.length() - zmax. zmax will represent, how many prefix of t occur somewhere in middle of t and hence not unique.
+  * To solve above, make new string t = s(0..i+1) and reverse t. Compute z-function for t.
+  * Now ans for above will be t.length() - zmax. zmax will represent, how many prefix of t occur somewhere in middle of t and hence not unique.
 * Time Complexity = O(n^2) , Space complexity = O(n)
 
 
