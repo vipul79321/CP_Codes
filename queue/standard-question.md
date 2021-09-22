@@ -177,4 +177,9 @@ vector<int>kMax(vector<int>&arr, int k)
 ```
 ---
 
+## Implement Min-Queue, which support push, pop, getMin in almost O(1)
+[Link](https://cp-algorithms.com/data_structures/stack_queue_modification.html)
+
+**Solution Approach** - Since we have already done the same thing for stacks. Hence use two stacks to implement the queue and achieve the ans.
+
 
