@@ -16,8 +16,9 @@ vector<int> prefix_function(string s)
     {
         if(s[i] == s[len])
         {
-            i++;
             len++;
+            prefix[i] = len;
+            i++;
         }
         else if(len > 0)
         {
