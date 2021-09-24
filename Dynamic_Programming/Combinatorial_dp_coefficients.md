@@ -9,13 +9,14 @@ Catalan[0] = 1, Catalan[n] = summation of (Catalan[i]*Catalan[n-i-1]) for i in r
 Catalan(n) = Binomial(2n,n)/(n+1);
 ```
 
-Applications of Catalan Number -  \
-1). Number of binary search tree with n nodes = Catalan[n]. \
-2). Number of expressions having n pairs of correctly matched paranthesis = Catalan[n]. \
-3). Given a number n, return the number of ways you can draw n chords in a circle with 2 x n points such that no 2 chords intersect = Catalan[n]. \
-4). The number of paths with 2n steps on a rectangular grid from bottom left, i.e., (n-1, 0) to top right (0, n-1) that do not cross above the main diagonal = Catalan[n]. - Interpret it as Dyck word sequence here number of up moves should be less than number of right moves in any prefix. \
-5). Number of ways to make a Dyck string with **n Xs and n Ys such that no prefix of that string has more number of Ys than number of Xs = Catalan[n].** - See it as follows any dyck word can be written as W = XwYw where w are Dyck words. \
-6). Number of permutations of n numbers such that no three terms are increasing = Catalan[n].
+Applications of Catalan Number -
+1. Number of binary search tree with n nodes = Catalan[n].
+2. Number of expressions having n pairs of correctly matched paranthesis = Catalan[n].
+3. Given a number n, return the number of ways you can draw n chords in a circle with 2 x n points such that no 2 chords intersect = Catalan[n].
+4. The number of paths with 2n steps on a rectangular grid from bottom left, i.e., (n-1, 0) to top right (0, n-1) that do not cross above the main diagonal = Catalan[n]. - Interpret it as Dyck word sequence here number of up moves should be less than number of right moves in any prefix.
+5. Number of ways to make a Dyck string with **n Xs and n Ys such that no prefix of that string has more number of Ys than number of Xs = Catalan[n].** - See it as follows any dyck word can be written as W = XwYw where w are Dyck words.
+6. Stairs Tiling - Number of ways to tile stairs of height n with n rectangles = Catalan[n]. - Proof - not found yet.
+7. Number of Permutation of length n which can be stack sorted. **Condition for stack sorted is - There should not exist three index i < j < k such that a[k] < a[i] < a[j] or any permutation of type 231**. - Proof of this is - While doing stack sorting we first push then pop. Represent push as open paranthesis and pop as close paranthesis. And hence a bijection.
 
 ---
 
@@ -46,6 +47,7 @@ Bell[n] = Bell_triangle[n][0] or Bell_triangle[n-1][n-1]
 ---
 
 ## Binomial Coefficient 
+[Link](https://cp-algorithms.com/combinatorics/binomial-coefficients.html)
 
 ```c++
 C[i][j] = C[i-1][j-1] + C[i-1][j]
@@ -62,6 +64,39 @@ for(i=1;i<n;i++)
   }
 }
 ```
+
+**Properties of Binomial Coefficient** - 
+* **Symmetry Rule** - Binomial(n,k) = Binomial(n,n-k)
+* **Factoring In** - Binomial(n,k) = n/k * Binomial(n-1,k-1)
+* **Sum over k** - Summation(Binomial(n,k) for k in range 0 to n) = pow(2,n)
+* **Sum over n** - Summation(Binomial(m,k) for m in range 0 to n) = Binomial(n+1,k+1)
+* **Sum over n and k** - Summation( Binomial(n+k,k) for k in range 0 to m) = Binomial(n+m+1,m)
+* **Sum of Squares** - Summation (Binomial(n,k) * Binomial(n,k) for k in range 0 to n) = Binomial(2n, n)
+* **Weighted Sum** - Summation( k * Binomial(n,k) for k in range 0 to n) = n * power(2,n-1)
+* **Connection with Fibonacci Number** - Summation( Binomial(n-k, k) for k in range 0 to n) = Fib(n+1)
+
+**Power of prime p in n!** -
+```c++
+while(n > 0)
+{
+  n = n/p;
+  ans = ans + n;
+}
+return ans;
+```
+
+**Power of Composite number p in n!** - 
+* Let x_i be power of p_i in n!, where p_i is prime and p%p_i == 0 then ans will be minimum(x_i) for all p_i
+
+**Compute Binomial Coefficient Modulo m, where m = power(p,b) and p is prime number and b > 1**
+* Let x be the power of p in n!, y be power of p in r! and z be power of p in (n-r)!
+* Then if x - y - z >= b: then return 0;
+* else
+  * Let g(x) be value of x! factorial after removing all power of p.
+  * g(x)%m can be calculated using standard dynamic programming
+  * Since g(x) is coprime with m, we can also calculate its modinverse, using modInverse(x) = power(x,m-2) % m
+  * So finally our ans will be g(n)* modInverse(g(n-r)) * modInverse(g(r)) * power(p,x-y-z) % m 
+
 
 ---
 
