@@ -141,3 +141,27 @@ for(int i=0;i<2*n;i++)
 }
 return ans;
 ```
+
+---
+
+### Lexographically next K-combination
+[Link](https://cp-algorithms.com/combinatorics/generating_combinations.html#toc-tgt-0)
+
+* Find rightmost index which is not at its maximal value and assign it, its maximal value.
+* Now for all the indexes to the right of that index, assign them value = nums[j-1] + 1;
+
+See code for more details - 
+```c++
+bool next_combination(vector<int>& a, int n) {
+    int k = (int)a.size();
+    for (int i = k - 1; i >= 0; i--) {
+        if (a[i] < n - k + i + 1) {
+            a[i]++;
+            for (int j = i + 1; j < k; j++)
+                a[j] = a[j - 1] + 1;
+            return true;
+        }
+    }
+    return false;
+}
+```
