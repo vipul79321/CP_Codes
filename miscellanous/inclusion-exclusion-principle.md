@@ -66,26 +66,40 @@ bool good[MAXN];
 int deg[MAXN], cnt[MAXN];
 
 long long solve() {
-    memset (good, 1, sizeof good);
-    memset (deg, 0, sizeof deg);
-    memset (cnt, 0, sizeof cnt);
+    memset (good, 1, sizeof good);   // Tell us whether i is square-free or not
+    memset (deg, 0, sizeof deg);    // Number of primes in factorization of i
+    memset (cnt, 0, sizeof cnt);   //  Number of integers not coprime with i
 
-    long long ans_bad = 0;
+    long long ans_bad = 0; // to store count of bad triples
     for (int i=2; i<=n; ++i) {
-        if (good[i]) {
-            if (deg[i] == 0)  deg[i] = 1;
-            for (int j=1; i*j<=n; ++j) {
-                if (j > 1 && deg[i] == 1)
-                    if (j % i == 0)
+        if (good[i]) {  // That is number is square free.
+            if (deg[i] == 0)  deg[i] = 1;  // if it is a prime number
+            for (int j=1; i*j<=n; ++j) { // Go through all the multiples of that prime
+                if (j > 1 && deg[i] == 1)  // Only update good and degree when it is a prime and hence deg[i] == 1
+                    if (j % i == 0) // if j is also divisible by i then i*j is divisible by i*i and hence not square free
                         good[i*j] = false;
                     else
-                        ++deg[i*j];
-                cnt[i*j] += (n / i) * (deg[i]%2==1 ? +1 : -1);
+                        ++deg[i*j];  // otherwise increase degree of i*j
+                cnt[i*j] += (n / i) * (deg[i]%2==1 ? +1 : -1);   // Update cnt[i*j] += (n/i) * pow(-1,deg[i]-1);
             }
         }
-        ans_bad += (cnt[i] - 1) * 1ll * (n-1 - cnt[i]);
+        ans_bad += (cnt[i] - 1) * 1ll * (n-1 - cnt[i]);  // number of non-coprime with i * 1LL * (number of co-prime with i - 1(since 1 was also counted))
     }
 
     return (n-1) * 1ll * (n-2) * (n-3) / 6 - ans_bad / 2;
 }
 ```
+
+
+### Number of ways to reach (n,m) from (0,0) in a grid containing k obstacles. n and m are of order 1e9
+[Link](https://cp-algorithms.com/combinatorics/inclusion-exclusion.html#toc-tgt-14) | [Link](https://atcoder.jp/contests/dp/tasks/dp_y)
+
+**Solution Using Inclusion-Exclusion Approach** - 
+* Push all the obstacles and (n,m) into an array, and sort the array.
+* Now create a dp array, dp[i] will represent, number of ways to reach ith obstacle without going into any other obstacles previously.
+* dp[0] can be calculated simply. 
+* For i > 1 , dp[i] can be calculated as follows - 
+  * let tot be total number of ways to reach that obstacle assuming there is no obstacle in between.
+  * Now loop for j = i-1 to j=0:
+    * check if ith obstacle can be reached from jth obstacle, and remove its contribution from j as tot -= dp[j] * number of ways to reach to ith from jth obstacle.
+* return dp[k]; // kth obstacle is (n,m) itself.
