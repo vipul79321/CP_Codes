@@ -27,7 +27,6 @@ void mirror(node* Node)
 ## Check given two trees are Mirror of each other or not
 [Link](https://www.geeksforgeeks.org/symmetric-tree-tree-which-is-mirror-image-of-itself/)
 
-
 * For two trees to be mirror images, the following three conditions must be true
   1. Their root node's key must be same 
   2. left subtree of left tree and right subtree of right tree have to be mirror images
@@ -50,6 +49,11 @@ bool isMirror(struct Node* root1, struct Node* root2)
     return false;
 }
 ```
+
+**Iterative Approach**-
+[link](https://leetcode.com/problems/symmetric-tree/) 
+* Do level order of both trees simultaneously, and for one tree insert right node before left node.
+* And everytime make sure that values inserted are equal and finally make sure that both trees have been fully traversed.
 
 ---
 
