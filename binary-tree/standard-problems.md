@@ -78,7 +78,7 @@ bool isStructSame(node* root1, node* root2)
 
 ## Inorder Traversal
 
-**Recursive Inorder Traversal**[Link](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/)
+**Recursive Inorder Traversal** | [Link](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/)
 
 ```c++
 void printInorder(Node *node)
@@ -91,7 +91,7 @@ void printInorder(Node *node)
 }
 ```
 
-**Iterative Inorder Traversal using stack**[Link](https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/)
+**Iterative Inorder Traversal using stack** | [Link](https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/)
 
 **Solution Approach** - 
 * Intialize curr = root;
@@ -133,3 +133,150 @@ void inOrder(struct Node *root)
     } /* end of while */
 }
 ```
+
+**Morris Inorder Traversal** | [Link]()
+
+---
+
+## Preorder Traversal
+
+**Recursive Preorder Traversal** | [Link](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/)
+
+```c++
+void preorder(TreeNode * node)
+{
+    if(node == NULL)return;
+    
+    cout<<node->data<<" ";
+    preorder(node->left);
+    preorder(node->right);
+}
+```
+
+**Iterative Preorder Traversal** | [Link](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/)
+
+**Solution Approach** - 
+* Create an empty stack nodeStack and push root node to stack. 
+* Do the following while nodeStack is not empty. 
+  * Pop an item from the stack and print it. 
+  * Push right child of a popped item to stack 
+  * Push left child of a popped item to stack
+
+```c++
+void iterativePreorder(node* root)
+{
+    // Base Case
+    if (root == NULL)
+        return;
+    stack<TreeNode*> nodeStack;
+    nodeStack.push(root);
+  
+    while (nodeStack.empty() == false) {
+        // Pop the top item from stack and print it
+        TreeNode* node = nodeStack.top();
+        nodeStack.pop();
+        cout<<node->data<<" ";
+ 
+        // Push right and left children of the popped node to stack
+        if (node->right)
+            nodeStack.push(node->right);
+        if (node->left)
+            nodeStack.push(node->left);
+    }
+}
+```
+
+**Morris Preorder Traversal** | [Link]()
+
+
+---
+
+## Postorder Traversal 
+
+**Recursive Postorder Traversal** | [Link](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/)
+
+```c++
+void postorder(TreeNode * node)
+{
+    if(node == NULL)return;
+    
+    postorder(node->left);
+    postorder(node->right);
+    cout<<node->data<<" ";
+}
+```
+
+**Iterative Postorder Traversal** | [using-two-stack](https://www.geeksforgeeks.org/iterative-postorder-traversal/) | [using-one-stack](https://www.geeksforgeeks.org/iterative-postorder-traversal-using-stack/)
+
+**Using two-stacks** - 
+* Completely similar to Iterative Preorder traversal with following changes - 
+  * Push left child first then right child into the stack.
+  * While popping instead of printing push that node into second stack
+* Finally pop and print all the elements of second stack
+
+**Using one-stack** - 
+* 1 - Create an empty stack
+* 2 - Do following while root is not NULL
+  * Push root's right child and then root to stack.
+  * Set root as root's left child.
+* 3 - Pop an item from stack and set it as root.
+  * If the popped item has a right child and the right child is at top of stack, then remove the right child from stack, push the root back and set root as root's right child
+  * Else print root's data and set root as NULL.
+* Repeat steps 2 and 3 while stack is not empty.
+
+```c++
+void postOrderIterative(struct Node* root)
+{
+    // Check for empty tree
+    if (root == NULL) return;
+    
+    stack<TreeNode*>st;
+
+    do
+    {
+        // Move to leftmost node
+        while (root)
+        {
+            // Push root's right child and then root to stack.
+            if (root->right)
+              st.push(root->right);
+
+            st.push(root);
+ 
+            // Set root as root's left child
+            root = root->left;
+        }
+ 
+        // Pop an item from stack and set it as root    
+        root = pop(stack);
+ 
+        // If the popped item has a right child and the right child is not
+        // processed yet, then make sure right child is processed before root
+        if (!st.empty() && root->right && st.top() == root->right)
+        {
+            st.pop(); // remove right child from stack
+            st.push(root); // push root back to stack
+            root = root->right; // change root so that the right
+                                // child is processed next
+        }
+        else // Else print root's data and set root as NULL
+        {
+            cout<<root->data<<" ";
+            root = NULL;
+        }
+    } while (!st.empty());
+}
+```
+
+**Morris Postorder Traversal** 
+
+---
+
+
+
+
+
+
+
+
+
