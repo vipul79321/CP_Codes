@@ -167,14 +167,55 @@ class minHeap
 ---
 
 ## Kth smallest element in given array
-[Heap based solution](https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array/) | [Quickselect(similar to quicksort) solution](https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time/) | [Randomized QuickSelect solution](https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/)
+[Heap based solution](https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array/) | [Randomized Quickselect(similar to quicksort) solution](https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-2-expected-linear-time/) | [Median of Median QuickSelect solution](https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/)
 
 **Heap Based Solution - O(nlogk)** - 
+* Create a max - heap and insert first k elements into it.
+* Now for any new element check if heap.top() > new_element then pop heap and push new_element into heap. Otherwise do nothing
+* Finally after going through all the elements  - Return heap.top(); 
 
-**QuickSelect Based solution - Worst case - O(n * n), Average Case - O(n)** - 
+**Randomized QuickSelect Based solution - Worst case - O(n * n), Average Case - O(n)** - 
+* See code below for details - 
+
+```c++
+int findKthSmallestElement(vector<int>&v, int l, int r, int k)
+{
+    if(k < 0 || r-l+1 < k || r < l)return INT_MAX;
+    
+    int len = (r-l+1);
+    int pivot_index = rand()%len;
+    int pivot = arr[pivot_index];
+    swap(arr[pivot_index], arr[r]);
+    
+    int less_equal = l;
+    
+    for(int i=l;i<r;i++)
+    {
+        if(arr[i] <= pivot)
+        {
+            swap(arr[less_equal],arr[i]);
+            less_equal++;
+        }
+    }
+    swap(arr[less_equal],arr[r]); // since arr[r] is the pivot element
+    
+    int cnt_less_equal = less_equal - l + 1;
+    
+    if(cnt_less_equal == k)
+      return arr[less_equal];
+    else if(cnt_less_equal < k)
+      return findKthSmallestElement(arr,less_equal+1,r,k-cnt_less_equal);
+    else
+      return findKthSmallestElement(arr,l,less_equal-1,k);
+}
+```
 
 
-**Randomized QuickSelect Based solution - O(n)** -
+**Median of Median QuickSelect Based solution - O(n)** -
+* Instead of randomly selecting pivot element as above, we divide our array into arrays of size 5 and from each partition of size 5 we obtain its median
+* Now, we have median-of-median array, obtain its `size/2th` smallest element
+* Now use the median of median-of-median array as pivot element
+* Follow above steps till the desired partition is not reached
 
 ---
 
