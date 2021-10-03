@@ -164,3 +164,20 @@ int minimumSwaps(vector<int> nums) {
 ```
 
 ---
+
+## Difference Array
+[Link](https://www.geeksforgeeks.org/difference-array-range-update-query-o1/)
+
+**Problem Description** - Given an array with following queries - 
+* Update(l,r,x) - Adds x to all values in range [l,r] inclusive
+* printArray() - Print the whole array. 
+
+**Solution Approach** - 
+* We first start by making an difference array where D[0] = A[0] and D[i] = A[i] - A[i-1] for all i > 0
+* Then for query of update type we will update as follows
+  * D[l] += x;
+  * D[r+1] -= x; if r+1 is in range else do nothing
+* Now for query of printing the whole array - 
+  * arr[i] will be prefix-sum of D[0..i]; 
+
+---
