@@ -93,7 +93,7 @@ void solveQueries(vector<int>&arr, vector<Query>&queries)
 ---
 
 ## Find smallest number in range [l,r] which is greater than or equal to x
-[Link]()
+[Link](https://cp-algorithms.com/data_structures/segment_tree.html#toc-tgt-9)
 
 **Solution Description** - 
 * Make a merge sort segment tree using the elements of the array.
