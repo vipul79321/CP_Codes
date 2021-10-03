@@ -66,5 +66,62 @@ vector<int> spiralOrder(vector<vector<int> > &A) {
 
 ---
 
+### Minimum number of operations to make every row sum and every column sum equal
+[Link](https://www.geeksforgeeks.org/minimum-operations-required-make-row-column-matrix-equals/)
+
+**Problem Description** - 
+* We need to make each row sum and col sum equal to certain value by using minimum number of operation
+* Operation allowed - Increment any element of the matrix by 1.
+
+**Solution Approach** -
+* Obtain rowSum[i] and colSum[j] for each row i - [0, n-1] and for all columns j - [0, n-1]
+* let maxSum = max(rowSum[i] for all i, colSum[j] for all j)
+* now loop as follows - 
+```c++
+int count = 0;
+for (int i = 0, j = 0; i < n && j < n;) {
+
+    // Find minimum increment required in either row or column
+    int diff = min(maxSum - sumRow[i],maxSum - sumCol[j]);
+
+    // Add difference in corresponding cell, sumRow[] and sumCol[] array
+    matrix[i][j] += diff;
+    sumRow[i] += diff;
+    sumCol[j] += diff;
+
+    // Update the count variable
+    count += diff;
+
+    // If ith row satisfied, increment ith value for next iteration
+    if (sumRow[i] == maxSum)
+        ++i;
+
+    // If jth column satisfied, increment jth value for next iteration
+    if (sumCol[j] == maxSum)
+        ++j;
+}
+return count;
+```
+
+---
+
+### Find number of transformation to make two Matrix Equal
+[Link]()
+
+**Problem Description** - Given two matrices A and B of order `n * m`. 
+The task is to find the required number of transformation steps so that both matrices became equal, print -1 if it is not possible. 
+Transformation step is as: 
+* Select any one matrix out of two matrices. 
+* Choose either row/column of the selected matrix. 
+* Increment every element of select row/column by 1.
+
+**Solution Approach** - 
+* Replace every element A[i][j] = A[i][j] - B[i][j];
+* Now for each element check whether `A[i][j] - A[i][0] - A[j][0] + A[0][0] == 0` or not, if not return -1
+* To get count of minimum number of operations - 
+  * ans += sum(abs(A[0][j]) ) for all j
+  * ans += sum(abs(A[i][0] - A[0][0]) for all i
+
+
 
 
