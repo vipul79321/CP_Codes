@@ -57,3 +57,39 @@ Performance -
 
 
 **Rehashing** - As the name suggests, rehashing means hashing again. Basically, when the load factor increases to more than its pre-defined value (default value of load factor is 0.75), the complexity increases. So we simply resize our hash table and rehash the previous entries
+
+---
+
+## Find smallest range containing elements from k lists
+[Link](https://www.geeksforgeeks.org/find-smallest-range-containing-elements-from-k-lists/)
+
+**Solution Approach** - 
+* Push first element of each list in multiset and update ans
+* Now remove minimum value and insert its next element in multiset and keep on updating.
+
+---
+
+## Palindrome Substring Queries
+[Link](https://www.geeksforgeeks.org/palindrome-substring-queries/)
+
+**Solution Approach** - Use Rabin Karp's hashing to ans queries
+
+---
+
+## Count subarrays with same even and odd elements
+[Link](https://www.geeksforgeeks.org/count-subarrays-with-same-even-and-odd-elements/)
+
+**Solution Approach** - Treat even as +1 and odd as -1 and find count of zero sum subarrays
+
+---
+
+## Count Substrings with equal number of 0s, 1s and 2s
+[Link](https://www.geeksforgeeks.org/substring-equal-number-0-1-2/)
+
+**Solution Approach** - 
+* Let cnt[i][0] be count of 0s till ith index, cnt[i][1] be count of 1s till ith index, cnt[i][2] be count of 2s till ith index
+* Now if arr[j+1...i] is our desired subarray then following condition will satisy
+  * cnt[i][2] - cnt[j][2] == cnt[i][0] - cnt[j][0] == cnt[i][1] - cnt[j][1]
+  * Or cnt[i][2] - cnt[i][0] == cnt[j][2] - cnt[j][0] and cnt[i][2] - cnt[i][1] == cnt[j][2] - cnt[j][1]
+  * So we need to find count of pair(cnt[i][2] - cnt[i][0] , cnt[i][2] - cnt[i][1])
+
