@@ -57,6 +57,52 @@
 **Note** - A **program counter (PC)** is a CPU register in the computer processor which has the address of the next instruction to be executed from memory.
 
 
+### Fork System call
+* fork() returns - 
+  * 0 - to created child process
+  * pid(>0) - to parent process
+  * -1 - to parent in case child creation was unsuccessful
+* Some differences between the child and parent process are:
+  * Different PIDs
+  * Separate copies of all data, including variables with their current values and the stack
+  * Separate program counter (PC) indicating where to execute next; originally both have the same value but they are thereafter separate
+  * after fork, the two processes do not share variables
+
+**NOTE** - If a child process exits or is interrupted, then a **SIGCHLD** signal is sent to the parent process to inform about the termination or exit of the child process.
+
+
+### Exec system call
+* The exec() family of functions replaces the current process image with a new process image.
+* **It loads the program into the current process space and runs it from the entry point.**
+
+### How do you send a signal from parent to child process? | [Link](https://www.mvorganizing.org/what-is-parent-process-and-child-process/)
+* The communication between child and parent processes can be done using **kill()** and **signal()**.
+* The parent can then send messages to child using the pid and kill().
+* The child picks up these signals with signal() and calls appropriate functions.
+* For information about communication from child to parent see `wait()` system call
+* There are standard ways of process communications too (such as pipes, sockets, message queues, shared memories) which can be used for communication between parent & child
+
+### Wait system call | [Link](http://www2.cs.uregina.ca/~hamilton/courses/330/notes/unix/fork/fork.html)
+* A system call that causes the process to wait for a signal (waits until any type of signal is received from any process).
+* Most commonly used in a parent process to wait for the signal that the OS sends to a parent when its child is terminated
+* Returns the pid of the process sending the signal
+
+### Orphan Processes | [Link](https://www.gmarik.info/blog/2012/orphan-vs-zombie-vs-daemon-processes/)
+* An **Orphan process** is a running process whose parent process has finished or terminated.
+* A **Daemon process** is an intentionally orphaned process in order to have a background process.
+
+
+### Zombie Processes | [Link](https://www.tutorialspoint.com/what-is-zombie-process-in-linux)
+* A zombie process is a process whose execution is completed but it still has an entry in the process table. 
+* Zombie processes usually occur for child processes, as the parent process still needs to read its child’s exit status. 
+* Once this is done using the wait system call, the zombie process is eliminated from the process table. This is known as reaping the zombie process.
+
+![Zombie Process](https://www.tutorialspoint.com/assets/questions/media/12233/Zombie%20Process%20in%20LInux.png)
+
+Some key points - 
+* All the memory and resources allocated to a process are deallocated when the process terminates using the exit() system call. But the process’s entry in the process table is still available. This process is now a zombie process.
+* The exit status of the zombie process zombie process can be read by the parent process using the wait() system call. After that, the zombie process is removed from the system. Then the process ID and the process table entry of the zombie process can be reused.
+* If the parent process does not use the wait() system call, the zombie process is left in the process table. This creates a resource leak.
 
 
 
