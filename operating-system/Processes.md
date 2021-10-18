@@ -105,5 +105,59 @@ Some key points -
 * If the parent process does not use the wait() system call, the zombie process is left in the process table. This creates a resource leak.
 
 
+### InterProcess Communication
+* Cooperating processes are need for - 
+  * Computation Speedup
+  * Modularity
+  * Information sharing
+  * Convenience
+* Cooperating processes require a way to communicate among themselves
+* Some of the common methods of InterProcess Communications are - 
+  * **Shared Memory Systems** - E.g Producer - Consumer Problem
+  * **Message Passing System**
+  * **Sockets** - In client - server systems
+  * **Remote Procedure Calls** - In client - server systems
+
+
+### Shared Memory Systems
+* Generally faster than message passing system, but implementation is quite complicated.
+* Works well when amount of data to be transferred is large among the same computer
+
+### Message Passing Systems
+* Generally slower than shared memory systems, but easy to implement
+* Works well when amount of data to be transferred is less but among multiple computers
+* Following things needs to be addressed in such systems - 
+  * Direct Communication (sender-receiver directly communicate) or Indirect Communication (sender-receiver communicate via shared mailboxes)
+  * Buffer size - 0, bounded or unbounded
+  * Message sending and recieving should be in sync
+
+
+### Sockets
+* A socket is one endpoint of a two-way communication link between two programs running on the network.
+* It is a combination of an IP address and a port number.
+* Connection via sockets may be of one of the two forms - 
+  * **Connection-Oriented (TCP, Transmission Control Protocol)**
+  * **Connectionless(UDP, User Datagram Protocol)**
+
+### Connection-Oriented (TCP, Tranmission Control Protocol)
+* Connection-oriented ( TCP, Transmission Control Protocol ) connections emulate a telephone connection. 
+* All packets sent down the connection are guaranteed to arrive in good condition at the other end
+* They will be delivered to the receiving process in the order in which they were sent. 
+* The TCP layer of the network protocol takes steps to verify all packets sent, re-send packets if necessary, and arrange the received packets in the proper order before delivering them to the receiving process. 
+* There is a certain amount of overhead involved in this procedure, and if one packet is missing or delayed, then any packets which follow will have to wait until the errant packet is delivered before they can continue their journey.
+
+### Connectionless(UDP, User Datagram Protocol)
+* Connectionless ( UDP, User Datagram Protocol ) emulate individual telegrams. 
+* There is no guarantee that any particular packet will get through undamaged ( or at all ), and no guarantee that the packets will get delivered in any particular order.
+* There may even be duplicate packets delivered, depending on how the intermediary connections are configured. 
+* UDP transmissions are much faster than TCP, but applications must implement their own error checking and recovery procedures.
+
+### Remote Procedure calls
+* Remote Procedure Call (RPC) is a powerful technique for constructing distributed, client-server based applications. 
+* It is based on extending the conventional local procedure calling so that the called procedure need not exist in the same address space as the calling procedure. 
+* The two processes may be on the same system, or they may be on different systems with a network connecting them.
+
+![RPC Working](https://media.geeksforgeeks.org/wp-content/uploads/operating-system-remote-procedure-call-1.png)
+![RPC Structure](https://media.geeksforgeeks.org/wp-content/uploads/operating-system-remote-call-procedure-working.png)
 
 
