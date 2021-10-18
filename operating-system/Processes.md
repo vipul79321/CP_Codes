@@ -132,7 +132,7 @@ Some key points -
   * Message sending and recieving should be in sync
 
 
-### Sockets
+### Sockets | [Link](https://www.geeksforgeeks.org/socket-in-computer-network/)
 * A socket is one endpoint of a two-way communication link between two programs running on the network.
 * It is a combination of an IP address and a port number.
 * Connection via sockets may be of one of the two forms - 
@@ -152,7 +152,7 @@ Some key points -
 * There may even be duplicate packets delivered, depending on how the intermediary connections are configured. 
 * UDP transmissions are much faster than TCP, but applications must implement their own error checking and recovery procedures.
 
-### Remote Procedure calls
+### Remote Procedure calls | [Link](https://www.geeksforgeeks.org/remote-procedure-call-rpc-in-operating-system/)
 * Remote Procedure Call (RPC) is a powerful technique for constructing distributed, client-server based applications. 
 * It is based on extending the conventional local procedure calling so that the called procedure need not exist in the same address space as the calling procedure. 
 * The two processes may be on the same system, or they may be on different systems with a network connecting them.
