@@ -40,5 +40,36 @@
 
 ---
 
+### Thread Scheduling
+* **Contention scope** refers to the scope in which threads compete for the use of physical CPUs.
+* **Process Contention Scope, PCS**, occurs, when competition occurs between threads that are part of the same process. 
+  * It happens on system implementing Many-to-One and Many-to-Many model.
+* **System Contention Scope, SCS**, involves the system scheduler scheduling kernel threads to run on one or more CPUs. 
+  * System implementing one-to-one mapping only uses SCS
+* PCS scheduling is done by programmer by assigning priority to threads with help of thread libraries 
 
- 
+---
+
+### Multiple Processor Scheduling
+* Approaches to MultiProcessor Scheduling
+  * **Asymmetric Multiprocessing** - one processor is the master, controlling all activities and running all kernel code, while the other runs only user code.
+  * **Symmetric Multiprocessing** - each processor schedules its own jobs, either from a common ready queue or from separate ready queues for each processor.
+* **Processor Affinity** - 
+  * Processors contain cache memory, which speeds up repeated accesses to the same memory locations.
+  * If a process were to switch from one processor to another each time it got a time slice, the data in the cache ( for that process ) would have to be invalidated and re-loaded from main memory, thereby obviating the benefit of the cache.
+  * **Soft Affinity** - when the system attempts to keep processes on the same processor but makes no guarantees.
+  * **Hard Affinity** - in which a process specifies that it is not to be moved between processors.  
+* **Load Balancing** - Balancing can be achieved through one of the below methods - 
+  * **Push migration** involves a separate process that runs periodically, ( e.g. every 200 milliseconds ), and moves processes from heavily loaded processors onto less loaded ones.
+  * **Pull migration** involves idle processors taking processes from the ready queues of other processors. 
+
+
+**NOTE** -  One needs to be careful, while balancing load, as time saved in balancing load, may be lost in building cache for that process in the new processor
+
+### Real-Time CPU Scheduling
+* **Soft real-time** systems have degraded performance if their timing needs cannot be met. Example: streaming video.
+* **Hard real-time** systems have total failure if their timing needs cannot be met. Examples: Assembly line robotics, automobile air-bag deployment.
+* Various Scheduling Algorithm | See in yellow pages for more details - 
+  * **Priority Based Scheduling**
+  * **Rate-Monotonic Scheduling**
+  * **Earliest Deadline First Scheduling**
