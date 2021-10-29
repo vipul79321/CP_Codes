@@ -27,7 +27,7 @@ void dfs(int u,vector<vector<pair<int,int> > >&adj,int par)
     for(auto p:adj[u])
     {
         int v = p.first, id = p.second;
-        if(used[id]==0)continue;
+        if(used[id]!=0)continue;
 
         if(edges[id].first == u && edges[id].second == v)used[id] = 1;
         else
