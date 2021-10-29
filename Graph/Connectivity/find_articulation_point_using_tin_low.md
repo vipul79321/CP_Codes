@@ -16,7 +16,9 @@
     * if v is visited then update `low[u] = min(low[u], tin[v])`
     * else 
       * call dfs from v; child++;
-      * After dfs returns from v, check if `low[v] >= tin[u] && parent[u] != -1` then u( or parent[v]) is articulation point
+      * After dfs returns from v:
+        * update `low[u] = min(low[u], low[v])` 
+        * check if `low[v] >= tin[u] && parent[u] != -1` then u( or parent[v]) is articulation point
   * if `parent[u] = -1 and child > 1`, then u is an Articulation point      
 
 
