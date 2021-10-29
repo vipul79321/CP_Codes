@@ -1,10 +1,41 @@
-// Condition for Euler path or cycle in directed graph is 
-// 1). Indegree[u] == outdegree[u] for atleast n-2 vertices
-// 2). All vertices should be part of same SCC.
-// For undirected graph
-// 1). All vertices should have even degree, atleast n-2 vertices.
-// 2). All vertices should be connected.
+**Condition for Euler path or cycle in directed graph is** - 
+* Indegree[u] == outdegree[u], for atleast n-2 vertices
+* All vertices should be part of same SCC.
 
+**Condition for Euler path or cycle in undirected graph is** - 
+* All vertices should have even degree, atleast n-2 vertices.
+* All vertices should be connected.
+
+**HeirHolzer algorithm for finding Euler path or cycle whichever exist** - 
+* Time Complexity = `O(m + nlogn)` for undirected graph, have to use vector of multiset to represent adjacency list
+* Time Complexity = `O(m)` for directed graph
+* Time Complexity = `O(m + n*n)` for adjacency matrix representation
+* Following cases arise - 
+  * If number of odd degree vertices is greater than 2 then no euler path or cycle
+  * If no odd degree vertices then there exist a Euler cycle.
+  * If odd degree vertices are 2 then there exist a Euler path. In this case **add an edge between odd vertices** and find euler cycle. 
+* Now in cycle when both odd vertices are even break from there and print the path
+
+**NOTE** - In res array which we obtain from finding euler cycle, `result[0] == result.back()`
+
+**Code Description** - 
+* Push any node in stack
+* While stack is not empty
+  * u = st.top(); 
+  * if adj[u].size() == 0, push u to result array and pop stack
+  * else:
+    * v = adj[u].begin(); push v to stack
+    * remove v from adj[u] and remove u from adj[v] (in case of undirected graph)
+* Result array will contain the euler cycle, with `result[0] == result.back()`
+
+**NOTE** - 
+* If we added an edge to handle odd degree vertices then to print euler path do this - 
+  * Let odd degree vertices be v1 and v2
+  * Find index result array such that result[i] == v1 && result[i+1] == v2 or vice versa, let call that index `id` 
+  * print result from (id + 1 to result.size() - 1)
+  * print result from (1 to id)
+
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -12,21 +43,6 @@ using namespace std;
 #define ll long long
 #define pb push_back
 #define INF 1e6
-
-// HeirHolzer algorithm for finding Euler path or cycle whichever exist
-// Time Complexity = O(m + nlogn)
-// In directed graph, It will be O(m) using adjacency list representation
-// In adjacency matrix representation, it will O(m + n*n)
-// Following cases arise - 
-// 1). If number of odd degree vertices is greater than 2 then no euler path or cycle
-// 2). If no odd degree vertices then there exist a Euler cycle.
-// 3). If odd degree vertices are 2 then there exist a Euler path. In this case add an edge between odd vertices and find euler cycle. 
-// Now in cycle when both odd vertices are even break from there and print the path
-
-// Algorithm - 
-// Use multiset adj list so easy to update.
-// Now push random node in stack. while stack is not empty pop from it, visit that vertexs neighbor if any and push them in stack after deleting them from adjlist
-// else if no neighbors then pop and print.
 
 void solve(int test)
 {
@@ -181,3 +197,5 @@ graph with even degree but disconnected
 1 4
 6 6
 */
+
+```
