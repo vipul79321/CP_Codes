@@ -1,6 +1,8 @@
 **Biconnected Graphs** - A graph is said to be biconnected if it is connected and doesnt have any articulation points
 
 **Problem Description** - Given a undirected graph (as we generally work with undirected graphs in case of bridges and APs), we need to output its all biconnected components.
+
+---
 **NOTE** - All biconnected components are edge disjoint. They may or may not be vertex disjoint
 
 ---
