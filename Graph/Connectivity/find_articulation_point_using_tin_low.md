@@ -1,10 +1,26 @@
-// Algorithm Description - O(n+m)
-// 1). Idea is that if there is a back edge from a vertex v to any of its ancestor other than its parent then parent of v is not an articulation point.
-// 2). To check if there is a back edge or not we can use concept of tin and low, here parent represent parent in dfs tree.
-// 3). If parent[v] is not root and then low[v] >= tin[parent[v]] then parent[v] is articulation point.
-// 4). To check if root is an articulation point check whether it has more than 1 child.
+**Problem Description** - [Link](https://cp-algorithms.com/graph/cutpoints.html)
+* Given an undirected graph find its all articulation points.
+* **Articulation Point** is a vertex whose removal alongwith associated edges increase the number of connected components in the graph
+
+**Solution Approach** - `O(n+m)`
+* Idea is that if there is a back edge from a vertex v to any of its ancestor other than its parent then parent of v is not an articulation point.
+* To check if there is a back edge or not we can use concept of tin and low, here parent represent parent in dfs tree.
+* If parent[v] is not root and then low[v] >= tin[parent[v]] then parent[v] is articulation point.
+* To check if root is an articulation point check whether it has more than 1 child in dfs tree
+
+**Code Description** - 
+* Call dfs from any node
+* Inside dfs function
+  * Intialize `tin[u] = low[u] = curr_time, child = 0, parent[u] = par`
+  * Loop through all the neighbors v of u:
+    * if v is visited then update `low[u] = min(low[u], tin[v])`
+    * else 
+      * call dfs from v; child++;
+      * After dfs returns from v, check if `low[v] >= tin[u] && parent[u] != -1` then u( or parent[v]) is articulation point
+  * if `parent[u] = -1 and child > 1`, then u is an Articulation point      
 
 
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -107,9 +123,4 @@ int main()
 1 2
 0 1
 */
-
-
-
-
-
-
+```
