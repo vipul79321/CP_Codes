@@ -15,11 +15,12 @@
 [Hackerearth-Link](https://www.hackerearth.com/practice/algorithms/graphs/biconnected-components/tutorial/) | [GFG link](https://www.geeksforgeeks.org/biconnected-components/)
 * call dfs for each connected component
 * In dfs we mark u as visited and intialize tin,low;
-* Now visit all its neighbor, if a neighbor is unvisited, then push edge u-v in stack, call dfs from that neighbor and then update low[u] = min(low[u],low[v])
-  * if u is an articulation point then pop and print from stack till edge u-v
-  * If v != parent[u]
-    * low[u] = min(low[u], tin[v])
-    * if tin[v] < tin[u]  -->back edge condition 
+* Now visit all its neighbor v, 
+  * if v unvisited, then push edge u-v in stack, call dfs from that neighbor and then update `low[u] = min(low[u],low[v])`
+    * if u is an articulation point then pop and print from stack till edge u-v
+  * If v != parent[u] and v is already visited:
+    * `low[u] = min(low[u], tin[v])`
+    * if `tin[v] < tin[u]`  -->back edge condition 
       * then push(u,v) to stack.
 * Finally if one connected component is visited then print all content of stack.
 
