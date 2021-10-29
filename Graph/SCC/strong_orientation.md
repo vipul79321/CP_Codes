@@ -1,10 +1,18 @@
-// Q1). Problem Description -
-// Given an undirected graph, direct its edges in such a way that number of SCCs are minimized.
-// Minimum number of SCCs will be no. of connected components + no. of bridges
-// -------------------------------------------------------------------------------
-// Q2). How to orient a bridgeless undirected graph to make it a SCC.
-// 1). Make all the tree edges point to their child.
-// 2). Make all the back edges point to their parent.
+[Link](https://cp-algorithms.com/graph/strong-orientation.html)
+
+**Problem Description** -
+* Given an undirected graph, direct its edges in such a way that number of SCCs are minimized.
+* Minimum number of SCCs will be no. of connected components + no. of bridges
+
+---
+
+**Problem Description**
+* How to orient a bridgeless undirected graph to make it a SCC.
+* **Solution** - 
+  * Make all the tree edges point to their child.
+  * Make all the back edges point to their parent.
+
+```c++
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -123,3 +131,4 @@ int main()
 1 2
 0 1
 */
+```
