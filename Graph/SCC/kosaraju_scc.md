@@ -1,4 +1,5 @@
 [Link](https://cp-algorithms.com/graph/strongly-connected-components.html)
+
 **Kosaraju Algorithm Description** - `O(n+m)`
 * Obtain topological sort of the given graph
 * Now call dfs in transpose of original graph(reverse of original graph) from each unvisited node in the topological order
