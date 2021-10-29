@@ -138,5 +138,58 @@ Approaches -
 * **LCA approach**  - O(logn) for each query
 * **Intime-Outtime approach** - O(1), check `inTime[u] < inTime[v] && outTime[u] > outTime[v]` or vice-versa
 
+---
 
+### Detect a cycle in a directed or undirected graph and print any if exist
+[Link](https://cp-algorithms.com/graph/finding-cycle.html)
+
+```c++
+bool dfs(int v) {
+   visited[v] = 1;
+   rec[v] = 1;
+   for (int u : adj[v]) {
+       if (visted[u] == 0) {
+           parent[u] = v;
+           if (dfs(u))
+               return true;
+       } else if (rec[u] == 1) {
+           cycle_end = v;
+           cycle_start = u;
+           return true;
+       }
+   }
+   rec[v] = 0;
+   return false;
+}
+
+void find_cycle() {
+   visited.assign(n, 0);
+   rec.assign(n,0);
+   parent.assign(n, -1);
+   cycle_start = -1;
+
+   for (int v = 0; v < n; v++) {
+       if (visited[v] == 0 && dfs(v))
+           break;
+   }
+
+   if (cycle_start == -1) {
+       cout << "Acyclic" << endl;
+   } else {
+       vector<int> cycle;
+       cycle.push_back(cycle_start);
+       for (int v = cycle_end; v != cycle_start; v = parent[v])
+           cycle.push_back(v);
+       cycle.push_back(cycle_start);
+       reverse(cycle.begin(), cycle.end());
+
+       cout << "Cycle found: ";
+       for (int v : cycle)
+           cout << v << " ";
+       cout << endl;
+   }
+}
+```
+
+---
 
