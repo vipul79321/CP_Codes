@@ -1,7 +1,10 @@
-// Kosaraju Algorithm Description - O(n+m) 
-// 1). Idea is that first we will obtain the topological sort of the given graph now we will visit vertices in that order in transpose of the original graph
+[Link](https://cp-algorithms.com/graph/strongly-connected-components.html)
+**Kosaraju Algorithm Description** - `O(n+m)`
+* Obtain topological sort of the given graph
+* Now call dfs in transpose of original graph(reverse of original graph) from each unvisited node in the topological order
+* Nodes visited in same dfs call will belong to same SCC
 
-
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -145,3 +148,4 @@ int main()
 0 1
 2 0
 */
+```
