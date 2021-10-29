@@ -1,11 +1,28 @@
-// Link to hackerearth tutorial - https://www.hackerearth.com/practice/algorithms/graphs/biconnected-components/tutorial/
-// Algorithm description - O(n+m)
-// In dfs we mark u as visited and intialize tin,low;
-// 1). Now visit all its neighbor, if a neighbor is unvisited, then push edge u-v in stack, call dfs from that neighbor and then update low[u] = min(low[u],low[v])
-// if u is an articulation point then pop and print from stack till edge u-v
-// 2). If v != parent[u] && tin[v] < low[u] -->back edge condition and also condition for imrovement in low, then low[u] = tin[v] and push(u,v) to stack.
-// Finally if one connected component is visited then print all content of stack.
+**Biconnected Graphs** - A graph is said to be biconnected if it is connected and doesnt have any articulation points
 
+**Problem Description** - Given a undirected graph (as we generally work with undirected graphs in case of bridges and APs), we need to output its all biconnected components.
+**NOTE** - All biconnected components are edge disjoint. They may or may not be vertex disjoint
+
+---
+**NOTE** - While pushing edges to stack during dfs, we only push two types of edges
+* Tree edge (u,v) - That is v is discovered first time
+* Back edge (u,v) - v has been discovered already and before u and tin[v] < tin[u]
+---
+
+**Solution Approach** - O(n+m)
+[Hackerearth-Link](https://www.hackerearth.com/practice/algorithms/graphs/biconnected-components/tutorial/) | [GFG link](https://www.geeksforgeeks.org/biconnected-components/)
+* call dfs for each connected component
+* In dfs we mark u as visited and intialize tin,low;
+* Now visit all its neighbor, if a neighbor is unvisited, then push edge u-v in stack, call dfs from that neighbor and then update low[u] = min(low[u],low[v])
+  * if u is an articulation point then pop and print from stack till edge u-v
+  * If v != parent[u]
+    * low[u] = min(low[u], tin[v])
+    * if tin[v] < tin[u]  -->back edge condition 
+      * then push(u,v) to stack.
+* Finally if one connected component is visited then print all content of stack.
+
+
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -42,7 +59,7 @@ void dfs(int u, vector<vector<int> >&adj,int par)
     {
         if(!visited[v])
         {
-            st.push(mp(u,v));
+            st.push(mp(u,v)); // pushing tree edge in stack
             dfs(v,adj,u);
             low[u] = min(low[u],low[v]);
             child++;
@@ -56,16 +73,15 @@ void dfs(int u, vector<vector<int> >&adj,int par)
                 print_bcc(u,v);
             }
         }
-        else if(v!= par && tin[v] < low[u])  // IMPORTANT CHECK
+        else if(v!= par)
         {
-            low[u] = tin[v];
+            low[u] = min(low[u],tin[v]);
+            if(tin[u] > tin[v])  // IMPORTANT CHECK - Making sure u->v goes from descendant to parent and hence a back-edge and then only pushing it in stack
             st.push(mp(u,v));
         }
     }
 
 }
-
-
 
 void solve(int test)
 {
@@ -120,6 +136,17 @@ int main()
 }
 
 /*
+Hackerearth code fails on following input but gfg one works
+1
+4 5
+0 1
+1 2
+2 3
+3 0
+3 1
+*/
+
+/*
 1
 6 10
 0 1
@@ -139,3 +166,5 @@ int main()
 1 2
 0 1
 */
+
+```
