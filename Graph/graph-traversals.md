@@ -148,6 +148,7 @@ bool dfs(int v) {
    visited[v] = 1;
    rec[v] = 1;
    for (int u : adj[v]) {
+       //add this line in case of undirected graph - > if(u == parent[v]) continue;
        if (visted[u] == 0) {
            parent[u] = v;
            if (dfs(u))
