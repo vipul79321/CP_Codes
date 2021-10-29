@@ -1,10 +1,25 @@
-// Algorithm Description - O(n+m)
-// 1). Idea is that if there is a back edge from a vertex v to any of its ancestor then edge between parent[v]  and v is not a bridge.
-// 2). To check if there is a back edge or not we can use concept of tin and low, here parent represent parent in dfs tree.
-// 3). If there is a bridge then low[v] > tin[parent[v]].
-// This code ignore the case of multiple edge. For that we can check additionally check that reported bridge is not a multiple edge. Because no multiple edge can be a bridge.
+**Problem Description** - [Link](https://cp-algorithms.com/graph/bridge-searching.html)
+* Given an undirected graph we need to find all those edges which are bridges i.e, whose removal increases the number of connected components
+
+**Solution Approach** - `O(n+m)`
+* Idea is that if there is a back edge from a vertex v to any of its ancestor then edge between parent[v]  and v is not a bridge.
+* To check if there is a back edge or not we can use concept of tin and low, here parent represent parent in dfs tree.
+* If there is a bridge then low[v] > tin[parent[v]].
+
+**Code Description** - 
+* Call dfs from any node
+* Inside dfs function
+  * Intialize `tin[u] = low[u] = curr_time`
+  * Loop through all the neighbors v of u:
+    * if v is visited then update `low[u] = min(low[u], tin[v])`
+    * else 
+      * call dfs from v
+      * After dfs returns from v, check if `low[v] > tin[u]` then edge (u - v) is a bridge 
+
+**NOTE** - This code ignores the case of multiple edges in graph. To handle that we can check additionally that the reported bridge is not a multiple edge. Or Alternatively it's possible to pass to dfs the index of the edge used to enter the vertex instead of the parent vertex (and store the indices of all vertices).
 
 
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -104,8 +119,7 @@ int main()
 1 2
 0 1
 */
-
-
+```
 
 
 
