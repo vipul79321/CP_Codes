@@ -13,16 +13,15 @@
 * Following cases arise - 
   * If number of odd degree vertices is greater than 2 then no euler path or cycle
   * If no odd degree vertices then there exist a Euler cycle.
-  * If odd degree vertices are 2 then there exist a Euler path. In this case **add an edge between odd vertices** and find euler cycle. 
-* Now in cycle when both odd vertices are even break from there and print the path
+  * If odd degree vertices are 2 then there exist a Euler path. In this case **add an edge between odd vertices** and find euler cycle. See note below to further handle this case
 
-**NOTE** - In res array which we obtain from finding euler cycle, `result[0] == result.back()`
+**NOTE** - In result array which we obtain from finding euler cycle, `result[0] == result.back()`
 
 **Code Description** - 
 * Push any node in stack
 * While stack is not empty
   * u = st.top(); 
-  * if adj[u].size() == 0, push u to result array and pop stack
+  * if `adj[u].size() == 0, push u to result array` and pop stack
   * else:
     * v = adj[u].begin(); push v to stack
     * remove v from adj[u] and remove u from adj[v] (in case of undirected graph)
@@ -32,8 +31,8 @@
 * If we added an edge to handle odd degree vertices then to print euler path do this - 
   * Let odd degree vertices be v1 and v2
   * Find index result array such that result[i] == v1 && result[i+1] == v2 or vice versa, let call that index `id` 
-  * print result from (id + 1 to result.size() - 1)
-  * print result from (1 to id)
+  * `print result from (id + 1 to result.size() - 1)`
+  * `print result from (1 to id)`
 
 ```c++
 #include<bits/stdc++.h>
