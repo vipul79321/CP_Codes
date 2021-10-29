@@ -15,7 +15,7 @@
     * else 
       * call dfs from v
       * After dfs returns from v:
-        * update low[u] = min(low[u], low[v])
+        * update `low[u] = min(low[u], low[v])`
         * check if `low[v] > tin[u]` then edge (u - v) is a bridge 
 
 **NOTE** - This code ignores the case of multiple edges in graph. To handle that we can check additionally that the reported bridge is not a multiple edge. Or Alternatively it's possible to pass to dfs the index of the edge used to enter the vertex instead of the parent vertex (and store the indices of all vertices).
