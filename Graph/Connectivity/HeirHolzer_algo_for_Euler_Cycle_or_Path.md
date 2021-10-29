@@ -1,10 +1,10 @@
 **Condition for Euler path or cycle in directed graph is** - 
 * Indegree[u] == outdegree[u], for atleast n-2 vertices
-* All vertices should be part of same SCC.
+* All vertices with non-zero indegree(or outdegree) should be part of same SCC (isolated vertices which doesnt contribute any edge maybe there)
 
 **Condition for Euler path or cycle in undirected graph is** - 
 * All vertices should have even degree, atleast n-2 vertices.
-* All vertices should be connected.
+* All vertices with non-zero degree should be connected ( isolated vertices which doesnt contribute any edge maybe there)
 
 **HeirHolzer algorithm for finding Euler path or cycle whichever exist** - 
 * Time Complexity = `O(m + nlogn)` for undirected graph, have to use vector of multiset to represent adjacency list
