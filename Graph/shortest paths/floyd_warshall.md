@@ -1,3 +1,35 @@
+[Link](https://cp-algorithms.com/graph/all-pair-shortest-path-floyd-warshall.html)
+
+**Idea Description** - 
+* The key idea of the algorithm is to partition the process of finding the shortest path between any two vertices to several incremental phases.
+* Before k-th phase (k=1…n), d[i][j] for any vertices i and j stores the length of the shortest path between the vertex i and vertex j, which contains only the vertices 1,2,...,k−1 as internal vertices in the path.
+
+**NOTE** - 
+* If there exist a negative cycle, then there will be a node with `dist[self][self] < 0`
+* But for all pairs of vertices i and j for which there doesn't exist a path starting at i, visiting a negative cycle, and end at j, the algorithm will still work correctly
+* We can check that for which pair of vertices dont have negative cycle in between them using below code - 
+```c++
+for(k=0;k<n;k++)
+   {
+       if(d[k][k]>=0)continue;
+       flag = 1;
+       for(i=0;i<n;i++)
+       {
+           for(j=0;j<n;j++)
+           {
+               if(d[i][k]<INF && d[k][j] < INF && d[k][k]<0)
+               {
+                   d[i][j] = -INF;
+               }
+           }
+       }
+   }
+```
+---
+
+**MAIN CODE** - 
+
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -49,7 +81,7 @@ void solve(int test)
        {
            for(j=0;j<n;j++)
            {
-               if(d[i][k]<INF && d[k][j] < INF && d[i][j] > d[i][k] + d[k][j])
+               if(d[i][k]<INF && d[k][j] < INF && d[i][j] > d[i][k] + d[k][j])  // Important part - To never use undefined distance hence check < INF
                {
                    d[i][j] = d[i][k] + d[k][j];
                    p[i][j] = p[k][j];
@@ -112,6 +144,6 @@ int main()
 5 4 10
 
 */
-
+```
 
 
