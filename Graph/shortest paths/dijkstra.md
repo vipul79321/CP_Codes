@@ -1,3 +1,13 @@
+[Link](https://cp-algorithms.com/graph/dijkstra.html) | [Link](https://cp-algorithms.com/graph/dijkstra_sparse.html)
+
+**Time Complexities of various Dijkstra Implementation** - 
+* `dijkstra_set(adj,source)` - `O(nlogn + mlogn) = O(mlogn)`  | Sparse graph
+* `dijkstra_pq(adj,source)` - `O(nlogn + mlogn) = O(mlogn)` | In practice faster than set method | Sparse graph
+* `dijkstra_brute(adj,source)` - `O(n^2 + m)` | Good for dense graph where m ~= n^2
+* `dijkstra_fib(adj,source)` - `O(nlogn + m)`  | very complicated and large constants
+
+
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -186,5 +196,6 @@ int main()
 6 8 6
 7 8 7
 */
+```
 
 
