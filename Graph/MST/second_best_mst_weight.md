@@ -1,3 +1,26 @@
+[Link]()
+
+### Second Best MST
+
+**Brute Approach** - `O(VE)` - 
+* Sort the edges in O(ElogE), then find a MST using Kruskal in O(E).
+* For each edge in the MST (we will have V−1 edges in it) temporarily exclude it from the edge list so that it cannot be chosen.
+* Then, again try to find a MST in O(E) using the remaining edges.
+* Do this for all the edges in MST, and take the best of all.
+
+**Efficient Approach** - 
+* Sort the edges in O(ElogE), then find a MST using Kruskal in O(E).
+* Make ancestor, dp in MST using Binary lifting where - 
+  * ancestor[i][j] will store 2^j th ancestor of i in our MST
+  * dp[i][j] will store (max, second_max) on the path from i to ancestor[i][j], here max > second_max
+* For each edge e(u,v, weight_e) not already in the MST, adding it will create a cycle.
+  * Find (max_v,second_max_v) on path from v to lca(u,v), where max_v > second_max_v
+  * Find (max_u, second_max_u) on path from u to lca(u,v), where max_u > second_max_u
+  * Now let mx be maximum of (max_v, max_u, second_max_v, second_max_u) not equal to weight_e, else mx = -1
+  * If mx != -1, then Update ans = min(ans, MST_value + weight_e - mx)
+* Finally return ans
+
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -222,5 +245,5 @@ int main()
 6 8 6
 7 8 7
 */
-
+```
 
