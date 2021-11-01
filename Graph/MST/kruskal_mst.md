@@ -1,9 +1,14 @@
+[Link](https://cp-algorithms.com/graph/mst_kruskal.html) | [Link](https://cp-algorithms.com/graph/mst_kruskal_with_dsu.html)
+
 **Kruskal Algorithm Time Complexity** - 
-* _Brute Implementation_ - O(MlogN + N^2)
-* _DSU Implementation_ - O(MlogN + N + M)
+* _Brute Implementation_ - `O(MlogN + N^2)`
+  * First part is from sorting the edge
+  * Second part is from performing O(N) merge operation N-1 times 
+* _DSU Implementation_ - `O(MlogN + N + M)`
   * First part is from sorting edges
   * second part is from making parent array
-  * third part is from doing union under assumption that DSU `union and find_parent` take amortized O(1) time. We can achieve amortized O(1) using rank-compression method.
+  * third part is from doing union under assumption that DSU union and find_parent take amortized O(1) time. 
+  * We can achieve amortized O(1) using rank-compression method.
 
 **Some IMP points about MST** - 
 * Maximum spanning tree can be obtained by negating weights and then finding MST
