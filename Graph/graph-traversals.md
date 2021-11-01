@@ -233,3 +233,21 @@ void find_cycle() {
 * This works because there is a bijection from any path of `length <= K` from `u to v` and any path of length `K+1` from `u to (v+n)`
 
 ---
+
+### Kirchoff's Theorem to find number of different Spanning Trees
+[Link](https://cp-algorithms.com/graph/kirchhoff-theorem.html)
+
+**Problem Description** - 
+* You are given a **connected undirected graph (with possible multiple edges)** represented using an adjacency matrix.
+* Find the number of different spanning trees of this graph
+
+**Solution Description** - 
+* Let G be adjacency matrix representation of graph, where G[i][j] represents number of edges between i and j
+* Let D be diagonal matrix such that D[i][i] represents degree of node i
+* Let Laplace Matrix of this graph will be `L = D - G`
+* **All cofactors of L will have same value and will be our required ans.**
+
+---
+
+
+
