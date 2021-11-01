@@ -85,6 +85,7 @@ int lca_rmq(int u, int v)
 ---
 
 ### LCA using Binary Lifting - O(logN) per query
+[Link](https://cp-algorithms.com/graph/lca_binary_lifting.html)
 
 **Solution Description** - 
 * Preprocess - dp matrix, where dp[u][i] stores the 2^i th ancestor of node u
@@ -158,6 +159,7 @@ int lca_binary_lifting_1(int u, int v)
 ---
 
 ### LCA using Tarjan Offline algorithm - O(DFS call + Number of Queries)
+[Link](https://cp-algorithms.com/graph/lca_tarjan.html)
 
 * Each query (u,v) will be answered in single DFS call
 * For query(u,v) if we visit u after v then query will be answered at u and vice-versa
