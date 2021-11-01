@@ -13,29 +13,30 @@
 /*
 * let x be the vertex whose distance was improved in the last(nth phase). This vertex will either lie in a negative weight cycle, or is reachable from it.
 * parent array be standard parent array to trace path back to source
-* Idea is to - 
+* Idea is to -
 *    1. To get to the vertex that definitely lie in the negative cycle, start from x and pass through its parent n times, let the vertex reached be y
 *    2. Now start from y and go through all its parents till we reach back to y, all those parent will together form the negative cycle.
 */
 void print_neg_cycle(int x, vector<int>&parent)
 {
-    int y = x,i;
-    for(i=0;i<n;i++)
+    int start = x;
+    for(int i=0;i<parent.size();i++)
     {
-        if(y!= -1)
-        y = parent[y];
+        start = parent[start];
     }
-    x = y;
 
     vector<int>neg_cycle;
+    int end = start;
+    neg_cycle.pb(end); start = parent[start];
+    for(start; start != end; start = parent[start])
+        neg_cycle.pb(start);
 
-    for(y;y>=0;y=parent[y])
-    {
-        neg_cycle.pb(y);
-        if(y==x && neg_cycle.size()>1)
-            break;
-    }
-    for(auto a:neg_cycle)cout<<a<<" ";
+    start = neg_cycle.back();
+    reverse(neg_cycle.begin(),neg_cycle.end());
+    neg_cycle.pb(start);
+
+
+    for(auto a:neg_cycle)cout<<a+1<<" ";
     cout<<endl;
     return;
 }
