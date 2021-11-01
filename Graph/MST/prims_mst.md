@@ -1,3 +1,9 @@
+**Prim's MST** - 
+* _Brute Implementation_ - Time Complexity = O(n^2) , Space complexity = O(n);  -> Good for dense graph i.e with more edges.
+* _Set Implementation_ - Time Complexity = O(mlogn) , Space complexity = O(n);  -> Good for sparse graph i.e with less edges.
+* _Priority Queue Implementation_ - Time Complexity = O(mlogn) , Space complexity = O(m);  -> Good for sparse graph i.e with less edges.
+
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -197,5 +203,6 @@ int main()
 6 8 6
 7 8 7
 */
+```
 
 
