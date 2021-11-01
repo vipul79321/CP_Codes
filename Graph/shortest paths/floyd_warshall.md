@@ -9,21 +9,19 @@
 * But for all pairs of vertices i and j for which there doesn't exist a path starting at i, visiting a negative cycle, and end at j, the algorithm will still work correctly
 * We can check that for which pair of vertices dont have negative cycle in between them using below code - 
 ```c++
-for(k=0;k<n;k++)
-   {
-       if(d[k][k]>=0)continue;
-       flag = 1;
-       for(i=0;i<n;i++)
-       {
-           for(j=0;j<n;j++)
-           {
-               if(d[i][k]<INF && d[k][j] < INF && d[k][k]<0)
-               {
-                   d[i][j] = -INF;
-               }
-           }
-       }
-   }
+for(int u=0;u<n;u++)
+{
+    for(int v=0;v<n;v++)
+    {
+        for(int t=0;t<n;t++)
+        {
+            if(dist[u][t] < INF && dist[t][v] < INF && dist[t][t] < 0)
+            {
+                dist[u][v] = -INF;
+            }
+        }
+    }
+}
 ```
 ---
 
@@ -91,18 +89,17 @@ void solve(int test)
    }
 
    bool flag = 0;
+   for(int i=0;i<n;i++)if(dist[i][i] < 0){flag = 1;break;}
     
-   for(k=0;k<n;k++)
+   for(int u=0;u<n;u++)
    {
-       if(d[k][k]>=0)continue;
-       flag = 1;
-       for(i=0;i<n;i++)
+       for(int v=0;v<n;v++)
        {
-           for(j=0;j<n;j++)
+           for(int t=0;t<n;t++)
            {
-               if(d[i][k]<INF && d[k][j] < INF && d[k][k]<0)
+               if(dist[u][t] < INF && dist[t][v] < INF && dist[t][t] < 0)
                {
-                   d[i][j] = -INF;
+                   dist[u][v] = -INF;
                }
            }
        }
