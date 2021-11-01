@@ -1,4 +1,4 @@
-[Link]()
+[Link](https://cp-algorithms.com/graph/second_best_mst.html)
 
 ### Second Best MST
 
@@ -8,7 +8,7 @@
 * Then, again try to find a MST in O(E) using the remaining edges.
 * Do this for all the edges in MST, and take the best of all.
 
-**Efficient Approach** - 
+**Efficient Approach** - O(ElogE + ElogN)
 * Sort the edges in O(ElogE), then find a MST using Kruskal in O(E).
 * Make ancestor, dp in MST using Binary lifting where - 
   * ancestor[i][j] will store 2^j th ancestor of i in our MST
