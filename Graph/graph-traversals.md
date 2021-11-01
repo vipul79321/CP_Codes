@@ -194,3 +194,42 @@ void find_cycle() {
 
 ---
 
+### Number of paths of fixed length
+[Link](https://cp-algorithms.com/graph/fixed_length_paths.html#toc-tgt-0)
+
+**Problem Description** - 
+* Given an unweighted directed graph in adjacency matrix form, where `G[i][j] represent number of edges going from i to j`. 
+* We need to find number of paths of length K for all vertex pairs
+
+**Solution Approach** - `O(n^3 logK)`
+* Number of path of length k from (u,v) will be - A[u][v] , where A = power(G,K). 
+* A can be calculated from G using binary exponentiation and hence in O(n^3 logK)
+
+---
+
+### Shortest Path of length K
+[Link](https://cp-algorithms.com/graph/fixed_length_paths.html#toc-tgt-1)
+
+**Problem Description** - 
+* Given a weighted directed graph in matrix form, where G[i][j] = w, if there is an edge from i to j of weight w, otherwise G[i][j] = INFINITY
+* We need to find shortest path of length K for all vertex pairs
+
+**Solution Approach** - `O(n^3 logK)`
+* Shortest path of length k from (u,v) will be - A[u][v] , where A = power(G,K), but here instead of adding in normal matrix multiplication we will take minimum that is
+`A[i][j] = min(power(G,K-1)[i][k], G[k][j]) for k in range 0 to n` 
+
+---
+
+### Shortest path of length atmost K
+[Link](https://cp-algorithms.com/graph/fixed_length_paths.html#toc-tgt-1)
+
+**Problem Description** - 
+* Given an unweighted directed graph in adjacency matrix form, where `G[i][j] represent number of edges going from i to j`. 
+* We need to find number of paths of length **upto K** for all vertex pairs
+
+**Solution Description** - 
+* For each vertex v, create a vertex `(v+n)` and add following two edges `v - > (v+n)` and `(v+n) -> (v+n)`
+* Now, number of paths of length upto K from (u,v) will be equal to number of path length `K+1` from `(u, (v+n))`, which can be calculated as mentioned above
+* This works because there is a bijection from any path of `length <= K` from `u to v` and any path of length `K+1` from `u to (v+n)`
+
+---
