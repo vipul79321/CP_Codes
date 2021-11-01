@@ -249,5 +249,45 @@ void find_cycle() {
 
 ---
 
+### Tree Painting
+[Link](https://cp-algorithms.com/graph/tree_painting.html)
 
+**Problem Description** - 
+* Given a tree, we recieve three types of query paint an edge(u,v) and unpaint an edge(u,v) and number of colored edges in path from (u,v)
+
+**Solution Description** - 
+* **Preprocessing** - 
+  * Firstly assign each node an unique id. 
+  * Now call dfs and obtain euler tour and also edges list containing order in which edges are explored in dfs
+```c++
+void dfs(int v, const graph& g, const graph& edge_ids, int cur_h = 1) {
+    h[v] = cur_h;
+    dfs_list.push_back(v);
+    for (size_t i = 0; i < g[v].size(); ++i) {
+        if (h[g[v][i]] == -1) {
+            edges_list.push_back(edge_ids[v][i]);
+            dfs(g[v][i], g, edge_ids, cur_h + 1);
+            edges_list.push_back(edge_ids[v][i]);
+            dfs_list.push_back(v);
+        }
+    }
+}
+```
+  * Implement LCA finding using Euler tour
+  * For each edge in edge list, obtain the index of first_time_e and second_time_e
+  * Make two range-sum segment trees of size edge_list and initialize them to zero, T1 and T2
+
+* **Query answering**
+  * For query of painting edge x : 
+    * update(T1, first_time_e, 1) - Update value at index first_time_e[x] to 1 in Segment Tree T1
+    * update(T2, second_time_e, 1) - Update value at index second_time_e[x] to 1 in Segment Tree T2
+  * For query of unpainting edge x:
+    * update(T1, first_time_e, -1) - Update value at index first_time_e[x] to -1 in Segment Tree T1
+    * update(T2, second_time_e, -1) - Update value at index second_time_e[x] to -1 in Segment Tree T2
+  * For query of counting number of colored edges in path from u to v:
+    * Let lca = LCA(u,v)
+    * So answer to our query will ans(lca, u) + ans(lca, v)
+    * ans(x,y) will be (assuming x is ancestor of y) - 
+      * ans(x,y) = range_sum_T1(first[x], first[y]) - range_sum_T2(first[x], first[y]), here first[x] represents index where node x appears first time in euler tour
+      * This works because range_sum_T1 will contain all the colored edges, but there will be some useless edges which doesnt lead to y, but all those edge will be present in T2 too, so subtracting range_sum_T2 will give us the final answer
 
