@@ -1,3 +1,10 @@
+---
+**NOTE** -
+* If a graph doesnt contain any odd length cycle then it is bipartite and vice-versa
+* Given a tree, number of edges in the intersection in path from u1 -> u2 and v1 -> v2
+  * max(0, height[lca(u2,v2)] - max(height[u1], height[v1]) )
+  * under the assumption that height[u1] <= height[u2] and height[v1] <= height[v2] 
+---
 ### BFS
 [Link](https://cp-algorithms.com/graph/breadth-first-search.html)
 
@@ -329,4 +336,23 @@ void dfs(int v, const graph& g, const graph& edge_ids, int cur_h = 1) {
 * Fill dp-matrix with following transition - dp[i][v] = min(dp[i][v], dp[i-1][u] + weight_edge(u,v) for all the neighbors u of v )
 * Now our ans will be min( `max( (dp[n][v] - dp[k][v]) / (n-k) for all k in range 0 to n-1)` for all v)
 ![Karp's Minimum Mean Weight Cycle Formula](https://github.com/vipul79321/CP_Codes/blob/main/images/karp-minimum-mean-weight-cylce.jpeg)
+
+---
+
+### Shortest Path in Directed Acyclic Graph
+[Link](https://www.geeksforgeeks.org/shortest-path-for-directed-acyclic-graphs/)
+
+* We can find shortest path in DAG in O(n+m) time, by visiting and updating distance of vertices in topological order
+
+---
+
+### Longest Path in Directed Acyclic Graph
+[Link](https://www.geeksforgeeks.org/longest-path-in-a-directed-acyclic-graph-dynamic-programming/)
+
+* We can find longest path in DAG in O(n+m) time during dfs and dynamic programming
+  * Initialize dp[n] = {0};
+  * dp[u] = max(dp[u], weight(u->child) + dp[child])
+  * ans will be maximum entry in dp array
+
+---
 
