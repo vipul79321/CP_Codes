@@ -291,3 +291,42 @@ void dfs(int v, const graph& g, const graph& edge_ids, int cur_h = 1) {
       * ans(x,y) = range_sum_T1(first[x], first[y]) - range_sum_T2(first[x], first[y]), here first[x] represents index where node x appears first time in euler tour
       * This works because range_sum_T1 will contain all the colored edges, but there will be some useless edges which doesnt lead to y, but all those edge will be present in T2 too, so subtracting range_sum_T2 will give us the final answer
 
+---
+
+### Number of Spanning Trees of a Complete Graph | Prufer Code | Number of ways to make a graph connected with k-connected components
+[Link](https://cp-algorithms.com/graph/pruefer_code.html)
+
+**Prufer Code** - 
+* It an encoding of size n-2 of Tree with n vertices, each n-2 entries will be in range[0,n-1]
+* We can obtain a unique tree from given prufer code
+* Number of times a node is present in prufer code is its degree-1
+
+**Number of Spanning Tree of a complete graph of n vertices | Cayley's Formula**  - `power(n,n-2)`
+* Explanation is - Assume a prufer code for a spanning tree, at each n-2 places we have n options
+
+**Number of ways to make a graph connected with k-connected components** - `sz_1 * sz_2 * sz_3 .. sz_k * power(n,n-2)`
+[Explanation](https://cp-algorithms.com/graph/pruefer_code.html#toc-tgt-8)
+
+---
+
+### Given an undirected graph minimize number of weakly connected vertices(i.e vertices with indegree == 0) when graph is converted to directed
+**Solution** -
+* Count number of edges and size of each connected components
+* If number of edges  == sz - 1 then there will always be one vertex with indegree == 0 and hence ans++;
+* else we can always make every node to have indegree != 0
+* To count number of edges, we can simply add degree of each node in the component and divide it by 2
+
+---
+
+### Karp's Minimum Mean Weight Cycle
+[Link](https://www.geeksforgeeks.org/karps-minimum-mean-average-weight-cycle-algorithm/) | [Link](https://www.hackerearth.com/practice/notes/karp-minimum-mean-weighted-cycle/)
+
+**Problem Description** - Given a strongly connected graph, we need to find value of **minimum mean weight cycle**
+
+**Solution Description | Karp's Algorithm for Minimum Mean weight cycle** - 
+* Initialize source = 0, dp[n][n] = {INF}, dp[0][source] = 0; 
+* dp[i][v] represents shortest distance from source to v with exactly i edges
+* Fill dp-matrix with following transition - dp[i][v] = min(dp[i][v], dp[i-1][u] + weight_edge(u,v) for all the neighbors u of v )
+* Now our ans will be min( `max( (dp[n][v] - dp[k][v]) / (n-k) for all k in range 0 to n-1)` for all v)
+![Karp's Minimum Mean Weight Cycle Formula](https://github.com/vipul79321/CP_Codes/blob/main/images/karp-minimum-mean-weight-cylce.jpeg)
+
