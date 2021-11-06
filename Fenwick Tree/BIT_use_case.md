@@ -23,7 +23,7 @@
 
 ---
 
-### Calculate Inversion in given array
+### Calculate Number of elements less than value at that index till that index
 ```c++
 // Given an array for each index, we need to ans number of elements less than the value at that index which has appeared till that index.
 #include<bits/stdc++.h>
@@ -84,3 +84,9 @@ int main()
 
   }
 ```
+
+**NOTE** - We can also modify above code to count number of elements greater than value at that index till that index, by simply doing `ans[i] = i-ans[i];`
+
+---
+
+
