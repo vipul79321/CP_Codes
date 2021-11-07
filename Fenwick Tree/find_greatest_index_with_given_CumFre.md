@@ -1,6 +1,8 @@
 ### Find Greatest Index with given cumulative frequency in O(logn)
 [Link](https://www.topcoder.com/thrive/articles/Binary%20Indexed%20Trees#find)
 
+**NOTE** - This problem can also be solved by segment tree in O(logn) - [Searching for an array prefix with a given amount](https://cp-algorithms.com/data_structures/segment_tree.html#toc-tgt-8)
+
 **Problem Description** - 
 * Given an array of frequencies and a presum, we need to find the greatest index where cumulative frequency is equal to target. 
 * It is also given that all the **frequencies are non-negative**
