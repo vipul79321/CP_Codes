@@ -1,5 +1,18 @@
-// Link - https://www.topcoder.com/thrive/articles/Binary%20Indexed%20Trees#find
+### Find Greatest Index with given cumulative frequency in O(logn)
+[Link](https://www.topcoder.com/thrive/articles/Binary%20Indexed%20Trees#find)
 
+**Problem Description** - 
+* Given an array of frequencies and a presum, we need to find the greatest index where cumulative frequency is equal to target. 
+* It is also given that all the **frequencies are non-negative**
+
+**Solution Description** - 
+* We can solve this problem in `O(logn * logn)` by doing binary search on indexes and checking if current index satisfy our requirement and moving accordingly.
+* To solve in `O(logn)` - 
+  *  bitmask will contain the current interval length and intialize it to maximum power of 2 less than n
+  *  see code for more details
+ 
+ 
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -114,3 +127,4 @@ int main()
 8
 6
 */
+```
