@@ -13,7 +13,9 @@
   * **bit2** - `update(l, x*(l-1))` and `update(r+1, -x*r)`
 * For **query(l,r)** - 
   * define prefix_sum(idx) as `sum_bit1(idx)*i - sum_bit2(idx)`
-  * return `prefix_sum(r) - prefix_sum(l-1)`
+  * return `prefix_sum(r) - prefix_sum(l-1) + sum_of_range_in_original_array(l,r)`
+
+![Link](https://github.com/vipul79321/CP_Codes/blob/main/images/bit-range-update-range-queries.jpeg)
 
 ```c++
 #include<bits/stdc++.h>
