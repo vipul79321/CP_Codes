@@ -1,3 +1,8 @@
+/*
+* Range add and point query
+* lazy_st will store what value to add to corresponding segment elements
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
