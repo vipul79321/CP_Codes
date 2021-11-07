@@ -1,3 +1,11 @@
+### 2-Dimensional Binary Indexed Tree
+[Link](https://cp-algorithms.com/data_structures/fenwick.html#toc-tgt-6) | [Link](https://www.topcoder.com/thrive/articles/Binary%20Indexed%20Trees#2d)
+
+* Time Complexity for each query - `O(log(max_x) * log(max_y))`
+* **sum(x,y)** - Returns sum from (0,0) to (x,y)
+* **update(x,y,val)** - Update value at (x,y) with val
+
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -92,3 +100,4 @@ int main()
 2 4 4
 2 3 4
 */
+```
