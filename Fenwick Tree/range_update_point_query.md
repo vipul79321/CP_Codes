@@ -1,3 +1,17 @@
+### Range Update Point Query using BIT
+[Link](https://cp-algorithms.com/data_structures/fenwick.html#toc-tgt-10)
+
+**Problem Description** - 
+* Given an array and two type of queries
+* **query(l,r,x)** - add x to all the elements from l to r
+* **query(index)** - Return value at index
+
+**Solution Approach** - 
+* Intialize BIT with all zeroes
+* For query(l,r,x) -> `update(l, x) and update(r+1,-x)`
+* For query(index) -> `getSum(index) + arr_original[index];`
+
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -107,3 +121,4 @@ int main()
 2 8
 2 5
 */
+```
