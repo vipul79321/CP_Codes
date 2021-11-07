@@ -123,7 +123,7 @@ vector<int> computeLIS(vector<int>&nums)
 
 ### Use Case - 1 - Smallest number of non-increasing subsequences covering the whole array
 
-**Problem Description** - Given an array, we need to find the smallest number of non-decreasing subsequences which covers the whole array, that is, each entry should be present in exactly one of those subsequences.
+**Problem Description** - Given an array, we need to find the smallest number of non-increasing subsequences which covers the whole array, that is, each entry should be present in exactly one of those subsequences.
 
 **Solution Description** - 
 * Return Length of LIS, refer CP-algo blog for proof.
