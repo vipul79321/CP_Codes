@@ -1,3 +1,9 @@
+/*
+* Range assign and point queries using lazy segment tree
+* lazy_st will store information about the value of current segment
+* marked will represent whether assignment has been passed or not to childs
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
