@@ -1,3 +1,21 @@
+### Range Update and Range Queries
+[Link](https://cp-algorithms.com/data_structures/fenwick.html#toc-tgt-11)
+
+**Problem Description** - 
+* Given an array with following two types of queries - 
+* query(l,r,x) - add x to all the elements from l to r
+* query(l,r) - return sum of all the elements from l to r
+
+**Solution Description** - 
+* Initialize two BIT bit1 and bit2 will all zeroes
+* For **query(l,r,x)** - 
+  * **bit1** - `update(l,x)` and `update(r+1, -x)`
+  * **bit2** - `update(l, x*(l-1))` and `update(r+1, -x*r)`
+* For **query(l,r)** - 
+  * define prefix_sum(idx) as `sum_bit1(idx)*i - sum_bit2(idx)`
+  * return `prefix_sum(r) - prefix_sum(l-1)`
+
+```c++
 #include<bits/stdc++.h>
 using namespace std;
 #define ull unsigned long long
@@ -107,3 +125,4 @@ int main()
 2 8 8
 2 5 5
 */
+```
