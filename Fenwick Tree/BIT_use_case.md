@@ -89,4 +89,8 @@ int main()
 
 ---
 
+### Find Longest Increasing subsequence in O(nlogn) | Count number of LIS
+[Link](https://cp-algorithms.com/sequences/longest_increasing_subsequence.html) | [Link](https://leetcode.com/problems/longest-increasing-subsequence/) | [Link](https://leetcode.com/problems/number-of-longest-increasing-subsequence/)
+
+* Refer this article - [Link](https://github.com/vipul79321/CP_Codes/blob/main/miscellanous/longest-increasing-subsequence.md)
 
