@@ -1,4 +1,4 @@
-// Range update as well range max queries.
+// Range add and Range max queries using Lazy segment tree
 // st will keep ans for range max queries
 // lazy will keep info about propogation.
 
