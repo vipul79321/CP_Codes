@@ -126,9 +126,13 @@ vector<int> computeLIS(vector<int>&nums)
 **Problem Description** - Given an array, we need to find the smallest number of non-increasing subsequences which covers the whole array, that is, each entry should be present in exactly one of those subsequences.
 
 **Solution Description** - 
-* Return Length of LIS, refer CP-algo blog for proof.
+* Return Length of LIS, refer [CP-algo blog](https://cp-algorithms.com/sequences/longest_increasing_subsequence.html#toc-tgt-13) for proof.
+* To Retrieve these non-increasing subsequences - 
+  * The desired partition of the sequence into subsequences can be done greedily. 
+  * go from left to right and assign the **current number(signifying start of new subsequence)** or **that subsequence ending with the minimal number which is greater than or equal to the current one(or select one of the existing subsequence whose last element is greater than current value is minimum among all such candidates)**. 
 
 ### Use case - 2 - Number of longest increasing subsequences
+[Link](https://leetcode.com/problems/number-of-longest-increasing-subsequence/)
 
 **Problem Description** - Find number of ways to obtain LIS from given array.
 
@@ -136,7 +140,12 @@ vector<int> computeLIS(vector<int>&nums)
 * We can use above coded approach with Segment tree instead of Fenwick Tree.
 * Segment Tree will be like this - 
   * On querying it will return maximum in range[l,r] and its frequency in range[l,r]
-  * It will have index update where will be add new_cnt if previous val is equal to new_val else simply replace previous freq with new_cnt.
+  * It will have index update where will be add new_cnt if previous val is equal to new_val else simply replace previous freq with new_cnt.  
+* So solution will be like this - 
+  * Loop from i = 0 to i = n:
+    * dp[i].first will be length of LIS ending at ith index and dp[i].second will be count of such LIS 
+    * dp[i] = query(0, normalize_nums[i]-1)
+    * update(normalize_nums[i], dp[i])
 
 
 
