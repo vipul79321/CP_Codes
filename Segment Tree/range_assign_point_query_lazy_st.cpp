@@ -43,7 +43,7 @@ void update_lazy_st(int low, int high, int l, int r,int id, int new_val)
     if(l>=low && r<=high)
     {
         lazy_st[id] = new_val;
-        marked[id] = new_val;
+        marked[id] = 1;
         return;
     }
     push(id);
