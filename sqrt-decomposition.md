@@ -73,3 +73,21 @@ void sqrtDecomposition(vector<int>&arr, vector<Query>&queries)
     
 }
 ```
+
+---
+
+**NOTE** - Heavy & Light Nodes
+* Let G be a graph of N nodes and M edges
+* Let S = sqrt(M)
+* We can claim that at max. S number of nodes can have degree greater S, i.e S number of nodes can be heavy nodes
+* Tutorial on this concept - 
+  * [Errichto YT Link](https://www.youtube.com/watch?v=BJhzd_VG61k) | [Erricho CF Blog Link](https://codeforces.com/blog/entry/96713)
+* Problems on this concept - 
+  * Count number of Triangle in a graph in `O(Msqrt(M))` - [Link](https://youtu.be/BJhzd_VG61k?t=3832) 
+  * [ABC G - Propogation](https://atcoder.jp/contests/abc219/tasks/abc219_g)
+
+---
+
+**NOTE** - If the sum of N numbers is S then there are at most `sqrt(S)` distinct values. This observation is majorly used in string-algorithms
+
+---
