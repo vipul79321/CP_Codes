@@ -1,5 +1,5 @@
 <details>
-<summary><a href="https://github.com/vipul79321/CP_Codes/tree/main/Fenwick%20Tree">Fenwick Tree</a></summary>
+<summary><a href="https://github.com/vipul79321/CP_Codes/tree/main/disjoint-set-union">Fenwick Tree</a></summary>
 
 + <a href="https://github.com/vipul79321/CP_Codes/blob/main/disjoint-set-union.md#disjoint-set-union">DSU Introduction</a>
 + DSU Use Cases
