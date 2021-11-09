@@ -129,7 +129,7 @@ vector<int> computeLIS(vector<int>&nums)
 * Return Length of LIS, refer [CP-algo blog](https://cp-algorithms.com/sequences/longest_increasing_subsequence.html#toc-tgt-13) for proof.
 * To Retrieve these non-increasing subsequences - 
   * The desired partition of the sequence into subsequences can be done greedily. 
-  * go from left to right and assign the **current number(signifying start of new subsequence)** or **that subsequence ending with the minimal number which is greater than or equal to the current one(or select one of the existing subsequence whose last element is greater than current value is minimum among all such candidates)**. 
+  * go from left to right and assign the **current number(signifying start of new subsequence)** or **that subsequence number which ends with the minimal number which is greater than or equal to the current one(i.e select one of the existing subsequence whose last element is greater than current value and is minimum among all such candidates)**. 
 
 ### Use case - 2 - Number of longest increasing subsequences
 [Link](https://leetcode.com/problems/number-of-longest-increasing-subsequence/)
