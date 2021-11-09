@@ -49,10 +49,10 @@ vector<int> get_odd_palindromes(string s)
   * else `even_pal_cnt[i] = 0;`
 * Now trivially try to increase even_pal_cnt[i] as follows - 
   * `while(i-even_pal_cnt[i] - 1 >= 0 && i + even_pal_cnt[i] < n && s[i - even_pal_cnt[i] - 1]  == s[i + even_pal_cnt[i]])`
-    * even_pal_cnt[i]++;
+    * `even_pal_cnt[i]++;`
 * Finally update l and r as follows - 
-  * if i + even_pal_cnt[i] -1 > r:
-    * r = i + even_pal_cnt[i] - 1; l = i - even_pal_cnt[i];
+  * `if i + even_pal_cnt[i] -1 > r:`
+    * `r = i + even_pal_cnt[i] - 1; l = i - even_pal_cnt[i];`
 
 **Note** - If length of even palindrome having rightmost center as i is `x` then `even_pal_cnt[i] contains x/2`.
 
