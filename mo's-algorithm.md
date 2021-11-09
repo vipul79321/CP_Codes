@@ -72,3 +72,26 @@ int MoAlgorithm(vector<int> &arr, vector<Query> &queries)
     return ans;
 }
 ```
+
+---
+
+**NOTE** - Another improved compare function between queries is to sort odd block queries in increasing order of R and even block queries in decreasing order of R
+```c++
+bool compare(Query &x, Query &y)
+{
+    if(x.L/block_sz == y.L/block_sz)
+    {
+        if(x.L/block_sz % 2 ==1)
+          return x.R < y.R;
+        else
+          return x.R > y.R;
+    }
+    else
+    {
+        return x.L/block_sz < y.L/block_sz;
+    }
+}
+```
+
+---
+
