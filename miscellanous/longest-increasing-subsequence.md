@@ -140,7 +140,7 @@ vector<int> computeLIS(vector<int>&nums)
 * We can use above coded approach with Segment tree instead of Fenwick Tree.
 * Segment Tree will be like this - 
   * On querying it will return maximum in range[l,r] and its frequency in range[l,r]
-  * It will have index update where will be add new_cnt if previous val is equal to new_val else simply replace previous freq with new_cnt.  
+  * It will have index update `pair(new_val,new_cnt)` where we will add new_cnt if previous_val is equal to new_val else simply replace with pair(new_val,new_cnt) if previous_val is less than new_val
 * So solution will be like this - 
   * Loop from i = 0 to i = n:
     * dp[i].first will be length of LIS ending at ith index and dp[i].second will be count of such LIS 
