@@ -13,8 +13,8 @@
   * `while(i-odd_pal_cnt[i] >= 0 && i + odd_pal_cnt < n && s[i-odd_pal_cnt[i]] == s[i + odd_pal_cnt[i]])`
     * odd_pal_cnt[i]++;
 * Finally update l and r as follows - 
-  * if i + odd_pal_cnt[i] - 1 > r :
-    * r = i + odd_pal_cnt[i] - 1, l = i - odd_pal_cnt[i] + 1;
+  * `if i + odd_pal_cnt[i] - 1 > r :`
+    * `r = i + odd_pal_cnt[i] - 1, l = i - odd_pal_cnt[i] + 1;`
 
 **Note** - If length of odd palindrome having center as i is `x` then `odd_pal_cnt[i] contains (x+1)/2`.
 
