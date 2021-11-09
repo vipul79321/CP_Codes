@@ -28,7 +28,7 @@
 
 ---
 
-**MAIN CODE**
+### MAIN CODE
 
 ```c++
 #include<bits/stdc++.h>
