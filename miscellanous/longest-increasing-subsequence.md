@@ -7,7 +7,7 @@
 * First, we will obtain an normalized array so that each entry will be in range[1,n];
 * Now, iterate over each i, and get maximum value and its index in range [0,normalize_nums[i] - 1]; (or [0,normalize_nums[i]] in case of non-decreasing subsequence)
 * To get maximum value and index, we can maintain two Binary indexed tree, namely - max_bit and max_index_bit in code below;
-* Now update both bits as **updating dp[i] at id == nums[i] and index = i(this will be used to retrieve LIS);** or update(nums[i],dp[i], i);
+* Now update both bits as **update(id = nums[i],val = dp[i], index = i);, index will be used to retrieve LIS**
 * Update ans and end_of_lis according to dp[i];
 
 See code below for more details - 
