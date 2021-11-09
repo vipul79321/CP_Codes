@@ -12,7 +12,7 @@
 * Now, while answering each query
   * Movement of R - Last query of previous block may put R in rightmost position and first query of current block may bring R to leftmost possible position. So, for each query where previous block is not same as current block R will have to travel `n` distance and count of such blocks is `sqrt(n)` and hence R will contribute `O(n * sqrt(n))`
   * Movement of L - For each query L may travel sqrt(n) distance. And hence L will contribute O(m * sqrt(n)) to time complexity
-* Hence, total time complexity will be  - O(mlogm + n * sqrt(n) + m * sqrt(n) ) == O( (m + n) * sqrt(n))
+* Hence, total time complexity will be  - `O(mlogm + n * sqrt(n) + m * sqrt(n) ) == O( (m + n) * sqrt(n))`
 
 ```c++
 int block_sz;
