@@ -14,7 +14,7 @@ Where, p & m are both prime number.
 
 * Some standard choices for p & m in above function - 
   * p should be larger than number of alphabets in consideration, for e.g. - **31** if we are considering all lowercase only. If both lowercase and upper case then **53**. 
-  * m should be a large prime number and at the same time, we should not encounter overflow while multiplication, so choices for m would be **m == 1e9+7**,  m == **998244353** 
+  * m should be a large prime number and at the same time, we should not encounter overflow while multiplication, so choices for m would be **m == 1e9+7**,  **m == 998244353**, **m == 1e8+7**
 
 **Note** - 
 * Its usually a good practice to compute two hash arrays with different set of p & m.
