@@ -67,7 +67,7 @@ vector<int> spiralOrder(vector<vector<int> > &A) {
 ---
 
 ### Minimum number of operations to make every row sum and every column sum equal in a square matrix
-[Link](https://www.geeksforgeeks.org/minimum-operations-required-make-row-column-matrix-equals/)
+[Link](https://www.geeksforgeeks.org/minimum-operations-required-make-row-column-matrix-equals/) | [Proof of Correctness](https://stackoverflow.com/questions/48254548/why-this-algorithm-always-works-minimum-operations-required-to-make-each-row-an)
 
 **Problem Description** - 
 * We need to make each row sum and col sum equal to certain value by using minimum number of operation
@@ -125,7 +125,7 @@ return count;
 ---
 
 ### Find number of transformation to make two Matrix Equal
-[Link]()
+[Link](https://www.geeksforgeeks.org/find-number-transformation-make-two-matrix-equal/)
 
 **Problem Description** - Given two matrices A and B of order `n * m`. 
 The task is to find the required number of transformation steps so that both matrices became equal, print -1 if it is not possible. 
