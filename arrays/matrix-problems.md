@@ -66,7 +66,7 @@ vector<int> spiralOrder(vector<vector<int> > &A) {
 
 ---
 
-### Minimum number of operations to make every row sum and every column sum equal
+### Minimum number of operations to make every row sum and every column sum equal in a square matrix
 [Link](https://www.geeksforgeeks.org/minimum-operations-required-make-row-column-matrix-equals/)
 
 **Problem Description** - 
