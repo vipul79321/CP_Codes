@@ -100,6 +100,25 @@ for (int i = 0, j = 0; i < n && j < n;) {
     if (sumCol[j] == maxSum)
         ++j;
 }
+
+for(int i=0;i<n;i++)
+{
+    if(sumRow[i] != maxSum)
+    {
+        cout<<"Not Possible\n";
+        return INF;
+    }
+}
+
+for(int i=0;i<n;i++)
+{
+    if(sumCol[i] != maxSum)
+    {
+        cout<<"Not Possible\n";
+        return INF;
+    }
+}
+
 return count;
 ```
 
