@@ -202,7 +202,7 @@ string infixToPrefix(string infix)
 [Link](https://www.geeksforgeeks.org/prefix-infix-conversion/)
 
 **Steps**
-* Scan the prefix expression from right to left
+* Scan the prefix expression **from right to left**
     * If the scanned character is operand push it in the stack.
     * If the scanned character is operator, pop A then B from stack and push `( A  op B)` into stack.
 * Finally return stack.top() as ans.
