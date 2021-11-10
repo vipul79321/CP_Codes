@@ -85,10 +85,12 @@ void sortStack(stack<int>&st)
 
 ---
 
-## Check if we can convert one queue into another queue using stack | 
+## Check if we can convert one queue into another queue using stack | Check if array is stack sortable
+[Link](https://www.geeksforgeeks.org/check-queue-can-sorted-another-queue-using-stack/) | [Link](https://www.geeksforgeeks.org/check-array-stack-sortable/)
+
 This Question can be rephrased as follows - 
 * Check if we can scan an array from left to right and obtain the given array using stack, Only operation allowed on the other array is append an element to its end.
-* Sometimes second array can be sorted one, so it can be asked as check if given array is stack sortable.
+* Sometimes second array can be sorted one, so it can be asked as **check if given array is stack sortable.**
 
 **Solution Approach** - 
 * Intialize current_required = q2.front();
