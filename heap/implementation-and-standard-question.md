@@ -128,7 +128,7 @@ class minHeap
     * Since we call heapify for each index and heapify function takes O(height) time
     * And also we know that, there are n/pow(2,h+1) nodes at height h, lets call it f(h)
     * So total time complexity will be - Summation( f(h) * O(h) for all h = 0 to h = logn)
-    * We can write above summation as - n * Summation(h , pow(2,h) ) for all h = 0, to h = Infinity
+    * We can write above summation as - n * Summation(h / pow(2,h) ) for all h = 0, to h = Infinity
     * Now the summation as become a sum of infinite GP
     * Hence we can write it as - n * 1/2 * 2 == O(n)
 * O(logn) for **Insert, delete, decreaseKey, increaseKey, extractMin**
