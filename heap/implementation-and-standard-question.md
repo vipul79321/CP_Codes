@@ -239,9 +239,9 @@ int findKthSmallestElement(vector<int>&v, int l, int r, int k)
 **Solution Approach** - 
 * Use Two multiset S & T, and maintain them such that `S.size() == T.size() || S.size() == T.size() + 1 and *S.rbegin() < *T.begin()`
 * While inserting, insert element in `S` and call `balance()` function
-* findMedian() - 
+* `findMedian()` - 
 ```c++
-int val()
+int findMedian()
 {
     if(S.size() != T.size()+1)
     {
@@ -254,7 +254,7 @@ int val()
     }
 }
 ```
-* Balance() - 
+* `balance()` - 
 ```c++
 void balance()
 {
@@ -274,7 +274,7 @@ void balance()
     }
 }
 ```
-* Utility function to support deletion - `erase(x)`
+* Utility function to support deletion - `erased(x)`
 ```c++
 void erased(int x)
 {
