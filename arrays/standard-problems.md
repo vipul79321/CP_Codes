@@ -181,4 +181,9 @@ int minimumSwaps(vector<int> nums) {
 * Now for query of printing the whole array - 
   * arr[i] will be prefix-sum of D[0..i]; 
 
+**NOTE** - Another way to handle this - 
+* Intialize `upd[n] = {0}`
+* Now for each update query do - `upd[l] += x` and `upd[r+1] -= x`
+* Finally to print the whole array, `ans[i] = sum(upd from 0 to i) + arr[i];`
+
 ---
