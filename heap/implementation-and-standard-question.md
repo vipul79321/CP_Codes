@@ -13,7 +13,7 @@
 * `right(int i)` - Returns 2 * i +2;
 * `insert(int val)` - push_back val to heap. Now it checks whether it satisifies min-heap property with its parent, if not then swap parent and node value and keep on checking till parent exist.
 * `decreaseKey(int i, int val)` - assign heap[i] = val; Now it checks whether it satisifies min-heap property with its parent, if not then swap parent and node value and keep on checking till parent exist.
-* `increaseKey(int i, int val)` - assign heap[i] = val; Now calls heapify(i)
+* `increaseKey(int i, int val)` - we can simply call `deleteKey(i)` and then `insert(val)`
 * `deleteKey(int i)` - calls decreaseKey(i, INT_MIN); then extractMin();
 
 ```c++
@@ -106,8 +106,8 @@ class minHeap
         
         void increaseKey(int i, int val)
         {
-            heap[i] = val;
-            heapify(i);
+            deleteKey(i);
+            insertKey(val);
         }
         
         void deleteKey(int i)
