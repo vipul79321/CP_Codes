@@ -66,13 +66,13 @@ void sortStack(stack<int>&st)
 
 ---
 
-## Sort a stack using a temporary stack | Sort an array using stack
+## Sort a stack using a temporary stack | Sort an array using stack | Worst Case - O(n^2) | Based on idea of insertion sort
 [Link](https://www.geeksforgeeks.org/sort-stack-using-temporary-stack/) | [Link](https://www.geeksforgeeks.org/sorting-array-using-stacks/)
 
-**Solution Approach** - 
+**Solution Approach | Similar to Insertion Sort** - 
 * While given stack is not empty
   * `a = st.top(); st.pop();`.
-  * `while(!temp_st.empty() && temp_st.top() > a)` push temp_st.top() to main stack and pop temp_st.
+  * `while(!temp_st.empty() && temp_st.top() > a)` push `temp_st.top()` to `st` and `pop temp_st`.
   * Then push a to temp_st
 * Finally temp_st will contain main stack in sorted order.
 
