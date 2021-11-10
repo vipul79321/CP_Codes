@@ -2,6 +2,7 @@
 [Link](https://www.geeksforgeeks.org/queue-using-stacks/)
 
 **By making Enqueue operation costly - Enqueue - O(n), Dequeue - O(1)**
+
 Use two stacks s1 & s2
 * Push(x) - 
     * Pop all the elements from s1 and push them into s2. 
@@ -11,6 +12,7 @@ Use two stacks s1 & s2
     * Simply pop element from s1.
 
 **By making Dequeue operation costly - Enqueue - O(1), Dequeue - Worst case - O(n), Amortized - O(1)**  -- Better than previous solution.
+
 Use two stacks s1 & s2
 * Push(x) - 
     * Simply Push x into s1.
@@ -24,7 +26,8 @@ Use two stacks s1 & s2
 [Link](https://www.geeksforgeeks.org/implement-stack-using-queue/)
 
 **By making Push operation costly - Push - O(n), Pop - O(1)**
-Use two queues s1 & s2
+
+Use two queues q1 & q2
 * Push(x) - 
     * Enqueue x into q2 
     * Enqueue all the elements of q1 into q2
@@ -33,6 +36,7 @@ Use two queues s1 & s2
     * Simply dequeue from q1
 
 **By making Pop operation costly - Push - O(1), Pop - O(n)**
+
 Use two queues q1 & q2
 * Push(x) - 
     * Enqueue x in q1
