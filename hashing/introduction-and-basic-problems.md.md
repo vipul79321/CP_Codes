@@ -89,7 +89,7 @@ Performance -
 **Solution Approach** - 
 * Let cnt[i][0] be count of 0s till ith index, cnt[i][1] be count of 1s till ith index, cnt[i][2] be count of 2s till ith index
 * Now if arr[j+1...i] is our desired subarray then following condition will satisy
-  * cnt[i][2] - cnt[j][2] == cnt[i][0] - cnt[j][0] == cnt[i][1] - cnt[j][1]
-  * Or cnt[i][2] - cnt[i][0] == cnt[j][2] - cnt[j][0] and cnt[i][2] - cnt[i][1] == cnt[j][2] - cnt[j][1]
-  * So we need to find count of pair(cnt[i][2] - cnt[i][0] , cnt[i][2] - cnt[i][1])
+  * `cnt[i][2] - cnt[j][2] == cnt[i][0] - cnt[j][0] == cnt[i][1] - cnt[j][1]`
+  * Or `cnt[i][2] - cnt[i][0] == cnt[j][2] - cnt[j][0] and cnt[i][2] - cnt[i][1] == cnt[j][2] - cnt[j][1]`
+  * So we need to find count of `pair(cnt[i][2] - cnt[i][0] , cnt[i][2] - cnt[i][1])`
 
