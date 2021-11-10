@@ -62,7 +62,7 @@ for(int i=0;i<n+2;i++)
 **Solution Approach** - 
 * Maintain a multiset containing k smallest prefix-sums till now
 * Maintain a max-heap of size k
-* At every index, loop through each smallest prefix-sums till now and try to insert `curr_prefix_sum - smallest_prefix_sum_till_now` in max-heap.
+* At every index, loop through each smallest prefix-sums in the multiset till now and try to insert `curr_prefix_sum - smallest_prefix_sum_till_now` in max-heap.
 
 ---
 
