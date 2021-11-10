@@ -128,7 +128,7 @@ bool check(queue<int>&q1, queue<int>&q2)
 
 ## Tower of Hanoi
 
-**Recursive Solution** - 
+**Recursive Solution** | [Link](https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/) - 
 
 ```c++
 void towerOfHanoi(int n, int from_rod, int auxilary_rod, int to_rod)
@@ -147,7 +147,8 @@ void towerOfHanoi(int n, int from_rod, int auxilary_rod, int to_rod)
 }
 ```
 
-**Iterative Solution**
+**Iterative Solution** | [Link](https://www.geeksforgeeks.org/iterative-tower-of-hanoi/)
+
 **Steps** - 
 * Calculate the total number of moves required i.e. "pow(2, n) - 1" here n is number of disks.
 * If number of disks (i.e. n) is even then interchange destination pole and auxiliary pole.
