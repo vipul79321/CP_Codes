@@ -225,10 +225,10 @@ int findKthSmallestElement(vector<int>&v, int l, int r, int k)
 **Solution Approach** - 
 * Put all element in max - priority queue
 * Now for each i from 0 to n - 1:
-  * val = pq.top(); pq.pop();
-  * if val == arr[i] && i != n-1 then ans[i] = pq.top(); pq.pop(); pq.push(val);
-  * else ans[i] = val; 
-* Finally check if arr[n-1] == ans[n-1] then swap(ans[n-2],ans[n-1]);
+  * `val = pq.top(); pq.pop();`
+  * if `val == arr[i] && i != n-1` then `ans[i] = pq.top(); pq.pop(); pq.push(val);`
+  * else `ans[i] = val;`
+* Finally check `if arr[n-1] == ans[n-1]` then `swap(ans[n-2],ans[n-1]);`
 * Using similar logic we can find smallest derangement of a sequence
 
 ---
