@@ -238,12 +238,56 @@ int findKthSmallestElement(vector<int>&v, int l, int r, int k)
 
 **Solution Approach** - 
 * Use Two multiset S & T, and maintain them such that `S.size() == T.size() || S.size() == T.size() + 1 and *S.rbegin() < *T.begin()`
-* While inserting, insert element in T and call balance size function
-* To find median if S.size() == T.size() return `( *S.rbegin() + *T.begin() )/ 2` else return `*S.rbegin()` 
-* Balance - 
-  * While `S.size() && *S.rbegin() > *T.begin() : T.insert(*S.rbegin()); S.erase(S.rbegin());` 
-  * while `T.size() > S.size():`
-    * `S.insert(*T.begin()); T.erase(T.begin());`
+* While inserting, insert element in `S` and call `balance()` function
+* findMedian() - 
+```c++
+int val()
+{
+    if(S.size() != T.size()+1)
+    {
+        auto itr = S.end();itr--;
+        return (*itr + *T.begin())/2;
+    }
+    else
+    {
+        return *S.rbegin();
+    }
+}
+```
+* Balance() - 
+```c++
+void balance()
+{
+    if(S.size())
+    {
+        auto itr = S.end();
+        itr--;
+ 
+        T.insert(*itr);
+        S.erase(itr);
+    }
+ 
+    while(S.size() < T.size())
+    {
+        S.insert(*T.begin());
+        T.erase(T.begin());
+    }
+}
+```
+* Utility function to support deletion - `erase(x)`
+```c++
+void erased(int x)
+{
+    if(S.size())
+    {
+        auto itr = S.end();itr--;
+        if(*itr >= x)
+            S.erase(S.lower_bound(x));
+        else
+            T.erase(T.lower_bound(x));
+    }
+}
+```
 * See following link more generalized version of above solution, supporting deletion operation. [Link](https://atcoder.jp/contests/abc218/submissions/25792413)
 
 
