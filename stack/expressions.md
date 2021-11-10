@@ -283,7 +283,7 @@ string postfixToPrefix(string postfix)
 * For evaluating a postfix expression follow below steps - 
   * Scan the expression from left to right.
     * If the scanned character is an operand, push it in the stack.
-    * else pop A then B from stack and push B operator A into the stack.
+    * else pop A then B from stack and push `B operator A` into the stack.
   * Finally stack.top() will contain the value of the expression
 
 * For evaluating an infix expression follow below steps - 
