@@ -141,7 +141,7 @@ Transformation step is as:
   * let say `A[i][j]` reaches to zero by `x` decrement from row operation and `y` decrement from column operation, hence `A[i][j] == x + y`
   * let say `A[0][0]` reaches to zero by `a` decrement from row operation and `b` decrement from column operation, hence `A[0][0] == a + b`
   * So we can say that `A[i][0] == x + a` and `A[0][j] == y + b`
-  * Adding both above equation, we obtain `A[i][0] + A[0][j]  == (x + y) + (a+b)` or `A[i][0] + A[0][j] == A[i][j] + A[0][0]`
+  * Adding both above equation, we obtain `A[i][0] + A[0][j]  == (x + y) + (a + b)` or `A[i][0] + A[0][j] == A[i][j] + A[0][0]`
 * To get count of minimum number of operations - 
   * `ans += sum(abs(A[0][j]) ) for all j`
   * `ans += sum(abs(A[i][0] - A[0][0]) for all i`
