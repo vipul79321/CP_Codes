@@ -234,7 +234,7 @@ int findKthSmallestElement(vector<int>&v, int l, int r, int k)
 ---
 
 ## Median of stream of running integers using STL 
-[Link](https://www.geeksforgeeks.org/median-of-stream-of-running-integers-using-stl/) | [Link](https://www.geeksforgeeks.org/median-of-stream-of-integers-running-integers/)
+[Link](https://www.geeksforgeeks.org/median-of-stream-of-running-integers-using-stl/) | [Link](https://www.geeksforgeeks.org/median-of-stream-of-integers-running-integers/) | [Atcoder submission link](https://atcoder.jp/contests/abc218/submissions/25792413)
 
 **Solution Approach** - 
 * Use Two multiset S & T, and maintain them such that `S.size() == T.size() || S.size() == T.size() + 1 and *S.rbegin() < *T.begin()`
@@ -288,7 +288,6 @@ void erased(int x)
     }
 }
 ```
-* See following link more generalized version of above solution, supporting deletion operation. [Link](https://atcoder.jp/contests/abc218/submissions/25792413)
 
 
 
