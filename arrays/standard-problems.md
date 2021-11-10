@@ -105,8 +105,9 @@ for(int i=0;i<n+2;i++)
 
 **Solution Description** - 
 * Sort the given array.
-* Intialize mod = arr[n-1] + 1;
-* Now update each element as `arr[i] = arr[req_index]%mod*mod + arr[i]%n;`
+* Intialize `mod = arr[n-1] + 1;`
+* Now update each element as `arr[i] = arr[req_index]%mod*mod + arr[i]%mod;`
+* To retrieve final array just do `arr[i] = arr[i]/mod`
 * Above trick may fail in case of negative numbers. See this link to handle negative numbers using extra space - [Link](https://www.geeksforgeeks.org/rearrange-array-maximum-minimum-form/)
 
 ---
