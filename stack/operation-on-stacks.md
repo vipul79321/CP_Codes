@@ -152,11 +152,12 @@ void towerOfHanoi(int n, int from_rod, int auxilary_rod, int to_rod)
 **Steps** - 
 * Calculate the total number of moves required i.e. "pow(2, n) - 1" here n is number of disks.
 * If number of disks (i.e. n) is even then interchange destination pole and auxiliary pole.
+* Initialize source pole by pushing all the disks from n to 1 in it
 * Loop i from i==1 to i==total_num_moves: 
   * If i%3==1 : Legal movement between Source and Destination Pole
   * If i%3==2: Legal movement between Source and Auxiliary Pole
   * If i%3==0: Legal movement between Auxiliary and Destination Pole
-* Legal Movement means `to_rod.top() > from_rod.top()` and intially from_rod should be non-empty.
+* Legal Movement means there should be some movement between two rods either from one to other one or vice-versa. And that movement should be legal that is move disk of smaller size onto disk of larger size.
 
 ---
 
