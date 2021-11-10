@@ -214,7 +214,7 @@ string infixToPrefix(string infix)
 [Link](https://www.geeksforgeeks.org/prefix-postfix-conversion/)
 
 **Steps** - 
-* Scan the prefix expression from right to left.
+* Scan the prefix expression **from right to left.**
     * If the scanned character is operand simply push it in stack.
     * If the scanned character is an operator, pop A then B from stack and push `A B op` to the stack.
 * Finally return stack.top() as ans.
@@ -248,7 +248,7 @@ string prefixToPostfix(string prefix)
 [Link](https://www.geeksforgeeks.org/postfix-prefix-conversion/)
 
 **Steps** - 
-* Scan the prefix expression from left to right.
+* Scan the prefix expression **from left to right.**
     * If the scanned character is operand simply push it in stack.
     * If the scanned character is an operator, pop A then B from stack and push `op B A` to the stack.
 * Finally return stack.top() as ans.
