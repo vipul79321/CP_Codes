@@ -242,8 +242,8 @@ int findKthSmallestElement(vector<int>&v, int l, int r, int k)
 * To find median if S.size() == T.size() return `( *S.rbegin() + *T.begin() )/ 2` else return `*S.rbegin()` 
 * Balance - 
   * While `S.size() && *S.rbegin() > *T.begin() : T.insert(*S.rbegin()); S.erase(S.rbegin());` 
-  * while T.size() > S.size():
-    * S.insert(*T.begin()); T.erase(T.begin());
+  * while `T.size() > S.size():`
+    * `S.insert(*T.begin()); T.erase(T.begin());`
 * See following link more generalized version of above solution, supporting deletion operation. [Link](https://atcoder.jp/contests/abc218/submissions/25792413)
 
 
