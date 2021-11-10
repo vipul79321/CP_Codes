@@ -2,7 +2,9 @@
 [Link](https://www.geeksforgeeks.org/reverse-a-stack-using-recursion/)
 
 **Solution Approach** - 
-* Recursion will be as follow, first pop and store the top of stack. Now reverse the remaining stack. And finally insert stored value at the bottom of the stack.
+* Recursion will be as follow, first pop and store the top of stack. 
+* Now reverse the remaining stack. 
+* And finally insert stored value at the bottom of the stack.
 
 ```c++
 void insertAtBottom(stack<int>&st, int x)
