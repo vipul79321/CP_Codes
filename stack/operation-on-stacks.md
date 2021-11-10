@@ -238,7 +238,7 @@ string simplifyExpression(string expr)
 
 **Solution Approach** - 
 * For each element find its next smaller element to the right and next smaller element to the left
-* Now iterate over each element, that element will be a minimum for `len = right[i] - left[i] - 1;window_size = [1,len]`, so update `ans[len] = max(ans[len],arr[i]);`
+* Now iterate over each element, that element will be a minimum candidate for `window_size = [1,len]; where len = right[i] - left[i] - 1;`, so update `ans[len] = max(ans[len],arr[i]);`
 * Now iterate from len = n-1 to len = 1: 
   * ans[len] = max(ans[len],ans[len+1]);
 
