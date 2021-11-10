@@ -121,7 +121,7 @@ for(int i=0;i<n+2;i++)
 **Solution Approach** - 
 * Sort the given array.
 * Now for each element, try to increase its height. - 
-  * Hence we will increase height of all the towers in the left and decrease height of all towers in the right if possible.
+  * Hence we will increase height of all the towers in the left and decrease height of all towers in the right if possible, otherwise do nothing
   * So `maximum_h = max(height[i] + k, height[n-1] - k)` and `minimum_h = min(height[0] + k, height[i+1]-k)`, update `ans = min(ans, maximum_h - minimum_h)`
 * Return ans
 
