@@ -5,8 +5,8 @@
 **Solution Approach** - `O(n+m)`
 * Idea is that if there is a back edge from a vertex v to any of its ancestor other than its parent then parent of v is not an articulation point.
 * To check if there is a back edge or not we can use concept of tin and low, here parent represent parent in dfs tree.
-* If parent[v] is not root and then low[v] >= tin[parent[v]] then parent[v] is articulation point.
-* To check if root is an articulation point check whether it has more than 1 child in dfs tree
+* If `parent[v] is not root` and then `low[v] >= tin[parent[v]]` then `parent[v] is articulation point.`
+* To check if `root is an articulation point` check whether it `has more than 1 child in dfs tree`
 
 **Code Description** - 
 * Call dfs from any node
