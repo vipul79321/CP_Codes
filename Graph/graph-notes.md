@@ -16,7 +16,7 @@ Applications of BFS -
   * Call BFS from b and obtain dist_b[n]
   * Now iterate over each vertex v and check `dist_a[v] + dist_b[v] == dist_a[b]`
 * **Find the shortest path of even length from a source vertex s to a target vertex t in an unweighted graph** - 
-  * Make an auxiliary graph, where for each edge `u-v` in original graph add edge `(u,0) -> (v,1)` and `(u,1) - (v,0)`
+  * Make an auxiliary graph, where for each edge `u-v` in original graph add edge `(u,0) - (v,1)` and `(u,1) - (v,0)`
   * Now call BFS from `(s,0)` and obtain distance of `(t,0)` and that will be our answer
 * **Finding shortest cycle in directed unweighted graph** - 
   * Call BFS from each vertex v as source 
