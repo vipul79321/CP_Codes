@@ -332,7 +332,7 @@ void dfs(int v, const graph& g, const graph& edge_ids, int cur_h = 1) {
 * Initialize source = 0, dp[n][n] = {INF}, dp[0][source] = 0; 
 * dp[i][v] represents shortest distance from source to v with exactly i edges
 * Fill dp-matrix with following transition - dp[i][v] = min(dp[i][v], dp[i-1][u] + weight_edge(u,v) for all the neighbors u of v )
-* Now our ans will be min( `max( (dp[n][v] - dp[k][v]) / (n-k) for all k in range 0 to n-1)` for all v)
+* Now our ans will be **min( `max( (dp[n][v] - dp[k][v]) / (n-k) for all k in range 0 to n-1)` for all v)**
 ![Karp's Minimum Mean Weight Cycle Formula](https://github.com/vipul79321/CP_Codes/blob/main/images/karp-minimum-mean-weight-cylce.jpeg)
 
 ---
