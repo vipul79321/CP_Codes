@@ -53,7 +53,7 @@ Applications of DFS -
 ### Transitive Closure of given Graph
 [Link](https://www.geeksforgeeks.org/transitive-closure-of-a-graph/)
 
-* Transitive Closure of a graph is a matrix tc[n][n] where tc[i][j] represents whether node j is reachable from node i
+* Transitive Closure of a graph is a matrix `tc[n][n]` where `tc[i][j]` represents whether node j is reachable from node i
 * Call DFS from each node and fill the corresponding row of tc[n][n] matrix.
 
 ---
@@ -64,7 +64,7 @@ Applications of DFS -
 * Call BFS from any of the marked node and obtain last visited marked node from that BFS, let call it u.
 * Call BFS from u and obtain last visited marked node from that BFS, let call it v.
 * Now call BFS from v
-* Now for each node check `dist_u[x] <= k and dist_v[x] <= k` then ans++;
+* Now for each node check `dist_u[x] <= k and dist_v[x] <= k` then `ans++;`
 
 ---
 
@@ -74,14 +74,14 @@ Applications of DFS -
 **Problem Description** - Given a directed tree with n veritces and n-1 edge, we need to find for each node minimum number of edge reversals so that it can reach every other vertex
 
 **Solution Description** - 
-* Intialize dist[n] = {-1}, revCount[n] = {0}, result = 0, ans[n] = {}
-* Call BFS from node 0
+* Intialize `dist[n] = {-1}, revCount[n] = {0}, result = 0, ans[n] = {}`
+* Call BFS from node `0`
   * Let u be a popped vertex, iterate over each v in its adjacency list
-    * If visited[v] == 1 then continue
-    * dist[v] = dist[u] + 1
-    * If v->u edge exist then revCount[v] = revCount[u] + 1; result++;
-    * else revCount[v] = revCount[u] 
-* Finally, ans[i] = result - revCount[i] + (dist[i] - revCount[i]);
+    * If `visited[v] == 1` then continue
+    * `dist[v] = dist[u] + 1`
+    * If `v->u` edge exist then `revCount[v] = revCount[u] + 1; result++;`
+    * else `revCount[v] = revCount[u]`
+* Finally, `ans[i] = result - revCount[i] + (dist[i] - revCount[i]);`
 * See code below for more details 
 
 ```c++
