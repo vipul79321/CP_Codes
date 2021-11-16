@@ -207,8 +207,8 @@ void find_cycle() {
 * We need to find number of paths of length K for all vertex pairs
 
 **Solution Approach** - `O(n^3 logK)`
-* Number of path of length k from (u,v) will be - A[u][v] , where A = power(G,K). 
-* A can be calculated from G using binary exponentiation and hence in O(n^3 logK)
+* Number of path of length k from (u,v) will be - `A[u][v] , where A = power(G,K).`
+* A can be calculated from G using binary exponentiation and hence in `O(n^3 logK)`
 
 ---
 
@@ -216,11 +216,11 @@ void find_cycle() {
 [Link](https://cp-algorithms.com/graph/fixed_length_paths.html#toc-tgt-1)
 
 **Problem Description** - 
-* Given a weighted directed graph in matrix form, where G[i][j] = w, if there is an edge from i to j of weight w, otherwise G[i][j] = INFINITY
+* Given a weighted directed graph in matrix form, where `G[i][j] = w`, if there is an edge from i to j of weight w, otherwise `G[i][j] = INFINITY`
 * We need to find shortest path of length K for all vertex pairs
 
 **Solution Approach** - `O(n^3 logK)`
-* Shortest path of length k from (u,v) will be - A[u][v] , where A = power(G,K), but here instead of adding in normal matrix multiplication we will take minimum that is
+* Shortest path of length k from (u,v) will be - `A[u][v] , where A = power(G,K)`, but here instead of adding in normal matrix multiplication we will take minimum that is
 `A[i][j] = min(power(G,K-1)[i][k], G[k][j]) for k in range 0 to n` 
 
 ---
