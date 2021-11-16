@@ -72,23 +72,24 @@ void restore_path(int v, int s, vector<int>&parent)
 
 void print_neg_cycle(int x, vector<int>&parent)
 {
-    int y = x,i;
-    for(i=0;i<n;i++)
+    int start = x;
+    for(int i=0;i<parent.size();i++)
     {
-        if(y!= -1)
-        y = parent[y];
+        start = parent[start];
     }
-    x = y;
 
     vector<int>neg_cycle;
+    int end = start;
+    neg_cycle.pb(end); start = parent[start];
+    for(start; start != end; start = parent[start])
+        neg_cycle.pb(start);
 
-    for(y;y>=0;y=parent[y])
-    {
-        neg_cycle.pb(y);
-        if(y==x && neg_cycle.size()>1)
-            break;
-    }
-    for(auto a:neg_cycle)cout<<a<<" ";
+    start = neg_cycle.back();
+    reverse(neg_cycle.begin(),neg_cycle.end());
+    neg_cycle.pb(start);
+
+
+    for(auto a:neg_cycle)cout<<a+1<<" ";
     cout<<endl;
     return;
 }
