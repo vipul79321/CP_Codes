@@ -4,7 +4,7 @@
 **Solution Approach** - `O(n+m)`
 * Idea is that if there is a back edge from a vertex v to any of its ancestor then edge between parent[v]  and v is not a bridge.
 * To check if there is a back edge or not we can use concept of tin and low, here parent represent parent in dfs tree.
-* If there is a bridge then low[v] > tin[parent[v]].
+* If there is a bridge then `low[v] > tin[parent[v]].`
 
 **Code Description** - 
 * Call dfs from any node
@@ -16,7 +16,7 @@
       * call dfs from v
       * After dfs returns from v:
         * update `low[u] = min(low[u], low[v])`
-        * check if `low[v] > tin[u]` then edge (u - v) is a bridge 
+        * check if `low[v] > tin[u]` then edge `(u - v)` is a bridge 
 
 **NOTE** - This code ignores the case of multiple edges in graph. To handle that we can check additionally that the reported bridge is not a multiple edge. Or Alternatively it's possible to pass to dfs the index of the edge used to enter the vertex instead of the parent vertex (and store the indices of all vertices).
 
