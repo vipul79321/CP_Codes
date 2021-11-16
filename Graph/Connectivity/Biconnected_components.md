@@ -18,7 +18,7 @@
 * Now visit all its neighbor v, 
   * if v unvisited, then push edge u-v in stack, call dfs from that neighbor and then update `low[u] = min(low[u],low[v])`
     * if u is an articulation point then pop and print from stack till edge u-v
-  * If v != parent[u] and v is already visited:
+  * If `v != parent[u]` and `visited[v]`:
     * `low[u] = min(low[u], tin[v])`
     * if `tin[v] < tin[u]`  -->back edge condition 
       * then push(u,v) to stack.
