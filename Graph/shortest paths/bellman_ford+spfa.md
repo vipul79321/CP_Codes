@@ -200,8 +200,8 @@ int main()
 * Try to relax, neighbors of u, using u - 
   * If a neighbor is relaxed
     * update its parent
-    * Push it in queue if not already present and mark inQueue[v] = 1
-    * update cnt[v]++; if cnt[v] > n then negative cycle is present and break
+    * Push it in queue if not already present and mark `inQueue[v] = 1;`
+    * update `cnt[v]++;` if `cnt[v] > n` then negative cycle is present and break
 * Print negative cycle as done in bellman-ford    
 
 
