@@ -79,7 +79,8 @@ void dfs(int u, vector<vector<int> >&adj,int par)
         else if(v!= par)
         {
             low[u] = min(low[u],tin[v]);
-            if(tin[u] > tin[v])  // IMPORTANT CHECK - Making sure u->v goes from descendant to parent and hence a back-edge and then only pushing it in stack
+           // IMPORTANT CHECK - Making sure u->v goes from descendant to parent and hence a back-edge and then only pushing it in stack. This is to avoid taking same edge two times
+           if(tin[u] > tin[v])
             st.push(mp(u,v));
         }
     }
