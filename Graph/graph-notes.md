@@ -2,11 +2,6 @@
 
 **NOTE** -
 * If a graph doesnt contain any odd length cycle then it is bipartite and vice-versa
-* Given a tree, number of edges in the intersection in path from u1 -> u2 and v1 -> v2
-  * max(0, height[lca(u2,v2)] - max(height[u1], height[v1]) )
-  * under the assumption that height[u1] <= height[u2] and height[v1] <= height[v2] 
-
-
 ---
 ### BFS
 [Link](https://cp-algorithms.com/graph/breadth-first-search.html)
