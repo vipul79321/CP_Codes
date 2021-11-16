@@ -340,16 +340,17 @@ void dfs(int v, const graph& g, const graph& edge_ids, int cur_h = 1) {
 ### Shortest Path in Directed Acyclic Graph
 [Link](https://www.geeksforgeeks.org/shortest-path-for-directed-acyclic-graphs/)
 
-* We can find shortest path in DAG in O(n+m) time, by visiting and updating distance of vertices in topological order
+* We can find shortest path in DAG in `O(n+m)` time, by visiting and updating distance of vertices in topological order
 
 ---
 
 ### Longest Path in Directed Acyclic Graph
 [Link](https://www.geeksforgeeks.org/longest-path-in-a-directed-acyclic-graph-dynamic-programming/)
 
-* We can find longest path in DAG in O(n+m) time during dfs and dynamic programming
+* We can find longest path in DAG in `O(n+m)` time during dfs and dynamic programming
   * Initialize dp[n] = {0};
-  * dp[u] = max(dp[u], weight(u->child) + dp[child])
+  * Visit vertices in reverse topological order and make transitions as below as we have already calculated answer for child
+  * `dp[u] = max(dp[u], weight(u->child) + dp[child])`
   * ans will be maximum entry in dp array
 
 ---
