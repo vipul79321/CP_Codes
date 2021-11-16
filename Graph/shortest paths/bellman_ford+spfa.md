@@ -17,23 +17,23 @@
 *    1. To get to the vertex that definitely lie in the negative cycle, start from x and pass through its parent n times, let the vertex reached be y
 *    2. Now start from y and go through all its parents till we reach back to y, all those parent will together form the negative cycle.
 */
-void print_neg_cycle(int x, vector<int>&parent)
+void print_neg_cycle(ll x, vector<ll>&parent)
 {
-    int start = x;
-    for(int i=0;i<parent.size();i++)
+    ll start = x;
+    for(ll i=0;i<parent.size();i++)
     {
         start = parent[start];
     }
 
-    vector<int>neg_cycle;
-    int end = start;
+    vector<ll>neg_cycle;
+    ll end = start;
+
     neg_cycle.pb(end); start = parent[start];
     for(start; start != end; start = parent[start])
         neg_cycle.pb(start);
+    neg_cycle.pb(end);
 
-    start = neg_cycle.back();
     reverse(neg_cycle.begin(),neg_cycle.end());
-    neg_cycle.pb(start);
 
 
     for(auto a:neg_cycle)cout<<a+1<<" ";
@@ -70,23 +70,23 @@ void restore_path(int v, int s, vector<int>&parent)
     return;
 }
 
-void print_neg_cycle(int x, vector<int>&parent)
+void print_neg_cycle(ll x, vector<ll>&parent)
 {
-    int start = x;
-    for(int i=0;i<parent.size();i++)
+    ll start = x;
+    for(ll i=0;i<parent.size();i++)
     {
         start = parent[start];
     }
 
-    vector<int>neg_cycle;
-    int end = start;
+    vector<ll>neg_cycle;
+    ll end = start;
+
     neg_cycle.pb(end); start = parent[start];
     for(start; start != end; start = parent[start])
         neg_cycle.pb(start);
+    neg_cycle.pb(end);
 
-    start = neg_cycle.back();
     reverse(neg_cycle.begin(),neg_cycle.end());
-    neg_cycle.pb(start);
 
 
     for(auto a:neg_cycle)cout<<a+1<<" ";
