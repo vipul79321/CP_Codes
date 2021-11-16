@@ -262,7 +262,7 @@ void find_cycle() {
 
 **Solution Description** - 
 * **Preprocessing** - 
-  * Firstly assign each node an unique id. 
+  * Firstly assign each edge an unique id. 
   * Now call dfs and obtain euler tour and also edges list containing order in which edges are explored in dfs
 ```c++
 void dfs(int v, const graph& g, const graph& edge_ids, int cur_h = 1) {
