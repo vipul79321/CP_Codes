@@ -5,7 +5,7 @@
 * Intiailize `distance[n] = {0}`, mimcking running of bellman-ford from all vertices
 * Run bellman-ford as usual while maintaining the parent array
 * If any node gets updated in the last phase(nth phase), use it to recover a cycle. See code below to see how to retrieve a cycle if found.
-* [Problem Link](https://cses.fi/problemset/task/1197) | [Bellman-ford negative cycle detection submission](https://cses.fi/paste/7a1ed7d9d6527a652eccde/) | [SPFA negative cycle detection submission](https://cses.fi/paste/4f1083d78853f0872eccd2/)
+* [Problem Link](https://cses.fi/problemset/task/1197) | [Bellman-ford negative cycle detection submission](https://cses.fi/paste/508646afbe41a0c42fc519/) | [SPFA negative cycle detection submission](https://cses.fi/paste/5f4e94cae86360ce2fc524/)
 
 ```c++
 /*
