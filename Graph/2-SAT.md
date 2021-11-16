@@ -9,7 +9,7 @@ E.g. of formula -  `(a v ~b) ^ (~a ∨ b) ^ (~a v ~b) ^ (a v ~c)` , problem is t
 **IMP identities** - 
 * `(a v b) == (~a -> b) ^ (~b -> a)`
 * `a <-> b == (a -> b) ^ (b -> a)`
-* `~(p->q) == (~p v p)`
+* `~(p->q) == (~p v q)`
 
 **Solution Approach** - 
 * Convert the expression into **conjuction of implication clauses**
