@@ -133,7 +133,7 @@ void solve()
 
 ### Minimum Edge Reversal in a directed tree to make a path from source to destination
 [Link](https://www.geeksforgeeks.org/minimum-edges-reverse-make-path-source-destination/)
-* Replace each directed edge (u->v) to (u -> v, weight = 0) and (u <- v, weight = 1)
+* Replace each directed edge `(u->v)` to `(u -> v, weight = 0)` and `(u <- v, weight = 1)`
 * Now call 0-1 BFS from source and obtain distance of destination from source
 
 ---
