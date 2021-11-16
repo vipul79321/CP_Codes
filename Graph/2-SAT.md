@@ -2,7 +2,7 @@
 [Link](https://cp-algorithms.com/graph/2SAT.html)
 
 * 2-SAT(Boolean satisfiability problem) is the problem of assigning Boolean values to variables to satisfy a given Boolean formula.
-* Usually boolean formula will be **conjuction( ^, and)** of multiple clauses, where each clause will have two terms in form of or(v) , implication(->)
+* Usually boolean formula will be **conjuction( ^, and)** of multiple clauses, where each clause will have two terms in form of **or(v)** , **implication(->)**
 
 E.g. of formula -  `(a v ~b) ^ (~a ∨ b) ^ (~a v ~b) ^ (a v ~c)` , problem is to assign value to a,b,c so that boolean formula evaluates to true
 
