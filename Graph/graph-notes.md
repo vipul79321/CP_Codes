@@ -309,7 +309,7 @@ void dfs(int v, const graph& g, const graph& edge_ids, int cur_h = 1) {
 **Number of Spanning Tree of a complete graph of n vertices | Cayley's Formula**  - `power(n,n-2)`
 * Explanation is - Assume a prufer code for a spanning tree, at each n-2 places we have n options
 
-**Number of ways to make a graph connected with k-connected components** - `sz_1 * sz_2 * sz_3 .. sz_k * power(n,n-2)`
+**Number of ways to make a graph connected with k-connected components** - `sz_1 * sz_2 * sz_3 .. sz_k * power(n,k-2)`
 [Explanation](https://cp-algorithms.com/graph/pruefer_code.html#toc-tgt-8)
 
 ---
