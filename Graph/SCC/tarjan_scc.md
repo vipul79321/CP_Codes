@@ -2,9 +2,9 @@
 **Tarjan Algorithm for SCC** - `O(n+m)`
 [Link](https://www.geeksforgeeks.org/tarjan-algorithm-find-strongly-connected-components/)
 * **Idea** - A head of SCC will have `low[u] == tin[u]`
-* Start dfs by updating low[u] = tin[u] = curr and **pushing u in stack and marking instack[u] = 1;**
+* Start dfs by intializing low[u] = tin[u] = curr and **pushing u in stack and marking instack[u] = 1;**
 * Now visit all its neighbors, if neighbor is unvisited then call dfs from there and after that update `low[u] = min(low[u],low[neighbor]);`
-* If neighbor is already visited then check **if it is stack then only update low[u] = min(low[u],tin[neighbor]);**
+* If neighbor is already visited then check **if it is in stack then only update low[u] = min(low[u],tin[neighbor]);**
 * Finally, `If (low[u] == tin[u])` then all the elements in stack **till u** will be part of same scc.
 
 ```c++
