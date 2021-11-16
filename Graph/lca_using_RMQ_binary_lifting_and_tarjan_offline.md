@@ -31,9 +31,9 @@ void dfs(int u, vector<vector<int> >&adj,int level, int par)
 
 **Solution Description** - 
 * Preprocess Euler tour - We insert a node in euler tour when we first visit it and whenever a dfs call returns from its child
-* Preprocess First[i] - stores the index of first occurence of node i in euler tour
-* Preprocess height[i] - Height of node i
-* Now to answer lca(u,v) - we need to find node at minimum height in range(min(first[u],first[v]) , max(first[u],first[v])) in Euler Tour
+* Preprocess `first[i]` - stores the index of first occurence of node i in euler tour
+* Preprocess `height[i]` - Height of node i
+* Now to answer `lca(u,v)` - we need to find node at minimum height in `range(min(first[u],first[v]) , max(first[u],first[v]))` in Euler Tour
 * So it basically becomes a range minimum query - 
   * Using Segment Tree: O(N)- Preprocessing Time, O(logN) - Query Time
   * Using Sparse Table: O(NlogN) - Preprocessing Time, O(1) - Query Time
