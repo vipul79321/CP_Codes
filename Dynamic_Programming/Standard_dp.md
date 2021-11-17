@@ -627,9 +627,9 @@ int countMin(int x, int y, int z)
 * Extra spaces in line having limit L and number of words X is given by - `L - sum(len of each word) - X-1` if it is not the last line else 0 otherwise
 
 **Solution**
-* We will first calculate Extra[i][j], which is number of extra spaces if we put words[i..j] in one line. 
-* Then we will calculate Cost[i][j], which is (Extra[i][j])^3 if Extra[i][j] >= 0 else INF otherwise.
-* Finally we will calculate, dp[i], which contains the optimal cost of arranging words from [0..i];
+* We will first calculate `Extra[i][j]`, which is number of extra spaces if we put words[i..j] in one line. 
+* Then we will calculate `Cost[i][j]`, which is `(Extra[i][j])^3 if Extra[i][j] >= 0 else INF otherwise.`
+* Finally we will calculate, `dp[i]`, which contains the optimal cost of arranging words from [0..i];
 
 **Finding Optimal Cost**
 ```c++
