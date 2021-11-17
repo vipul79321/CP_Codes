@@ -282,7 +282,7 @@ int largestIndependentSet(TreeNode* root)
     if(root == null)return 0;
     if(root->left == null && root->right == null)return 1;
     
-    int size_excl = largestIndependentSet(root->left) + largestIndependentSet(root->left);
+    int size_excl = largestIndependentSet(root->left) + largestIndependentSet(root->right);
     
     int size_incl = 1;
     if(root->left!=null)
