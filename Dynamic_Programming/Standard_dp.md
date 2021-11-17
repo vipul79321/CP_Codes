@@ -37,6 +37,8 @@ for(int i=1;i<=coin.size();i++) {
 ---
 
 ## Subset Sum problem
+[Link](https://www.geeksforgeeks.org/subset-sum-problem-dp-25/)
+
 * Calculations
 ```c++
 dp[n+1][sum+1] = {0};
@@ -48,7 +50,7 @@ for(i=1;i<=n;i++)
    for(j=1;j<=sum;j++)
    {
       dp[i][j] = dp[i-1][j];
-      if(j>=arr[i-1])dp[i][j] = dp[i][j] || dp[i-1][j-arr[i-1]];
+      if(j>=arr[i-1])dp[i][j] = dp[i][j] | dp[i-1][j-arr[i-1]];
    }
 }
 
