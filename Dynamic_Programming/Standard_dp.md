@@ -348,9 +348,9 @@ return jumps;
 Given two arrays of size n - `Wt[n] , val[n] and a number k`. We need to select subset with whose `sum of weight / sum of val  == k` and sum of weight is maximum among all the possibilities.
 
 Solution - 
-* Let dp[i][j] denote the maximum weight that can be obtained from first i elements such that sum of their weight - k * (sum of their value) is j. 
-* Ans will be dp[n][0]
-* Transition will be dp[i][j] = max(dp[i-1][j], dp[i-1][j + wt[i] - k * val[i]] + wt[i] )
+* Let `dp[i][j]` denote the maximum weight that can be obtained from first i elements such that `sum of their weight - k * (sum of their value) is j`. 
+* Ans will be `dp[n][0]`
+* Transition will be `dp[i][j] = max(dp[i-1][j], dp[i-1][j + wt[i] - k * val[i]] + wt[i] )`
 
 ---
 
