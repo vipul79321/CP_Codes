@@ -365,7 +365,7 @@ for(int i=n-1;i>=0;i--)
 {
     for(int j=m-1;j>=0;j--)
     {
-        if(i==n-1 || j==m-1)continue;
+        if(i==n-1 && j==m-1)continue;
 
         int min_points_on_exit = INT_MAX;
         if(j<m-1)
