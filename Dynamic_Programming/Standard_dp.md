@@ -86,7 +86,9 @@ Transitions -
 ---
 
 ## Maximum Games Played by winner - Good one. Have to think inversely.
-[Link](https://www.geeksforgeeks.org/maximum-games-played-winner/) - Given N players, output maximum number of games played by winner, with condition that two players are allowed to compete against one another if and only if difference between number of games played by them is <=1.
+[Link](https://www.geeksforgeeks.org/maximum-games-played-winner/)
+
+* Given N players, output maximum number of games played by winner, with condition that two players are allowed to compete against one another if and only if difference between number of games played by them is <=1.
 
 Hint - Think of **minimum number** of players required so that winner plays i games. `dp[i] = dp[i-1] + dp[i-2]`.
 ```c++
@@ -100,7 +102,10 @@ while(1) {
 }
 ```
 ---
-## Maxium sum increasing subsequence from a prefix and a given element after prefix is must - [link](https://www.geeksforgeeks.org/maximum-sum-increasing-subsequence-from-a-prefix-and-a-given-element-after-prefix-is-must/)
+## Maxium sum increasing subsequence from a prefix and a given element after prefix is must
+[link](https://www.geeksforgeeks.org/maximum-sum-increasing-subsequence-from-a-prefix-and-a-given-element-after-prefix-is-must/)
+
+---
 
 ## Maximum sum contiguous subarray - Kadane's algo 
 
