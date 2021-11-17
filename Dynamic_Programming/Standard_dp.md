@@ -638,7 +638,7 @@ int extra[n+1][n+1], cost[n+1][n+1], dp[n+1], prev[n+1];
 for(int i=1;i<=n;i++)
 {
     extra[i][i] = limit - len(word[i-1]);
-    cost[i][j] = (extra[i][i])^3;
+    cost[i][i] = (extra[i][i])^3;
 
     for(int j=i+1;j<=n;j++)
     {
