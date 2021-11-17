@@ -585,7 +585,7 @@ bool solveDP(int rs, int cs, int re, int ce)
 * Without loss of generality, if we can compute value for row swaps then we can compute value for column swap in similar manner or on transpose matrix.
 * Computation for row swaps - 
     * Create a dp[n][n] matrix, where dp[i][j] will contain length of longest subarray in row[i] with all 1's ending at cell(i,j)
-    * DP transition - dp[i][j] = mat[i][j] == 1 ? 1 + dp[i][j-1] : 0;
+    * DP transition - `dp[i][j] = mat[i][j] == 1 ? 1 + dp[i][j-1] : 0;`
     * After filling the dp matrix, take each column of dp matrix, sort it and find maximum value `col[i]* (col.size()-i)`, this will give maximum area submatrix ending at that column.
 
 ---
@@ -594,10 +594,10 @@ bool solveDP(int rs, int cs, int re, int ce)
 [Link](https://www.geeksforgeeks.org/minimum-number-of-elements-which-are-not-part-of-increasing-or-decreasing-subsequence-in-array/)
 
 **Problem Description** - 
-* Given an array, we want to obtain one LIS and one LDS(both disjoint) from it such that this value is minimized - > (n - len(LIS) - len(LDS) );
-
+* Given an array, we want to obtain one LIS and one LDS(both disjoint) from it such that this value is minimized - > `(n - len(LIS) - len(LDS) );`
+`
 **Solution Description**
-* Create a dp[n][n][n] matrix, where dp[i][j][k] where i > j && i > k represents minimum number of elements which are not part of LIS and LDS where LIS ends at index j and LDS ends at index k.
+* Create a `dp[n][n][n]` matrix, where `dp[i][j][k]` where `i > j && i > k` represents minimum number of elements which are not part of LIS and LDS where LIS ends at index j and LDS ends at index k.
 * See code for more details - 
 ```c++
 int id = n; // index to represent values of y,z that acts as both INT_MAX and INT_MIN to start LIS and LDS
