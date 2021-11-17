@@ -1,19 +1,19 @@
 ## Coin Change problem (Similar to finding number of solutions of given linear equation)
 
 ```c++
-n = target;
-m = coins.size();
-dp[n+1][m+1] = {0};
-for(j=0;j<m;j++)dp[0][j] = 1;
+n = coin.size();
+dp[n+1][target+1] = {0};
+for(i=0;i<=n;i++)dp[i][0] = 1;
 
-for(i=1;i<=n;i++)
-{
-   for(j=1;j<=m;j++)
-   {
-      dp[i][j] = dp[i][j-1];
-      if(coin[j-1] <= i)dp[i][j] += dp[i-coin[j-1]][j];
+// dp[i][amt] - number of ways to make amount = amt using coins till ith index
+for(int i=1;i<=coin.size();i++) {
+    for(int amt=1;amt<=target;amt++) {
+	dp[i][amt] = dp[i-1][amt];
+	
+	if(coin[i-1] <= amt)
+	  dp[i][amt] += dp[i][amt-coin[i-1]];
     }
- }
+}
  ```
  
  ```c++
@@ -21,9 +21,10 @@ for(i=1;i<=n;i++)
  n = target;
  m = coins.size();
  
- dp[n+1] = 0;
+ dp[n+1] = 0; 
  dp[0] = 1;
  
+ // dp[i] = for each phase dp[i] represents number of ways to make amount i using coins till that phase
  for(j=1;j<=m;j++)
  {
    for(i=coins[j-1];j<=n;j++)
