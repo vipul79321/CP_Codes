@@ -224,9 +224,9 @@ for(i=1;i<=n;i++)
 {
     for(j=1;j<=x;j++)
     {
-        for(k=1;k<=m && k<=j;k++)
+        for(k=1;k<=m && k<=j;k++) // can be avoided using prefix-sum array
         {
-            dp[i][j] += dp[i-1][j-k];
+            dp[i][j] += dp[i-1][j-k]; 
         }
     }
 }
