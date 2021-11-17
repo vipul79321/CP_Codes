@@ -595,7 +595,7 @@ bool solveDP(int rs, int cs, int re, int ce)
 
 **Problem Description** - 
 * Given an array, we want to obtain one LIS and one LDS(both disjoint) from it such that this value is minimized - > `(n - len(LIS) - len(LDS) );`
-`
+
 **Solution Description**
 * Create a `dp[n][n][n]` matrix, where `dp[i][j][k]` where `i > j && i > k` represents minimum number of elements which are not part of LIS and LDS where LIS ends at index j and LDS ends at index k.
 * See code for more details - 
