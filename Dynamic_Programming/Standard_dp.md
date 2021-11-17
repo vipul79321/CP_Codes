@@ -1,4 +1,5 @@
-## Coin Change problem (Similar to finding number of solutions of given linear equation)
+## Coin Change problem (Similar to finding number of positive solutions of given linear equation)
+[Link](https://leetcode.com/problems/coin-change-2/) | [Linear Equation](https://www.geeksforgeeks.org/find-number-of-solutions-of-a-linear-equation-of-n-variables/)
 
 ```c++
 n = coin.size();
