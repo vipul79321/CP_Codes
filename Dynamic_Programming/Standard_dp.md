@@ -391,8 +391,8 @@ return dp[0][0];
 ## Sum of Average of all subsets
 [Link](https://www.geeksforgeeks.org/sum-average-subsets/)
 
-* Ans = summation of (sum of all subset of size sz) / sz; for sz = 1 to sz = N;
-* sum of all subset of size sz = (Sum of all elements) * Binomial(N-1,sz-1)
+* `ans = summation of (sum of all subset of size sz) / sz;` for `sz = 1 to sz = N;`
+* `sum of all subset of size sz = (Sum of all elements) * Binomial(N-1,sz-1)`
 
 ---
 
@@ -400,8 +400,8 @@ return dp[0][0];
 [Link](https://www.geeksforgeeks.org/sum-of-xor-of-all-subarrays/)
 
 Algorithm - 
-* At each index we want to keep the count of how many subarrays starting from index = j has odd numbers of ith bit set.
-* Let c_odd be count of such subarrays, then we can simply add ans = ans + c_odd*(1<<i)
+* At each index we want to keep the count of how many subarrays starting from `index = j has odd numbers of ith bit set.`
+* Let `c_odd` be count of such subarrays, then we can simply add `ans = ans + c_odd*(1<<i)`
 
 ```c++
 int findXorSum(vector<int>&arr, int n)
