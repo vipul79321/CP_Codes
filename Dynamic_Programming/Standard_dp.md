@@ -598,7 +598,7 @@ bool solveDP(int rs, int cs, int re, int ce)
 
 **Solution Description**
 * Create a `dp[n][n][n]` matrix, where `dp[i][j][k]` where `i > j && i > k` represents minimum number of elements which are not part of LIS and LDS where LIS ends at index j and LDS ends at index k.
-* See code for more details - 
+* See code for more details - ans will be `countMin(0,n,n)` - 
 ```c++
 int id = n; // index to represent values of y,z that acts as both INT_MAX and INT_MIN to start LIS and LDS
 int countMin(int x, int y, int z)
