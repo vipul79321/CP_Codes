@@ -809,25 +809,25 @@ return ans;
 ## Boolean Parenthesization Problem
 [Link](https://www.geeksforgeeks.org/boolean-parenthesization-problem-dp-37/)
 
-**Problem Description** - Given a boolean expression containing T, F, and operator &, |, ^. Find number of ways to parenthesize expression such that it evaluates to true. In other words given an symbol array containing T and F. And operator array containing &,|,^. Where operator[i] is operator between symbol[i] and symbol[i+1];
+**Problem Description** - Given a boolean expression containing `T, F`, and `operator &, |, ^`. Find number of ways to parenthesize expression such that it evaluates to true. In other words given an symbol array containing T and F. And operator array containing &,|,^. Where operator[i] is operator between symbol[i] and symbol[i+1];
 
 **Solution Approach** - 
-* Create T[n][n] matrix where T[i][j] represents number of ways to parenthesize expression from [i..j] such that it evaluates to True.
-* Create F[n][n] matrix where F[i][j] represents number of ways to parenthesize expression from [i..j] such that it evaluates to False.
-* Create Total[n][n] matrix where Total[i][j] represents number of ways to parenthesize expression from [i..j].
+* Create `T[n][n]` matrix where `T[i][j]` represents number of ways to parenthesize expression from [i..j] such that it evaluates to `True`.
+* Create `F[n][n]` matrix where `F[i][j]` represents number of ways to parenthesize expression from [i..j] such that it evaluates to `False`.
+* Create `Total[n][n]` matrix where `Total[i][j]` represents number of ways to parenthesize expression from [i..j].
 
 **Transitions** - 
-* T[i][j], for each k in range [i,j-1]
-    *  if operator[k] == '&', then T[i][j] += T[i][k] * T[k+1][j];
-    *  if operator[k] == '|, then T[i][j] += Total[i][k] * Total[k+1][j] - F[i][k] * F[k+1][j];
-    *  if operator[k] == '^' then T[i][j] += T[i][k] * F[k+1][j] + F[i][k] * T[k+1][j];
+* `T[i][j]`, for each k in range [i,j-1]
+    *  if `operator[k] == '&'`, then `T[i][j] += T[i][k] * T[k+1][j];`
+    *  if `operator[k] == '|'`, then `T[i][j] += Total[i][k] * Total[k+1][j] - F[i][k] * F[k+1][j];`
+    *  if `operator[k] == '^'`, then `T[i][j] += T[i][k] * F[k+1][j] + F[i][k] * T[k+1][j];`
 
-* F[i][j], for each k in range [i,j-1]
-    *  if operator[k] == '&', then F[i][j] += Total[i][k] * Total[k+1][j] - T[i][k] * T[k+1][j];
-    *  if operator[k] == '|, then F[i][j] += F[i][k] * F[k+1][j];
-    *  if operator[k] == '^' then T[i][j] += T[i][k] * T[k+1][j] + F[i][k] * F[k+1][j];
+* `F[i][j]`, for each k in range [i,j-1]
+    *  if `operator[k] == '&'`, then `F[i][j] += Total[i][k] * Total[k+1][j] - T[i][k] * T[k+1][j];`
+    *  if `operator[k] == '|'`, then `F[i][j] += F[i][k] * F[k+1][j];`
+    *  if `operator[k] == '^'`, then `T[i][j] += T[i][k] * T[k+1][j] + F[i][k] * F[k+1][j];`
 
-* Total[i][j], for each k in range[i,j-1]
-    * Total[i][j] += (T[i][k] + F[i][k] ) * (T[k+1][j] * F[k+1][j]) 
+* `Total[i][j]`, for each k in range[i,j-1]
+    * `Total[i][j] += (T[i][k] + F[i][k] ) * (T[k+1][j] * F[k+1][j])` 
 
 ---
