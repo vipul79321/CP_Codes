@@ -1,5 +1,7 @@
-## Longest Common Subsequence
-* Calculation
+### Longest Common Subsequence - Calculation and Printing
+[Link](https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/)
+
+* **Calculation**
 ```c++
 int lcs[n+1][m+1] = {0};
 // Finding LCS
@@ -11,7 +13,9 @@ for(i=1;i<=n;i++)
      lcs[i][j] = max(lcs[i-1][j],lcs[i][j-1]);
   }
 ```
-* Printing
+---
+
+* **Printing**
 ```c++
 // Print LCS
 x = n, y = m;
@@ -31,10 +35,74 @@ while(x>0 && y>0)
  
  reverse(ans.begin(),ans.end())
  ```
- * Print all LCS in lexographical order
-    * Loop for char from 'a' to 'z' 
-    * Find occurence of that char in both strings and check if LCS is possible from there
+ ---
  
+ * **Print all LCS in lexographical order**
+ [Link](https://www.geeksforgeeks.org/print-longest-common-sub-sequences-lexicographical-order/)
+ 
+   * Make lcs matrix where `lcs[i][j]` is length of longest common subsequence in s[i..n-1] and t[j..m-1]. 
+   * Loop for char from 'a' to 'z' 
+     * Find occurence of that char in both strings and check if LCS is possible from there
+     * See code below for more details
+```c++
+lcslen = lcs[0][0];
+
+void printAll(string s, string t,
+              char[] curr, int currlen,
+              int index_s, int index_t)
+{
+    // if currlcs is equal to lcslen then print it
+    if (currlen == lcs[0][0])
+    {
+        data[currlcs] = '\0';
+        puts(data);
+        return;
+    }
+ 
+    // if we are done with all the characters of both string
+    if (index_s==s.length() || index_t==t.length())
+        return;
+ 
+    // here we have to print all sub-sequences lexicographically,
+    // that's why we start from 'a'to'z' try to put this 
+    // character at position currlen in data by checking if we can get LCS by doing that
+    for (char ch='a'; ch<='z'; ch++)
+    {
+        // done is a flag to tell that we have printed all the
+        // subsequences corresponding to current character
+        bool done = false;
+ 
+        for (int i=index_s; i<s.length(); i++)
+        {
+            // if character ch is present in s then check if it is present in t
+            if (ch==s[i])
+            {
+              for (int j=index_t; j<t.length(); j++)
+              {
+                // if ch is present in both of them and
+                // remaining length is equal to remaining
+                // lcs length then add ch in sub-sequenece
+                if (ch==t[j] && lcs[i][j] == lcslen-currlen)
+                {
+                  data[currlcs] = ch;
+                  printAll(s, t, data, currlen+1, i+1, j+1,);
+                  done = true;
+                  break;
+                }
+              }
+            }
+ 
+            // If we found LCS beginning with current character.
+            if (done)
+                break;
+        }
+    }
+}
+
+```
+
+---
+
  ## Longest Repeated Subsequence
  
  ```c++
