@@ -123,6 +123,11 @@ In combinatorics, the Eulerian Number `A(n, m)` is the number of permutations of
 
 ```c++
 A[n][m] = ((n-1) - (m-1))*A[n-1][m-1] + (m+1)*A[n-1][m]
+/*
+* Explanation
+* ((n-1) - (m-1))*A[n-1][m-1] represents that nth element is placed at one of those indexes which were not contributing to A[n-1][m-1]
+* (m+1)*A[n-1][m] represents that nth element is placed at begining or the m indexes which were contributing to A[n-1][m]
+*/
 ```
 
 ---
@@ -135,6 +140,10 @@ E[n][k] = E[n][k-1] + E[n-1][n-k]
 E[0][0] = 1;
 E[i][0] = 0 otherwise
 ```
+
+**NOTE** - Number of alternating permutations(considering only first increasing then decreasing and alternate so on) of number from `[1..n+1]` are -
+* `2 * A[n+1] = summation(Binomial(n,k) * A[n] * A[n-k])`
+* For considering both types(increasing then decreasing | decreasing then increasing) answer will be `2*A[n]`
 
 ---
 
