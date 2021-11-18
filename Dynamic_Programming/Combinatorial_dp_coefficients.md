@@ -112,6 +112,7 @@ P[n][k] = P[n-1][k] + k*P[n-1][k-1]
 Lobb number `L(m,n)` counts the number of ways that `n + m open parentheses and n − m close parentheses` can be arranged to form the start of a valid sequence of balanced parentheses.
 ```c++
 L[m][n] = (2m+1) * Binomial(2n,m+n) / (m+n+1)
+L[m][n] = Binomial(2*n, m+n) - Binomial(2*n, m+n+1)
 
 L[0][n] = Catalan[n]
 ```
