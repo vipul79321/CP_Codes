@@ -94,7 +94,7 @@ return ans;
 * else
   * Let `g(x)` be value of `x!` factorial after removing all power of p.
   * `g(x)%m` can be calculated using standard dynamic programming
-  * Since `g(x)` is coprime with `m`, we can also calculate its modinverse, using `modInverse(x) = power(x,m-2) % m`
+  * Since `g(x)` is coprime with `m`, we can also calculate its modinverse, using [Extended Euclidean Theorem](https://cp-algorithms.com/algebra/extended-euclid-algorithm.html)
   * So finally our ans will be `g(n)* modInverse(g(n-r)) * modInverse(g(r)) * power(p,x-y-z) % m `
 
 
