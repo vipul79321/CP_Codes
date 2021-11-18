@@ -411,8 +411,8 @@ dp[i][j] = min(dp[i+1][j], dp[i][j-1]) + 1;
 * Transitions - 
   *  Loop for i from 1 to n
     * Loop for j from i+1 to n 
-      * `if (s[i-1] == s[j-1]) && (i-j) > LCSRe[i-1][j-1]` then `LCSRe[i][j] = 1 + LCSRe[i-1][j-1];`
-      * else if (s[i-1] == s[j-1]) then `LCSRe[i][j] = 1;`
+      * `if (s[i-1] == s[j-1]) && (j-i) > LCSRe[i-1][j-1]` then `LCSRe[i][j] = 1 + LCSRe[i-1][j-1];`
+      * else if `(s[i-1] == s[j-1] &&(j-i) > LCSRe[i-1][j-1])` then `LCSRe[i][j] = (j-i)`
       * else `LCSRe[i][j] = 0;`
 * Ans will be `max(LCSRe[i][j]);`
 
