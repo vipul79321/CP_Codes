@@ -395,8 +395,10 @@ dp[i][j] = min(dp[i+1][j], dp[i][j-1]) + 1;
 * Let `dp[i][j]` be the minimum steps required to delete the string s[i..j]
 * Following dp transition will arise
     * Simple deletion - `dp[i][j] = min(dp[i][j], 1+dp[i+1][j])`
-    * Deleting alongwith s[i+1..k-1] - `dp[i][j] = min(dp[i][j], dp[i+1][k-1] + dp[k+1][j]) where i+1<k<j && s[i] == s[k]`
-    * `if s[i] == s[i+1]` then `dp[i][j] = min(dp[i][j], 1 + dp[i+2][j])`
+    * Deleting alongwith s[i+1..k-1] - `dp[i][j] = min(dp[i][j], dp[i+1][k-1] + dp[k+1][j])` where `i+1<k<j && s[i] == s[k]`
+    * Deleting alongwith s[k+1..j-1] - `dp[i][j] = min(dp[i][j], dp[i][k-1] + dp[k+1][j-1])` where `i<k<j-1 && s[j] == s[k]`
+    * `if s[i] == s[i+1]` then `dp[i][j] = min(dp[i][j], 1 + dp[i+2][j]);`
+    * `if s[j-1] == s[j]` then `dp[i][j] = min(dp[i][j], 1 + dp[i][j-2]);`
     * Standard Transitions - `dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j]);`
     * if `s[i] == s[j]` then `dp[i][j] = min(dp[i][j], dp[i+1][j-1])`
 
