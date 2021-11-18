@@ -1,9 +1,10 @@
 ## Longest Common Subsequence
 * Calculation
 ```c++
+int lcs[n+1][m+1] = {0};
 // Finding LCS
 for(i=1;i<=n;i++)
-  for(j=0;j<=m;j++)
+  for(j=1;j<=m;j++)
   {
      if(s[i-1] == t[j-1])lcs[i][j] = lcs[i-1][j-1] + 1;
      else
