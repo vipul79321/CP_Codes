@@ -230,11 +230,11 @@ for(int len=3;len<=n;len++)
 ### Shortest Common Supersequence
 [Link](https://www.geeksforgeeks.org/shortest-common-supersequence/) | [Link](https://www.geeksforgeeks.org/shortest-possible-combination-two-strings/) | [Link](https://www.geeksforgeeks.org/print-shortest-common-supersequence/)
 
-* Length of Shortest Common Supersequence = Length of Str1 + Length of Str2 - Length of LCS(str1,str2)
+* `Length of Shortest Common Supersequence = str1.length() + str2.length() - LCSlen(str1,str2)`
 * Another DP transition can be
-    * Let dp[i][j] = Length of SCS for str1[1...i] & str2[1..j]
-    * if s[i] == s[j] -> dp[i][j] = dp[i-1][j-1] + 1;
-    * else dp[i][j] = min(1 + dp[i-1][j], 1 + dp[i][j-1]);
+    * Let `scs[i][j] = Length of SCS for str1[1...i] & str2[1..j]`
+    * if `str1[i] == str2[j]` then `scs[i][j] = dp[i-1][j-1] + 1;`
+    * else `scs[i][j] = min(1 + scs[i-1][j], 1 + scs[i][j-1]);`
 * See code below for more details
 
 **Finding SCS Length**
@@ -250,20 +250,16 @@ for(int i=0;i<=n;i++)
 {
     for(int j=0;j<=m;j++)
     {
-        if(i==0)
-        {
+        if(i==0) {
             scs[i][j] = j;
         }
-        else if(j==0)
-        {
+        else if(j==0) {
             scs[i][j] = i;
         }
-        else if(s1[i-1] == s2[j-1])
-        {
+        else if(s1[i-1] == s2[j-1]) {
             scs[i][j] = 1 + scs[i-1][j-1];
         }
-        else
-        {
+        else {
             scs[i][j] = min(1 + scs[i-1][j], 1 + scs[i][j-1]);
         }
     }
@@ -273,35 +269,30 @@ for(int i=0;i<=n;i++)
 
 **Printing SCS**
 ```c++
-i = n,j = m;
+i = n, j = m;
 while(i > 0 && j > 0)
 {
-    if(s1[i-1] == s2[j-1])
-    {
-        ans.push_back(s1[i-1]);
+    if(str1[i-1] == str2[j-1]) {
+        ans.push_back(str1[i-1]);
         i--,j--;
     }
-    else if(scs[i][j-1] > scs[i-1][j])
-    {
-        ans.push_back(s1[i-1]);
+    else if(scs[i][j-1] > scs[i-1][j]) {
+        ans.push_back(str1[i-1]);
         i--;
     }
-    else
-    {
-        ans.push_back(s2[j-1]);
+    else {
+        ans.push_back(str2[j-1]);
         j--;
     }
 }
 
-while(i > 0)
-{
-    ans.push_back(s1[i-1]);
+while(i > 0) {
+    ans.push_back(str1[i-1]);
     i--;
 }
 
-while(j > 0)
-{
-    ans.push_back(s2[j-1]);
+while(j > 0) {
+    ans.push_back(str2[j-1]);
     j--;
 }
 
