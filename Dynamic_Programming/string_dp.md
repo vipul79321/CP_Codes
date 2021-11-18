@@ -103,8 +103,11 @@ void printAll(string s, string t,
 
 ---
 
- ## Longest Repeated Subsequence
- 
+ ### Longest Repeated Subsequence
+ [Link](https://www.geeksforgeeks.org/longest-repeated-subsequence/)
+
+* Find LCS(s,s) such that there should be no common index in lcs
+
  ```c++
  // Similar to finding LCS(s,s) such that i!=j
  for(i=1;i<=n;i++)
@@ -115,9 +118,12 @@ void printAll(string s, string t,
      lcs[i][j] = max(lcs[i-1][j],lcs[i][j-1]);
   }
  ```
+ 
  ---
  
- ## Longest Common Substring
+ ### Longest Common Substring
+ [Link](https://www.geeksforgeeks.org/longest-common-substring-dp-29/)
+ 
  ```c++
  LCSuff[i][j] : Max length common suffix for S[0..i-1] & T[0..j-1]
  
@@ -129,22 +135,21 @@ void printAll(string s, string t,
  
  ---
 
-## Longest Palindrome Subsequence
+### Longest Palindrome Subsequence - Calculation & Printing and Counting
 [Link](https://www.geeksforgeeks.org/longest-palindrome-subsequence-space/)
-* Longest Palindrome subsequence can be thought as `Longest Common Subsequence between S and reverse(S)`
-* Calculations
+
+* Longest Palindrome subsequence can also be thought as `Longest Common Subsequence between S and reverse(S)`
+
+**Calculations**
 ```c++
-lps[n][n] = 0;
+lps[n][n] = 0; // lps[i][j] represents length of longest common palindromic subsequence of s[i..j]
 for(i=0;i<n;i++)lps[i][i] = 1;
-for(i=0;i<n-1;i++)
-{
+for(i=0;i<n-1;i++) {
     if(s[i] == s[i+1])lps[i][i+1] = 2;
 }
 
-for(int len=3;len<=n;len++)
-{
-    for(int i=0;i<=n-len;i++)
-    {
+for(int len=3;len<=n;len++) {
+    for(int i=0;i<=n-len;i++) {
         int j = i+len-1;
         if(s[i] == s[j])lps[i][j] = lps[i+1][j-1] + 1;
         
@@ -153,28 +158,29 @@ for(int len=3;len<=n;len++)
 }
 return lps[0][n-1];
 ```
-* Printing - Similar to LCS printing
+---
 
-* Counting
+* **Printing** - 
+  * Similar to LCS printing
+  * Obtain LCS between S and reverse(S) and print it. 
+
+---
+
+* **Counting**
 ```c++
 countLPS[n][n] = 0;
 for(i=0;i<n;i++)countLPS[i][i] = 1;
-for(i=0;i<n-1;i++)
-{
+for(i=0;i<n-1;i++) {
     if(s[i] == s[i+1])countLPS[i][i+1] = 3;
 }
 
-for(int len=3;len<=n;len++)
-{
-    for(int i=0;i<=n-len;i++)
-    {
+for(int len=3;len<=n;len++) {
+    for(int i=0;i<=n-len;i++) {
         int j = i+len-1;
-        if(s[i] == s[j])
-        {
+        if(s[i] == s[j]) {
             countLPS[i][j] = countLPS[i][j-1] + countLPS[i+1][j] + 1;
         }
-        else
-        {
+        else {
             countLPS[i][j] = countLPS[i][j-1] + countLPS[i+1][j] - countLPS[i+1][j-1];
         }
     }
@@ -183,13 +189,14 @@ for(int len=3;len<=n;len++)
 
 ---
 
-## Longest Palindromic Substring
+### Longest Palindromic Substring - Calculation & Counting
 [Link](https://www.geeksforgeeks.org/longest-palindrome-substring-set-1/)
-* Let dp[i][j] is 1 if substring (i,j) is palindrome else false
-* Transitions - 
-    * dp[i][j] = (s[i]==s[j]) & dp[i+1][j-1]
 
-* Checking and Counting
+* Let isPalindromeSubstring[i][j] is 1 if substring (i,j) is palindrome else false
+* Transitions - 
+    * isPalindromeSubstring[i][j] = (s[i]==s[j]) & isPalindromeSubstring[i+1][j-1]
+
+* **Checking and Counting**
 ```c++
 isPalindromeSubstring[n][n] = 0;
 countPalindromeSubstring[n][n] = 0;
