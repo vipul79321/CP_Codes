@@ -142,7 +142,7 @@ E[i][0] = 0 otherwise
 ```
 
 **NOTE** - Number of alternating permutations(considering only first increasing then decreasing and alternate so on) of number from `[1..n+1]` are -
-* `2 * A[n+1] = summation(Binomial(n,k) * A[n] * A[n-k])`
+* `2 * A[n+1] = summation(Binomial(n,k) * A[n] * A[n-k]) for k in range 0 to n`
 * For considering both types(increasing then decreasing | decreasing then increasing) answer will be `2*A[n]`
 
 ---
