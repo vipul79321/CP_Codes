@@ -139,6 +139,12 @@ E[n][k] = E[n][k-1] + E[n-1][n-k]
 
 E[0][0] = 1;
 E[i][0] = 0 otherwise
+
+/*
+* Explanation - 
+* E[n][k-1] - for all required permutation starting from k-1 we can simply swap k and k-1 and obtain desired permutation
+* E[n-1][n-k] - Not found yet
+*/
 ```
 
 **NOTE** - Number of alternating permutations(considering only first increasing then decreasing and alternate so on) of number from `[1..n+1]` are -
