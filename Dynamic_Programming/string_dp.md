@@ -192,9 +192,9 @@ for(int len=3;len<=n;len++) {
 ### Longest Palindromic Substring - Calculation & Counting
 [Link](https://www.geeksforgeeks.org/longest-palindrome-substring-set-1/)
 
-* Let isPalindromeSubstring[i][j] is 1 if substring (i,j) is palindrome else false
+* Let `isPalindromeSubstring[i][j]` is 1 if substring (i,j) is palindrome else false
 * Transitions - 
-    * isPalindromeSubstring[i][j] = (s[i]==s[j]) & isPalindromeSubstring[i+1][j-1]
+    * `isPalindromeSubstring[i][j] = (s[i]==s[j]) & isPalindromeSubstring[i+1][j-1]`
 
 * **Checking and Counting**
 ```c++
@@ -227,8 +227,9 @@ for(int len=3;len<=n;len++)
 
 ---
 
-## Shortest Common Supersequence
+### Shortest Common Supersequence
 [Link](https://www.geeksforgeeks.org/shortest-common-supersequence/) | [Link](https://www.geeksforgeeks.org/shortest-possible-combination-two-strings/) | [Link](https://www.geeksforgeeks.org/print-shortest-common-supersequence/)
+
 * Length of Shortest Common Supersequence = Length of Str1 + Length of Str2 - Length of LCS(str1,str2)
 * Another DP transition can be
     * Let dp[i][j] = Length of SCS for str1[1...i] & str2[1..j]
