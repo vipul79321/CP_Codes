@@ -86,16 +86,16 @@ return ans;
 ```
 
 **Power of Composite number p in n!** - 
-* Let x_i be power of p_i in n!, where p_i is prime and p%p_i == 0 then ans will be minimum(x_i) for all p_i
+* Let `x_i` be power of `p_i` in `n!`, where `p_i` is prime and `p%p_i == 0` then ans will be `minimum(x_i) for all p_i`
 
 **Compute Binomial Coefficient Modulo m, where m = power(p,b) and p is prime number and b > 1**
-* Let x be the power of p in n!, y be power of p in r! and z be power of p in (n-r)!
-* Then if x - y - z >= b: then return 0;
+* Let `x` be the power of `p` in `n!`, `y` be power of `p` in `r!` and `z` be power of `p` in `(n-r)!`
+* Then `if x - y - z >= b`: then return 0;
 * else
-  * Let g(x) be value of x! factorial after removing all power of p.
-  * g(x)%m can be calculated using standard dynamic programming
-  * Since g(x) is coprime with m, we can also calculate its modinverse, using modInverse(x) = power(x,m-2) % m
-  * So finally our ans will be g(n)* modInverse(g(n-r)) * modInverse(g(r)) * power(p,x-y-z) % m 
+  * Let `g(x)` be value of `x!` factorial after removing all power of p.
+  * `g(x)%m` can be calculated using standard dynamic programming
+  * Since `g(x)` is coprime with `m`, we can also calculate its modinverse, using `modInverse(x) = power(x,m-2) % m`
+  * So finally our ans will be `g(n)* modInverse(g(n-r)) * modInverse(g(r)) * power(p,x-y-z) % m `
 
 
 ---
