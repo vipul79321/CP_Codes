@@ -346,20 +346,21 @@ return sus[n][m];
 
 ---
 
-## Count Distinct Subsequences
+### Count Distinct Subsequences
 [Link](https://www.geeksforgeeks.org/count-distinct-subsequences/)
-```c++
-prev[26] = {-1};
 
-count[n+1] = {0};
-count[0] = 1;
+```c++
+int prev[26] = {-1};
+
+int count[n+1] = {0};
+count[0] = 1; // empty subsequence
 for(int i=1;i<=n;i++)
 {
     // simply add previous subsequences and subsequences ending at i-1
     count[i] = 2*count[i-1];
-    if(prev[s[i-1]-'a'] != -1)
-    {
-        count[i] -= count[prev[s[i-1]-'a' - 1]; // remove duplicate subsequences which were ending at previous occurence of same character.
+    if(prev[s[i-1]-'a'] != -1) {
+        // remove duplicate subsequences which were ending at previous occurence of same character.
+        count[i] -= count[prev[s[i-1]-'a' - 1];
     }
     prev[s[i-1]-'a'] = i;
 }
