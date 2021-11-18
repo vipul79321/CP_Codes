@@ -4,7 +4,7 @@
 **Problem Description** - Given an input string txt and a pattern pat, implement regular expression matching with support for '.' and ' * ' where - 
 * `' . '` -  Matches any single character.
 * `' * '` -  Matches zero or more of the preceding element. i.e if a character is followed by * then it means it can appear any number of times(zero too).
-* **NOTE** - `.*` means that `.` can be repeated zero or any number of times
+* **NOTE** - `.*` means that `.` can be repeated zero or any number of times. Also there wont be two consecutive `*`
 
 **Solution** - 
 * We will implement a top-down memoization based dp solution. 
