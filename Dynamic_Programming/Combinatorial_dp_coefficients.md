@@ -133,7 +133,7 @@ A[n][m] = ((n-1) - (m-1))*A[n-1][m-1] + (m+1)*A[n-1][m]
 ---
 
 ## Entringer Number
-The Entringer Number `E(n, k)` are the number of permutations of {1, 2, …, n + 1}, starting with k + 1, which, after initially falling, alternatively fall then rise.
+The Entringer Number `E(n, k)` are the number of permutations of {1, 2, …, n + 1}, starting with k + 1, alternately falling and then rising.
 ```c++
 E[n][k] = E[n][k-1] + E[n-1][n-k]
 
