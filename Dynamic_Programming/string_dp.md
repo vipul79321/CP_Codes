@@ -368,16 +368,16 @@ for(int i=1;i<=n;i++)
 
 ---
 
-## Count distinct occurences as subsequences
+### Count distinct occurences as subsequences
 [Link](https://www.geeksforgeeks.org/count-distinct-occurrences-as-a-subsequence/)
-* dp[i][j] = Number of occurences of t[0..j-1] in s[0..i-1]
+* `dp[i][j]` = Number of occurences of t[0..j-1] in s[0..i-1]
 * Transitions - 
-    * dp[i][j] = dp[i-1][j] if s[i-1] != t[j-1];
-    * dp[i][j] = dp[i-1][j] + dp[i-1][j-1] if s[i-1] == t[j-1]
+    * `dp[i][j] = dp[i-1][j] if s[i-1] != t[j-1];`
+    * `dp[i][j] = dp[i-1][j] + dp[i-1][j-1] if s[i-1] == t[j-1]`
 
 ---
 
-## Minimum Insertions to form a palindrome
+### Minimum Insertions to form a palindrome
 [Link](https://www.geeksforgeeks.org/minimum-insertions-to-form-a-palindrome-dp-28/)
 
 ```c++
@@ -387,20 +387,22 @@ else
 dp[i][j] = min(dp[i+1][j], dp[i][j-1]) + 1;
 ```
 
-## Minimum steps to delete the string after repeated deletion of palindromic substrings
+---
+
+### Minimum steps to delete the string after repeated deletion of palindromic substrings
 [Link](https://www.geeksforgeeks.org/minimum-steps-to-delete-a-string-after-repeated-deletion-of-palindrome-substrings/)
 
-* Let dp[i][j] be the minimum steps required to delete the string s[i..j]
+* Let `dp[i][j]` be the minimum steps required to delete the string s[i..j]
 * Following dp transition will arise
-    * dp[i][j] = min(dp[i][j], 1+dp[i+1][j]) ---> Simple deletion
-    * dp[i][j] = min(dp[i][j], dp[i+1][k-1] + dp[k+1][j]) where i+1<k<j && s[i] == s[k] ---> deleting alongwith s[i+1..k-1]
-    * dp[i][j] = min(dp[i][j], 1 + dp[i+2][j]) ---> where s[i] == s[i+1]
-    * dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j])  ---> Basic transition
-    * dp[i][j] = min(dp[i][j], dp[i+1][j-1])  ---> where s[i] == s[j]
+    * Simple deletion - `dp[i][j] = min(dp[i][j], 1+dp[i+1][j])`
+    * Deleting alongwith s[i+1..k-1] - `dp[i][j] = min(dp[i][j], dp[i+1][k-1] + dp[k+1][j]) where i+1<k<j && s[i] == s[k]`
+    * `if s[i] == s[i+1]` then `dp[i][j] = min(dp[i][j], 1 + dp[i+2][j])`
+    * Standard Transitions - `dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j]);`
+    * if `s[i] == s[j]` then `dp[i][j] = min(dp[i][j], dp[i+1][j-1])`
 
 ---
 
-## Longest repeating and non-overlapping substring
+### Longest repeating and non-overlapping substring
 [Link](https://www.geeksforgeeks.org/longest-repeating-and-non-overlapping-substring/)
 
 * Let LCSRe[i][j] stores length of the matching and non-overlapping substrings ending with i'th and j'th characters.
