@@ -299,13 +299,29 @@ while(j > 0) {
 reverse(ans.begin(),ans.end());
 return ans;
 ```
+
 ---
 
-## Shortest Uncommon subsequence 
+### Shortest Uncommon subsequence 
 [Link](https://www.geeksforgeeks.org/shortest-uncommon-subsequence/)
+
+**Problem Description** - Given two string S and T find length of shortest subsequence of S which is not a subsequence of T
+
+**Solution Approach** - 
+* create a matrix `sus[n+1][m+1]`, where `sus[i][j]` represents length of sus between `S[0..i-1] and T[0..j-1]`
+* Intialize all the entries of sus as Infinity
+* Transitions - 
+  * `sus[i][0] = 1;` for i = [0,n]
+  * For sus[i][j] 
+    * let k **rightmost index** such that `0<=k<=j-1` and `T[k-1] == S[i-1]`
+    * if `k == -1` then `sus[i][j] = 1` as `S[i-1]` is not present in `T[0..j-1]`
+    * else sus[i][j] = min(sus[i-1][j], 1 + sus[i-1][(k-1) + 1])
+
+
 ```c++
 // Intialize as inf
-sus[n][m] = {inf};
+int sus[n+1][m+1] = {inf};
+
 // if T is empty
 for(i=1;i<=n;i++)sus[i][0] = 1;
 
@@ -322,7 +338,7 @@ for(int i=1;i<=n;i++) //considering s[0..i-1]
         else
         // if found we can either ignore s[i-1]
         // or we can add it in our sus and check for s[0..i-1] & t[0..k-1]
-        sus[i][j] = min(sus[i-1][j],1+sus[i-1][k]);
+        sus[i][j] = min(sus[i-1][j], 1 + sus[i-1][(k-1) + 1]); // since we founded it on index k
     }
 }
 return sus[n][m];
