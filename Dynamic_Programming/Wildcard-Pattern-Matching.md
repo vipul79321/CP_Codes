@@ -155,17 +155,11 @@ for (int i = 1; i <= m; i++) {
         // Current characters are considered as
         // matching in two cases
         // (a) current character of pattern is '?'
-        else if (pattern[i - 1] == '?') {
+        // (b) characters actually match
+        else if (pattern[i - 1] == '?' || str[j-1] == pattern[i-1]) {
             lookup[i][j].value = lookup[i - 1][j - 1].value;
             lookup[i][j].ch = str[j - 1];
-        }
-
-        // (b) characters actually match
-        else if (str[j - 1] == pattern[i - 1]) {
-            lookup[i][j].value = lookup[i - 1][j - 1].value;
-            lookup[i][j].ch = str[j-1];
-        }
-            
+        }   
         // Current character match
         else if (pattern[i - 1] == '+')
 
