@@ -99,10 +99,10 @@ return (j==m);
 [Link](https://www.geeksforgeeks.org/wildcard-pattern-matching-three-symbols/)
 
 **Problem Description** - Completely similar to above problem, but pattern contains one extra type of special character '+'
-* " + " - Matches previous single character of pattern, i.e value used by previous character during matching.
+* `" + "` - Matches previous single character of pattern, i.e value used by previous character during matching.
 
 **Solution**
-* To deal with **+**, we will create a dp table which alongwith boolean value also store the character used during that matching. See code for more details - 
+* To deal with **`+`**, we will create a dp table which alongwith boolean value also store the character used during that matching. See code for more details - 
 
 ```c++
 
