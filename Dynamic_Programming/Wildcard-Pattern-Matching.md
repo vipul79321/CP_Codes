@@ -2,13 +2,13 @@
 [Link](https://www.geeksforgeeks.org/wildcard-pattern-matching/) | [Link](https://leetcode.com/problems/wildcard-matching/) | [Youtube Tutorial Link](https://www.youtube.com/watch?v=NbgUZAoIz3g)
 
 **Problem Description** - Given a string text and a string pattern, tell if it is possible to obtain given text from given pattern. Pattern may contain some special characters apart from alphabets - 
-* ' ? ' - It can be replaced by any one alphabet
-* " * " - Matches any sequence of characters (including the empty sequence).
+* `' ? '` - It can be replaced by any one alphabet
+* `' * '` - Matches any sequence of characters (including the empty sequence).
 
 **Solution** - 
 
 * __Standard O(n^2) dp solution__ - 
-    * Let dp[i][j] represents if txt[0..i-1] can be matched completely with pat[0..j-1]
+    * Let `dp[i][j]` represents if txt[0..i-1] can be matched completely with pat[0..j-1]
     * See code below for transitions.
 
 ```c++
