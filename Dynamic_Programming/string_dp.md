@@ -315,7 +315,7 @@ return ans;
   * For sus[i][j] 
     * let k **rightmost index** such that `0<=k<=j-1` and `T[k-1] == S[i-1]`
     * if `k == -1` then `sus[i][j] = 1` as `S[i-1]` is not present in `T[0..j-1]`
-    * else sus[i][j] = min(sus[i-1][j], 1 + sus[i-1][(k-1) + 1])
+    * else `sus[i][j] = min(sus[i-1][j], 1 + sus[i-1][(k-1) + 1])`
 
 
 ```c++
