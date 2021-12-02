@@ -280,3 +280,5 @@ Size of page table = (number of entries in page table)*(size of PTE)
 
 ---
 
+### Segmented Paging and Paged Segmentation
+[Link](https://www.geeksforgeeks.org/paged-segmentation-and-segmented-paging/)
