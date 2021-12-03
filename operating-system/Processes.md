@@ -75,6 +75,20 @@
 * The exec() family of functions replaces the current process image with a new process image.
 * **It loads the program into the current process space and runs it from the entry point.**
 
+### Copy-on-write forking | [Link](https://www.geeksforgeeks.org/copy-on-write/)
+* The idea behind a copy-on-write is that when a parent process creates a child process then both of these processes initially will share the same pages in memory.
+* These shared pages will be marked as copy-on-write.
+* Now if any of these processes will try to modify the shared pages then only a copy of these pages will be created and the modifications will be done on the copy of pages by that process and thus not affecting the other process.
+* Why copy-on-write is useful - 
+  * Usually, child process calls `exec` rightaway, so all that copying of parent's memory for child memory will go to waste, copy-on-write solves this problem by copying only when neccessary
+
+### Virtual Fork | vfork()
+* In virtual fork, copy of parent's process is not made in child. Instead they both share the same memory. 
+* In virtual fork, parent process is suspended till child process finished its execution.
+* It highly unsafe to use, because we need to make sure child process doesnt modify anything in shared memory. Better alternative is to use `copy-on-write forking` | [Link](https://unix.stackexchange.com/questions/5337/whats-the-difference-between-fork-and-vfork)
+
+
+
 ### How do you send a signal from parent to child process? | [Link](https://www.mvorganizing.org/what-is-parent-process-and-child-process/)
 * The communication between child and parent processes can be done using **kill()** and **signal()**.
 * The parent can then send messages to child using the pid and kill().
