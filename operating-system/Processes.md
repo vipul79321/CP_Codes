@@ -81,6 +81,7 @@
 * Now if any of these processes will try to modify the shared pages then only a copy of these pages will be created and the modifications will be done on the copy of pages by that process and thus not affecting the other process.
 * Why copy-on-write is useful - 
   * Usually, child process calls `exec` rightaway, so all that copying of parent's memory for child memory will go to waste, copy-on-write solves this problem by copying only when neccessary
+* The pages which are used while making duplication in copy-on-write forking are generally **zero-fill-on-demand**, that is their content is zeroed out before copying begins
 
 ### Virtual Fork | vfork()
 * In virtual fork, copy of parent's process is not made in child. Instead they both share the same memory. 
