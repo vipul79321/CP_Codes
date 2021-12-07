@@ -91,4 +91,18 @@
 
 * An Ethernet broadcast is sent to every single device on a LAN.
 *  This is accomplished by using a special destination known as a broadcast address. The Ethernet broadcast address is `FF:FF:FF:FF:FF:FF`
+
+
+#### Contents of Ethernet Frames
+
+* **Preamble** – informs the receiving system that a frame is starting and enables synchronisation. It contains a series of 0's and 1's
+* **SFD (Start Frame Delimiter)** – signifies that the Destination MAC Address field begins with the next byte. It is always equal to `10101011`
+* **Destination MAC** – identifies the receiving system.
+* **Source MAC** – identifies the sending system.
+* **Type** – Contains the information of the upper layer protocol in source computer. Using this, the data link layer of the destination computer can easily determine the upper layer protocol to which it should hand over the received frame. for example IPv4 or IPv6.
+* **Data and Pad | Payload** – contains the payload data. Padding data is added to meet the minimum length requirement for this field (46 bytes). Maximum payload length can be 1500 bytes
+* **FCS (Frame Check Sequence)** – contains a 32-bit Cyclic Redundancy Check (CRC) which allows detection of corrupted data.
+
+See image below - 
+![Contents of Ethernet](https://github.com/vipul79321/CP_Codes/blob/main/computer-networking/images/contents-of-ethernet-frame.png)
  
