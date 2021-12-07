@@ -63,37 +63,48 @@
 ---
 
 ### Data Link Layer
-[]
+* Data link layer performs the most reliable node to node delivery of data.
+* It forms frames from the packets that are received from network layer and gives it to physical layer.
+* It also synchronizes the information which is to be transmitted over the data.
 
-* One of the primary purposes of this layer is to essentially abstract away the need for any other layers to care about the physical layer and what hardware is in use.
-* Ethernet, as a protocol, solved this problem by using a technique known as **carrier sense multiple access with collision detection(CSMA/CD).**
-* Working of **CSMA/CD** - 
+#### Use Cases of Data-Link Layer | [Link](https://www.easyexamnotes.com/p/data-link-layer.html) - 
+* Providing a well-defined service interface to the network layer, so that any upper layer doesnt need to worry about what hardware is in use.
+* **Framing** - Frames are the streams of bits received from the network layer into manageable data units. This division of stream of bits is done by Data Link Layer.
+* **Flow Control** - Regulating the flow of data so that slow receivers are not swamped by fast senders.
+* Ethernet protocol solved the problem of collision domain using **carrier sense multiple access with collision detection(CSMA/CD)**
+
+
+* Working of **CSMA/CD**  - 
   * If there's no data currently being transmitted on the network segment, a node will feel free to send data. 
   * If it turns out that two or more computers end up trying to send data at the same time, the computers detect this collision and stop sending data. 
   * Each device involved with the collision then waits a random interval of time before trying to send data again. 
   * This random interval helps to prevent all the computers involved in the collision from colliding again the next time they try to transmit anything.
 
+
+#### MAC Address
 * **Media Access Control(MAC)** address is a globally unique identifier attached to an individual network interface. 
-* It's a 48-bit number normally represented by six groupings of two hexadecimal numbers(two hexa-decimal numbers make an octet).
+* It's a **48-bit number** normally represented by six groupings of two hexadecimal numbers(two hexa-decimal numbers make an octet).
 * A MAC address is split into two sections. 
-  * organizationally unique identifier (or OUI) is made of first three octet. These are assigned to individual hardware manufacturer by IEEE
+  * **Organizationally Unique Identifier (or OUI)** is made of first three octet. These are assigned to individual hardware manufacturer by IEEE
   * Last three octet can be randomly assigned by manufacturer with condition to maintain unqiue MAC address
-
-* Ethernet uses MAC addresses to ensure that the data it sends has both an address for the machine that sent the transmission, as well as the one that the transmission was intended for. In this way, even on a network segment, acting as a single collision domain, each node on that network knows when traffic is intended for it.
-
-
-* A unicast transmission is always meant for just one receiving address. 
-* At the Ethernet level, this is done by looking at a special bit in the destination MAC address. 
-* If the least significant bit in the first octet of a destination address is set to zero, it means that Ethernet frame is intended for only the destination address and hence will be processed by assigned destination
-
-* A multicast frame is similarly set to all devices on the local network signal. But it will be accepted or discarded by each device depending on criteria aside from their own hardware MAC address. 
-* Least significant bit in the first octet of a destination address is set to one in multicast
-
-* An Ethernet broadcast is sent to every single device on a LAN.
-*  This is accomplished by using a special destination known as a broadcast address. The Ethernet broadcast address is `FF:FF:FF:FF:FF:FF`
+* **Use Case** - 
+  * Ethernet uses MAC addresses to ensure that the data it sends has both an address for the machine that sent the transmission, as well as the one that the transmission was intended for. 
+  * In this way, even on a network segment, acting as a single collision domain, each node on that network knows when traffic is intended for it.
 
 
-#### Contents of Ethernet Frames
+#### Unicast | MultiCast | BroadCast | [Link](https://www.coursera.org/learn/computer-networking/lecture/OpIS6/unicast-multicast-and-broadcast)
+* **Unicast** - A unicast transmission is always meant for just one receiving address. 
+  * At the Ethernet level, this is done by looking at a least significant bit in first octet in the destination MAC address. 
+  * If that bit is **set to zero**, it means that Ethernet frame is intended for only the destination address and hence will be processed by assigned destination.
+* **Multicast** - 
+  * A multicast frame is similarly set to all devices on the local network signal. But it will be accepted or discarded by each device depending on criteria aside from their own hardware MAC address. 
+  * Least significant bit in the first octet of a destination address is **set to one** in multicast.
+* **Broadcast** -  
+  * An Ethernet broadcast is sent to every single device on a LAN.
+  * This is accomplished by using a special destination known as a broadcast address. The Ethernet broadcast address is `FF:FF:FF:FF:FF:FF`
+
+
+#### Contents of Ethernet Frames | [Link](https://study-ccna.com/ethernet-frame/)
 
 * **Preamble** – informs the receiving system that a frame is starting and enables synchronisation. It contains a series of 0's and 1's
 * **SFD (Start Frame Delimiter)** – signifies that the Destination MAC Address field begins with the next byte. It is always equal to `10101011`
@@ -105,4 +116,6 @@
 
 See image below - 
 ![Contents of Ethernet](https://github.com/vipul79321/CP_Codes/blob/main/computer-networking/images/contents-of-ethernet-frame.png)
+
+**NOTE** - Data Link Layer reports only the integrity of the data sent. It doesnt do any re-transmission. Its upto upper layer to handle re-transmission, when data is corrupted
  
