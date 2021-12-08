@@ -47,7 +47,42 @@
 * As the data moves up from the lower layer to the upper layer of TCP/IP protocol stack (incoming transmission), each layer unpacks the corresponding header and uses the information contained in the header to deliver the packet to the exact network application waiting for the data.
 
 ---
-### Address Resolution Protocol(ARP)
+### Address Resolution Protocol(ARP) | [Link](https://www.geeksforgeeks.org/how-address-resolution-protocol-arp-works/)
+
+* **Address Resolution Protocol (ARP)** is a communication protocol used to find the MAC (Media Access Control) address of a device from its IP address.
+
+**Working of ARP** - 
+* Suppose we want to send data to given IP address, to transmit data along data layer we need MAC address corresponding to that IP address
+* If there is already an entry in ARP table, then we simply obtain MAC address from there. 
+* Otherwise we will send a broadcast over the network, when the device with destined IP address recieves it, it will send a response with its MAC Address
+* Response can be used to obtain MAC address for that IP address as well as to update the ARP table for future use
+
+**ARP Terminologies** - 
+* **ARP Cache**: After resolving the MAC address, the ARP sends it to the source where it is stored in a table for future reference. The subsequent communications can use the MAC address from the table
+* **ARP Cache Timeout**: It indicates the time for which the MAC address in the ARP cache can reside
+* **ARP request**: This is nothing but broadcasting a packet over the network to validate whether we came across the destination MAC address or not. 
+  * The physical address of the sender.
+  * The IP address of the sender.
+  * The physical address of the receiver is FF:FF:FF:FF:FF:FF or 1’s.
+  * The IP address of the receiver
+* **ARP response/reply**: It is the MAC address response that the source receives from the destination which aids in further communication of the data.
+
+
+**NOTE** - An ARP request is a broadcast, and an ARP response is a Unicast. 
+
+**Standard Cases in working of ARP** - 
+* **CASE-1**: _The sender is a host and wants to send a packet to another host on the same network._
+  * Use ARP to find another host’s physical address
+* **CASE-2**: _The sender is a host and wants to send a packet to another host on another network._
+  * The sender looks at its routing table.
+  * Find the IP address of the next-hop (router) for this destination.
+  * Use ARP to find the router’s physical address
+* **CASE-3**: _the sender is a router and received a datagram destined for a host on another network._ 
+  * The router checks its routing table.
+  * Find the IP address of the next router.
+  * Use ARP to find the next router’s physical address.
+* **CASE-4**: _The sender is a router that has received a datagram destined for a host in the same network._
+  * Use ARP to find this host’s physical address.
 
 
 
