@@ -84,5 +84,64 @@
 * **CASE-4**: _The sender is a router that has received a datagram destined for a host in the same network._
   * Use ARP to find this host’s physical address.
 
+---
+
+### Subnetting and Subnet Masks
+[Link](https://www.computernetworkingnotes.com/ccna-study-guide/basic-subnetting-in-computer-networks-explained.html) | [Explanation](https://www.computernetworkingnotes.com/ccna-study-guide/subnetting-tutorial-subnetting-explained-with-examples.html) | [Numericals](https://www.computernetworkingnotes.com/ccna-study-guide/subnetting-tricks-subnetting-made-easy-with-examples.html)
+
+* Subnetting is a process of dividing a single large network in multiple smaller networks. 
+* Need for subnetting - 
+  * A default class A, B and C network provides 16777214, 65534, 254 hosts respectively. Having so many hosts in a single network always creates several issues such as broadcast, collision, congestion, etc.
+  * Computers use broadcast messages to access and provide information in network. If the size of network is very large this results in lots of problems
+
+**Advantage of Subnetting**
+* Subnetting allows us to break a single large network in smaller networks. Small networks are easy to manage.
+* Subnetting reduces network traffic by allowing only the broadcast traffic which is relevant to the subnet.
+* By reducing unnecessary traffic, Subnetting improves overall performance of the network.
+* By blocking a subnet’ traffic in subnet, Subnetting increases security of the network.
+* Subnetting reduces the requirement of IP range.
+
+
+**Disadvantage of Subnetting**
+* Different subnets need an intermediate device known as router to communicate with each other.
+* Since each subnet uses its own network address and broadcast address, more subnets mean more wastage of IP addresses.
+* Subnetting ads complexity in network. An experienced network administrator is required to manage the subnetted network. 
+
+**How subnetting works** - 
+* Identifying network portion and host portion in an IP address is the first step of Subnetting. **Subnetting can only be done in host portion of IP address, with last two bits(31 & 32) being reserved for host ID.**
+* **Subnet Mask** - 
+  * It is of 32-bit in size and the portion of IP address that belongs to network Id are all 1s in subnet mask and remaining portion is all 0s
+  * Subnet Mask are generally represented in decimal or slash notation. In slash notation - `IP address/length(network Id portion)`
+ 
+**Network address and Broadcast address**
+* In each network there are two special addresses; network address and broadcast address.
+*  Network address represents the network itself while broadcast address represents all the hosts which belong to it. 
+*  These two addresses can’t be assigned to any individual host in network.(Hence the rule of total count - 2) 
+*  Since each subnet represents an individual network, it also uses these two addresses.
+
+**NOTE** - In simple language, in a single network only two IP addresses will be used for these addresses. But if we breaks this network in two small networks then four IP addressed will be used for these addresses.
+
+**Valid Host Address** - All the address in range of network address and broadcast address are valid host address
+
+**Type of Subnetting**
+* There are two types of Subnetting **FLSM and VLSM**.
+* In FLSM, all subnets have equal number of host addresses and use same Subnet mask. 
+* In VLSM, subnets have flexible number of host addresses and use different subnet mask.
+
+**NOTE** - Visit numerical link for solved examples on subnetting
+
+---
+
+### Classless Inter-Domain Routing (CIDR)
+[Link](https://www.geeksforgeeks.org/cidr-full-form/)
+
+* CIDR stands for Classless Inter-Domain Routing. 
+* It is an IP address assigning method that improves the efficiency of address distribution. 
+* It is also known as **supernetting** that replaces the older system based on classes A, B, and C networks. 
+* By using a single CIDR IP address many unique IP addresses can be designated. 
+* CIDR IP address is the same as the normal IP address except that it ends with a slash followed by a number.
+* E.g 172.200.0.0/16 It is called **IP network prefix**.
+
+---
 
 
