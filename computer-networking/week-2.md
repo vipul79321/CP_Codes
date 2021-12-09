@@ -184,10 +184,22 @@
 * Update Routing Tables by learning from neighboring routers and Advertise local routing information to neighboring routers
 
 
-**Types of Routing Protocols**
-* Distance Vector Routing Protocol
-* Link-state Routing Protocol
-* Hybrid Routing Protocol
+### Routing Protocols
+
+* **Autonomous System**  - 
+  * In networking terms, an autonomous system is a collection of networks that all fall under the control of a single network operator. 
+  * The best example of this would be a large corporation that needs to route data between their many offices an each of which might have their own local area network. 
+* **Interior Gateway Protocols** - 
+  * Interior gateway protocols are used by routers to share information within a single autonomous system.
+  * There are majorly three type of Interior Gateway Protocols
+    * Distance Vector Routing Protocol
+    * Link-state Routing Protocol
+    * Hybrid Routing Protocol
+* **Exterior Gateway Protocols** - 
+  * Exterior gateway protocols are used to communicate data between routers representing the edges of an autonomous system.
+  * They work on the basis of Autonomous System Number(ASN) which is assigned by IANA(Internet Assigned Network Authority).
+
+
 
 #### Distance Vector Routing Protocol | Similar to Bellman-Ford
 [Link](https://www.computernetworkingnotes.com/ccna-study-guide/basic-routing-concepts-and-protocols-explained.html) | [Working Explained](https://www.computernetworkingnotes.com/ccna-study-guide/how-rip-routing-protocol-works.html) | [Link](https://www.geeksforgeeks.org/distance-vector-routing-dvr-protocol/)
@@ -199,6 +211,7 @@
 * A router recalculates its distance vector when:
   * It receives a distance vector from a neighbor containing different information than before.
   * It discovers that a link to a neighbor has gone down.
+* Updates are slow, as a distant change will take certain number of periods to reach the router
 
 
 #### Link-State Routing Protocol | Similar to Dijkstra Algorithm
@@ -230,6 +243,10 @@
 | It uses local broadcast to propogate updates |  It use multicasts to propogate updates which are processed only by the routers running the link-state protocol. |
 | Updates are exchanged periodically | Updates are sent only when change are detected | 
 | Distance-vector protocols do not verify routing broadcasts. They don't care whether the neighboring routers received them or not. | Link-state protocols verify routing updates. A destination router, when receiving a routing update, will respond to the source router with an acknowledgment. | 
+| In distance-vector protocols routers are generally not aware of whole topology | In link-state routers are aware of the whole topology of the network | 
+| Router might be slow to react to change far away from it | Changes are faster as compared to distance-vector routing |
+| Distance-vector protocols require both less memory in order to hold all of this data and also much more processing power.| Link state protocols require both more memory in order to hold all of this data and also much more processing power.|
+
 
 ---
 
