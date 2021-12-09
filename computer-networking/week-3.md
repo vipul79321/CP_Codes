@@ -3,7 +3,18 @@
 
 * The transport layer provides services to the application layer and takes services from the network layer. 
 * The data in the transport layer is referred to as Segments. It is responsible for the End to End Delivery of the complete message. 
-* The transport layer also provides the acknowledgement of the successful data transmission and re-transmits the data if an error is found. 
+* The transport layer also provides the acknowledgement of the successful data transmission and re-transmits the data if an error is found.
+
+
+**Port** - 
+* It is a `16-bit` number that's used to direct traffic to specific services running on a networked computer.
+* Ports are normally denoted with a colon after the IP address. 
+* So the full IP and port in this scenario could be described as `10.1.1.100:80`. When written this way, it's known as a **socket address or socket number.**
+
+
+**Multiplexing** - Gathering data from multiple application processes of the sender, enveloping that data with a header, and sending them as a whole to the intended receiver is called multiplexing.
+
+**Demultiplexing** - Delivering received segments at the receiver side to the correct app layer processes is called demultiplexing. 
 
 
 ---
