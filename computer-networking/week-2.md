@@ -221,3 +221,17 @@
 * Hybrid protocols use a Hello protocol to discover neighbors and form neighbor relationships. Hybrid protocols also send updates only when a change occurs.
 * Hybrid routing protocols reduce the CPU and memory overhead by functioning like a distance-vector protocol when it comes to processing routing updates; but instead of sending out periodic updates like a distance-vector protocol, hybrid routing protocols send out incremental, reliable updates via multicast messages, providing a more network- and router-friendly environment.
 
+#### Differences between distance-vector routing and link-state routing
+
+| Distance-Vector Routing | Link-State Routing | 
+| ----------------------- | ------------------ |
+| It is simpler to configure and maintain than link state routing. | It is complex to configure and maintain than link state routing.|
+| It is slower to converge than link state. | It converges faster as compared to distance-vector routing | 
+| It uses local broadcast to propogate updates |  It use multicasts to propogate updates which are processed only by the routers running the link-state protocol. |
+| Updates are exchanged periodically | Updates are sent only when change are detected | 
+| Distance-vector protocols do not verify routing broadcasts. They don't care whether the neighboring routers received them or not. | Link-state protocols verify routing updates. A destination router, when receiving a routing update, will respond to the source router with an acknowledgment. | 
+
+---
+
+
+
