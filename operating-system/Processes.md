@@ -32,6 +32,8 @@
 * **Accounting information** - user and kernel CPU time consumed, account numbers, limits, etc.
 * **I/O Status information** - Devices allocated, open file tables, etc.
 
+---
+
 ### Process Scheduling
 * The two main objectives of the process scheduling system are to
   * keep the CPU busy at all times and 
@@ -45,6 +47,7 @@
 * **Short-term scheduler(or CPU Scheduler)** - runs very frequently, and must very quickly swap one process out of the CPU and swap in another one.
 * **Medium-term scheduler** - When system loads get high, this scheduler will swap one or more processes out of the ready queue system for a few seconds, in order to allow smaller faster jobs to finish up quickly and clear the system.
 
+---
 
 ### Context - Switching
 * Interrupt Handling - Whenever an interrupt arrives, the CPU must do a **state-save** of the currently running process, then switch into kernel mode to handle the interrupt, and then do a **state-restore** of the interrupted process.
@@ -56,6 +59,7 @@
 
 **Note** - A **program counter (PC)** is a CPU register in the computer processor which has the address of the next instruction to be executed from memory.
 
+---
 
 ### Fork System call
 * fork() returns - 
@@ -119,6 +123,7 @@ Some key points -
 * The exit status of the zombie process zombie process can be read by the parent process using the wait() system call. After that, the zombie process is removed from the system. Then the process ID and the process table entry of the zombie process can be reused.
 * If the parent process does not use the wait() system call, the zombie process is left in the process table. This creates a resource leak.
 
+---
 
 ### InterProcess Communication
 * Cooperating processes are need for - 
