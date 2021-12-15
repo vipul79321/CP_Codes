@@ -50,8 +50,8 @@
 ---
 
 ### Context - Switching
-* Interrupt Handling - Whenever an interrupt arrives, the CPU must do a **state-save** of the currently running process, then switch into kernel mode to handle the interrupt, and then do a **state-restore** of the interrupted process.
-* Context Switching - when the time slice for one process has expired and a new process is to be loaded from the ready queue. This will be instigated by a **timer interrupt**, which will then cause the current process's state to be saved and the new process's state to be restored.
+* `Interrupt Handling` - Whenever an interrupt arrives, the CPU must do a **state-save** of the currently running process, then switch into kernel mode to handle the interrupt, and then do a **state-restore** of the interrupted process.
+* `Context Switching` - when the time slice for one process has expired and a new process is to be loaded from the ready queue. This will be instigated by a **timer interrupt**, which will then cause the current process's state to be saved and the new process's state to be restored.
 * Therefore, context switching is achieved by interrupt handling
 * Saving and restoring states involves saving and restoring all of the **Registers, Program counter, PCBs**.
 
