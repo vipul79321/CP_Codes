@@ -120,7 +120,7 @@
 
 Some key points - 
 * All the memory and resources allocated to a process are deallocated when the process terminates using the exit() system call. But the process’s entry in the process table is still available. This process is now a zombie process.
-* The exit status of the zombie process zombie process can be read by the parent process using the wait() system call. After that, the zombie process is removed from the system. Then the process ID and the process table entry of the zombie process can be reused.
+* The exit status of the zombie process zombie process can be read by the parent process using the wait() system call. After that, the zombie process is removed from the system.
 * If the parent process does not use the wait() system call, the zombie process is left in the process table. This creates a resource leak.
 
 ---
