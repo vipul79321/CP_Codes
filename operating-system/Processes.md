@@ -68,6 +68,7 @@
   * -1 - to parent in case child creation was unsuccessful
 * Some differences between the child and parent process are:
   * Different PIDs
+  * Separate Address space
   * Separate copies of all data, including variables with their current values and the stack
   * Separate program counter (PC) indicating where to execute next; originally both have the same value but they are thereafter separate
   * after fork, the two processes do not share variables
