@@ -21,7 +21,7 @@ Exit Code
 Remainder Section
 ```
 
-**NOTE** - In all the solutions for critical section, it is assumed that entry code and exit code will be **Atomic**.
+> **NOTE** - In all the solutions for critical section, it is assumed that entry code and exit code will be **Atomic**.
 
 ### Peterson's Solution | Turn Variable
 * **turn** - Whose turn is it to go into critical section
