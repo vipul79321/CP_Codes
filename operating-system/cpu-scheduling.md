@@ -66,6 +66,8 @@
 
 > **NOTE** -  One needs to be careful, while balancing load, as time saved in balancing load, may be lost in building cache for that process in the new processor
 
+---
+
 ### Real-Time CPU Scheduling
 * **Soft real-time** systems have degraded performance if their timing needs cannot be met. Example: streaming video.
 * **Hard real-time** systems have total failure if their timing needs cannot be met. Examples: Assembly line robotics, automobile air-bag deployment.
