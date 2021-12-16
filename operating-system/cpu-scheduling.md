@@ -36,7 +36,7 @@
 
 ---
 
-**NOTE** - The process scheduler schedules only the kernel threads.
+> **NOTE** - The process scheduler schedules only the kernel threads.
 
 ---
 
@@ -64,7 +64,7 @@
   * **Pull migration** involves idle processors taking processes from the ready queues of other processors. 
 
 
-**NOTE** -  One needs to be careful, while balancing load, as time saved in balancing load, may be lost in building cache for that process in the new processor
+> **NOTE** -  One needs to be careful, while balancing load, as time saved in balancing load, may be lost in building cache for that process in the new processor
 
 ### Real-Time CPU Scheduling
 * **Soft real-time** systems have degraded performance if their timing needs cannot be met. Example: streaming video.
