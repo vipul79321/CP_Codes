@@ -34,7 +34,7 @@ For example in a word processor, a background thread may check spelling and gram
 | Process has its own Process Control Block, Stack and Address Space. | Thread has Parents’ PCB, its own Thread Control Block and Stack and common Address space.|
 
 
-**NOTE** - **If any user-level thread gets blocked, all of its peer threads also get blocked because OS takes all of them as a single process**. It means all the threads which were mapped to same kernel thread as the blocked one will get blocked and they are being referred as peer here. | [StackoverFlow Explanation](https://stackoverflow.com/questions/68981493/confusion-regarding-the-blocking-of-peer-threads-when-a-user-level-thread-bloc)
+> **NOTE** - **If any user-level thread gets blocked, all of its peer threads also get blocked because OS takes all of them as a single process**. It means all the threads which were mapped to same kernel thread as the blocked one will get blocked and they are being referred as peer here. | [StackoverFlow Explanation](https://stackoverflow.com/questions/68981493/confusion-regarding-the-blocking-of-peer-threads-when-a-user-level-thread-bloc)
 
 ---
 
