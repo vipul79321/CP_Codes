@@ -265,6 +265,7 @@ class Enclosing {
 ---
 
 ### Simulate Final Class in C++ ###
+[Link](https://www.geeksforgeeks.org/simulating-final-class-in-c/)
 
 * Now we have **final** keyword available.
 * Without using final keyword, we can follow these steps - 
@@ -272,9 +273,39 @@ class Enclosing {
   * Make a class *Final*, which is **Friend class** of *MakeFinal* and **virtually inherits** *MakeFinal*.
   * Now *Final* cant be inherited, because on inheriting, the child class will directly call constructor of *MakeFinal*, and since friendship is not inherited. It will give an error.
 
+```c++
+// C++ program with compilation
+// error to demonstrate that
+// Final class cannot be inherited
+#include <iostream>
+using namespace std;
 
+// The class to be made final
+class Final;
 
-## Note ##
-Inlining of friend function is still not clear. need to research more.
+// used to make the Final class final
+class MakeFinal {
+private:
+	MakeFinal() { cout << "MakFinal constructor" << endl; }
+	friend class Final;
+};
 
+class Final : virtual MakeFinal {
+public:
+	Final() { cout << "Final constructor" << endl; }
+};
 
+// Compiler error
+class Derived : public Final {
+public:
+	Derived() { cout << "Derived constructor" << endl; }
+};
+
+int main(int argc, char* argv[])
+{
+	Derived d;
+	return 0;
+}
+
+```
+---
