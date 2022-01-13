@@ -133,6 +133,24 @@ class Dummy {  -->sizeof(Dummy) = 1;
     char c;
 };
 
+
+class A{   --> sizeof(A) == 8, because it contains VPTR (8 bytes)
+    public:
+    virtual void fun()
+    {
+        cout<<"hello\n";
+    }
+};
+
+
+class B: virtual public A{  --> sizeof(B) == 8, because it contains VPTR (8 bytes)
+  public:
+  virtual void fun()
+  {
+      cout<<"not hello\n";
+  }
+};
+
 ```
 
 ---
