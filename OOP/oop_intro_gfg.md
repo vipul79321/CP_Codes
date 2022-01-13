@@ -171,20 +171,6 @@ class B: virtual public A{  --> sizeof(B) == 8, because it contains VPTR (8 byte
 * A static member function cannot be virtual, const, volatile.
 * Static member function can be defined inside the class.
 * A static member function can only access static data member, other static member functions and any other functions from outside the class.
-* Member function declarations with the same name and the name parameter-type-list cannot be overloaded if any of them is a static member function declaration.
-
-```c++
-class Test {
-   static void fun() {}
-   void fun() {} // compiler error
-};
-```
-```c++
-class Test {
-   static void fun() {}
-   void fun(int x) {} // will work fine
-};
-```
 
 ---
 
