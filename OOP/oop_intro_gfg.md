@@ -182,7 +182,7 @@ class Test {
 ```c++
 class Test {
    static void fun() {}
-   void fun() {int x} // will work fine
+   void fun(int x) {} // will work fine
 };
 ```
 
