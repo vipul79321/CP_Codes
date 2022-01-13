@@ -67,7 +67,7 @@ Different types of inheritance in c++ -
 ### Can a C++ class have an object of self type? ###
 [Link](https://www.geeksforgeeks.org/can-a-c-class-have-an-object-of-self-type/)
 
-* A class declaration can contain static object of self type, it can also have pointer to self type, but it cannot have a non-static object of self type.
+* A class declaration can contain `static object of self type`, it can also have `pointer to self type`, but it cannot have a non-static object of self type.
 
 Following declaration will work fine - 
 ```c++
