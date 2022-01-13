@@ -29,6 +29,7 @@ Disadvantages of OOP:
 
 ---
 
+### Access Modifiers
 [Link](https://www.geeksforgeeks.org/access-modifiers-in-c/)
 
 1. **Public** - The data members and member functions declared as public can be accessed by other classes and functions too. 
@@ -55,19 +56,18 @@ Different types of inheritance in c++ -
 
 ---
 
+### Difference between struct and class in c++ ###
 [Link](https://www.geeksforgeeks.org/structure-vs-class-in-cpp/)
 
-### Difference between struct and class in c++ ###
-1. In struct, members are by default public. While in class, members are by default private.
-2. In struct, default inheritance mode is public. While in class, default inheritance mode is private.
-3. Memory of structure is allocated in the stack while the memory of class is allocated in heap.
+* In struct, members are by default public. While in class, members are by default private.
+* In struct, default inheritance mode is public. While in class, default inheritance mode is private.
 
 ---
 
+### Can a C++ class have an object of self type? ###
 [Link](https://www.geeksforgeeks.org/can-a-c-class-have-an-object-of-self-type/)
 
-### Can a C++ class have an object of self type? ###
-A class declaration can contain static object of self type, it can also have pointer to self type, but it cannot have a non-static object of self type.
+* A class declaration can contain static object of self type, it can also have pointer to self type, but it cannot have a non-static object of self type.
 
 Following declaration will work fine - 
 ```c++
@@ -100,17 +100,17 @@ class Test {
 
 ---
 
+### Class Size
 [Link](https://www.geeksforgeeks.org/why-is-the-size-of-an-empty-class-not-zero-in-c/)
 
-1. Size of empty class or struct in c++ is 1 to ensure that each instance of that struct/class will have different address.
-2. an empty base class need not be represented by a separate byte in derived class. See this code for e.g - 
+* Size of empty class or struct in c++ is 1 to ensure that each instance of that struct/class will have different address.
+* An empty base class need not be represented by a separate byte in derived class. See this code for e.g - 
 ```c++
 class Empty { };  --> sizeof(Empty) will be 1.
 class Derived: Empty { int a; }; -- > sizeof(Derived) will be 4.
 ```
-
-3. [Link1](https://stackoverflow.com/questions/6497141/how-to-determine-the-size-of-virtual-base-class-and-derived-classes-from-it) For more confusion.
-4. In virtual inheritance there is an extra overhead of 4 Bytes / 8 Bytes depending on architecture(32-bit or 64-bit) [See this](https://www.cprogramming.com/tutorial/size_of_class_object.html)
+* [For more confusion](https://stackoverflow.com/questions/6497141/how-to-determine-the-size-of-virtual-base-class-and-derived-classes-from-it)
+* In virtual inheritance there is an extra overhead of 4 Bytes / 8 Bytes depending on architecture(32-bit or 64-bit) [See this](https://www.cprogramming.com/tutorial/size_of_class_object.html)
 5. See following code & comments - 
 
 ```c++
@@ -138,19 +138,22 @@ class Dummy {  -->sizeof(Dummy) = 1;
 
 ### Static data members in c++ Class ###
 [Link](https://www.geeksforgeeks.org/static-data-members-c/)
-1. Only one copy of that member is created for the entire class and is shared by all the objects of that class , no matter how many objects are created.
-2. Static members are only declared in class declaration, not defined. They must be explicitly defined outside the class using scope resolution operator.
-3. It is visible only within the class,but its lifetime is the entire program.
+
+* Only one copy of that member is created for the entire class and is shared by all the objects of that class , no matter how many objects are created.
+* Static members are only declared in class declaration, not defined. They must be explicitly defined outside the class using scope resolution operator.
+* It is visible only within the class,but its lifetime is the entire program.
 
 ---
 
 ### Static member function in c++ Class ###
 [Link](https://www.geeksforgeeks.org/some-interesting-facts-about-static-member-functions-in-c/)
-1. Static member functions do not have this pointer. As then can be called without object.
-2. A static member function cannot be virtual, const, volatile.
-3. Static member function can be defined inside the class.
-4. A static member function can only access static data member, other static member functions and any other functions from outside the class.
-5. Member function declarations with the same name and the name parameter-type-list cannot be overloaded if any of them is a static member function declaration.
+
+* Static member functions do not have this pointer. As then can be called without object.
+* A static member function cannot be virtual, const, volatile.
+* Static member function can be defined inside the class.
+* A static member function can only access static data member, other static member functions and any other functions from outside the class.
+* Member function declarations with the same name and the name parameter-type-list cannot be overloaded if any of them is a static member function declaration.
+
 ```c++
 class Test {
    static void fun() {}
@@ -166,6 +169,7 @@ class Test {
 
 ---
 
+### Friend Class and Friend Function
 [Link](https://www.geeksforgeeks.org/friend-class-function-cpp/) 
 
 **Friend class** - 
@@ -183,16 +187,16 @@ class Test {
 
 ---
 
+### Local Class
 [Link](https://www.geeksforgeeks.org/local-class-in-c/)
 
-**Local class** - 
-1. A class declared inside a function becomes local to that function and is called Local Class in C++.
-2. A local class type name can only be used in the enclosing function.
-3. All the methods of Local classes must be defined inside the class only.
-4. A Local class cannot contain static data members. It may contain static functions though.
-5. Member methods of local class can only access static and enum variables of the enclosing function.
-6. Local classes can access global types, variables and functions. 
-7. Local classes can access other local classes of same functions.
+* A class declared inside a function becomes local to that function and is called Local Class in C++.
+* A local class type name can only be used in the enclosing function.
+* All the methods of Local classes must be defined inside the class only.
+* A Local class cannot contain static data members. It may contain static functions though.
+* Member methods of local class can only access static and enum variables of the enclosing function.
+* Local classes can access global types, variables and functions. 
+* Local classes can access other local classes of same functions.
 See this code for e.g. - 
 ```c++
 int x;
@@ -229,12 +233,12 @@ Test1 t;                        // will give an error, accessing class outside e
 
 ---
 
+### Nested Class
 [Link](https://www.geeksforgeeks.org/nested-classes-in-c/) 
 
-**Nested Class** :
-1. Nested class is a class which is declared in another enclosing class.
-2. A nested class is a member and as such has the same access rights as any other member. 
-3. The members of an enclosing class have no special access to members of a nested class; the usual access rules shall be obeyed.
+* Nested class is a class which is declared in another enclosing class.
+* A nested class is a member and as such has the same access rights as any other member. 
+* The members of an enclosing class have no special access to members of a nested class; the usual access rules shall be obeyed.
 
 ```c++
 class Enclosing {      
@@ -257,11 +261,11 @@ class Enclosing {
 
 ### Simulate Final Class in C++ ###
 
-1. Now we have **final** keyword available.
-2. Without using final keyword, we can follow these steps - 
-    1. Create a class *MakeFinal*, whose **constructor is private**.
-    2. Make a class *Final*, which is **Friend class** of *MakeFinal* and **virtually inherits** *MakeFinal*.
-    3. Now *Final* cant be inherited, because on inheriting, the child class will directly call constructor of *MakeFinal*, and since friendship is not inherited. It will give an error.
+* Now we have **final** keyword available.
+* Without using final keyword, we can follow these steps - 
+  * Create a class *MakeFinal*, whose **constructor is private**.
+  * Make a class *Final*, which is **Friend class** of *MakeFinal* and **virtually inherits** *MakeFinal*.
+  * Now *Final* cant be inherited, because on inheriting, the child class will directly call constructor of *MakeFinal*, and since friendship is not inherited. It will give an error.
 
 
 
