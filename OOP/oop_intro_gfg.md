@@ -103,6 +103,7 @@ class Test {
 ### Class Size
 [Link](https://www.geeksforgeeks.org/why-is-the-size-of-an-empty-class-not-zero-in-c/)
 
+* A class with no member variable is called empty class.
 * Size of empty class or struct in c++ is 1 to ensure that each instance of that struct/class will have different address.
 * An empty base class need not be represented by a separate byte in derived class. See this code for e.g - 
 ```c++
