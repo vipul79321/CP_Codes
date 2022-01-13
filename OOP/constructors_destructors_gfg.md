@@ -119,8 +119,8 @@ Q. **When do we need to write a user-defined destructor?**
 
 ### Use explicit Keyword ###
 [Link](https://www.geeksforgeeks.org/g-fact-93/) 
-
-* When a class contains default constructor, then there maybe chance of implicit typecasting of **single parameter** (wont work with multiple parameter implicit typecasting). See this code - 
+* If a class has a constructor which can be called with a single argument, then this constructor becomes conversion constructor because such a constructor allows conversion of the single argument to the class being constructed. 
+See this code - 
 ```c++
 class A {
     public:
@@ -139,8 +139,8 @@ int main()
 
 	if (a == 3)   // Condition will be true, because 3 will be type casted to A(3,0) and hence equal to a;
 	cout << "Same";
- if (a == (3,0))  // condition will be false (3,0) will be implicitly typecasted to A(0,0) and hence not equal to a;
- if (a == (0,3))  // Condition will be true, because (0,3) will be type casted to A(3,0) and hence equal to a;
+ if (a == (3,0))  // condition will be false (3,0) will be implicitly typecasted to A(0,0) and hence not equal to a; because last value in (3,0) is 0 which will used by single argument constructor to perform conversion
+ if (a == (0,3))  // Condition will be true, because (0,3) will be type casted to A(3,0) and hence equal to a; // because last value in (0,3) is 3 which will used by single argument constructor to perform conversion
  
 	return 0;
 }
