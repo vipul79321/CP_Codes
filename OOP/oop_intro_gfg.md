@@ -32,10 +32,8 @@ Disadvantages of OOP:
 [Link](https://www.geeksforgeeks.org/access-modifiers-in-c/)
 
 1. **Public** - The data members and member functions declared as public can be accessed by other classes and functions too. 
-2. **Private** - The data members and member function declared as private can only be accessed by member function & friend functions of that class or by friend class.
-3. **Protected** - The data members and member function declared as protected can only be accessed by member function & friend function of that class or by friend class or derived class of that class.
-
-**Note** - In protected, the access through inheritance can alter the access modifier of the elements of base class in derived class depending on the modes of Inheritance.
+2. **Private** - The data members and member function declared as private can only be accessed by `member function & friend functions of that class` or by `friend class`.
+3. **Protected** - The data members and member function declared as protected can only be accessed by `member function & friend function of that class` or by `friend class or derived class of that class`.
 
 ---
 
@@ -43,18 +41,17 @@ Disadvantages of OOP:
 
 **Note**: A derived class doesn’t inherit access to private data members. However, it does inherit a full parent object, which contains any private members which that class declares.
 
-Different modes of inheritance in c++ - 
-1. **Public** - Public members of base class -> Public in derived class. Protected member of base class -> Protected in derived class.
-2. **Protected** - Public members of base class -> Protected in derived class. Protected member of base class -> Protected in derived class.
-3. **Private** - Public members of base class -> Private in derived class. Protected member of base class -> Private in derived class.
+![Inhertiance-Access-Specifier](https://github.com/vipul79321/CP_Codes/blob/main/OOP/images/inheritance-access-specifier.png)
 
 Different types of inheritance in c++ - 
-1. Single inheritance
-2. Multiple inheritance
-3. Heirarchical inheritance
-4. Multilevel inheritance
-5. Diamond inheritance (Multi-path inheritance) - E.g. - A -> B; A -> C; B,C -> D; To avoid amibguity to access A in D, use virtual inheritance A (virtual -> ) B, A (virtual ->) C 
-6. Hybrid inheritance - More than one type of above mentioned inheritances
+* Single inheritance
+* Multiple inheritance
+* Heirarchical inheritance
+* Multilevel inheritance
+* Diamond inheritance (Multi-path inheritance)
+  * E.g. - A -> B; A -> C; B,C -> D;
+  * To avoid amibguity to access A in D, use virtual inheritance A (virtual -> ) B, A (virtual ->) C 
+* Hybrid inheritance - More than one type of above mentioned inheritances
 
 ---
 
