@@ -139,4 +139,18 @@ i i i
 i d d
 */
 ```
+
+---
+
+>**NOTE** -  Limitation of pass by reference in function in c++
+> * Non-const references can only reference non-const l-values (e.g. non-const variables), so a reference parameter cannot accept an argument that is a const l-value or an r-value (e.g. literals and the results of expressions).
+> * We have to use const reference to work with const l-values or an r-value
+
+> **NOTE** - We can also pass pointer by reference
+> ```c++
+> void foo(int*& ptr) // pass pointer by reference
+> {
+> 	ptr = nullptr; // this changes the actual ptr argument passed in, not a copy
+> }
+> ```
  
