@@ -1,5 +1,7 @@
 > **NOTE** - Brace-initialization disallows conversions that result in data loss. E.g. - `int x { 3.5 };` will throw an error, while `int x = 3.5;` wont.
 
+---
+
 ### Numeric Promotion
 [Link](https://www.learncpp.com/cpp-tutorial/floating-point-and-integral-promotion/)
 
@@ -220,4 +222,178 @@ i d d
  
 ---
 
+### Function Pointers
+[Link](https://www.learncpp.com/cpp-tutorial/function-pointers/)
 
+**Syntax to make pointer to function** - 
+* `return_type (*pointer_name)(function parameters)`
+* `function< return_type(paramters) >pointer_name`
+* Or by using `auto` keyword, if we are intializing when declaring.
+
+```c++
+#include <iostream>
+#include<functional>
+int foo(int x)
+{
+	return x;
+}
+
+int main()
+{
+ int (*fcnPtr1)(int) = &foo;
+ std::function<int(int)>fcnPtr2 = &foo;
+ auto fcnPtr3{ &foo };
+	
+ std::cout<<fcnPtr1(3)<<"\n";
+ std::cout<<fcnPtr2(3)<<"\n";
+ std::cout<<fcnPtr3(3)<<"\n";
+
+	return 0;
+}
+/*
+Output
+3
+3
+3
+*/
+```
+
+---
+
+>**NOTE** - Command Line arguments
+>* To invoke a c++ program with command line input
+>```c++
+>int main(int argc, char* argv[])
+>```
+>* **argc** is an integer parameter containing a count of the number of arguments passed to the program (think: argc = argument count). argc will always be at least 1, because the first argument is always the name of the program itself. Each command line argument the user provides will cause argc to increase by 1.
+>* **argv** is where the actual argument values are stored (think: argv = argument values, though the proper name is “argument vectors”). Although the declaration of argv looks intimidating, argv is really just an array of C-style strings. The length of this array is argc.
+
+---
+
+### Lambda functors in c++
+[Link](https://www.learncpp.com/cpp-tutorial/introduction-to-lambdas-anonymous-functions/) | [Link](https://www.learncpp.com/cpp-tutorial/lambda-captures/)
+
+**Syntax for lambda** - 
+```c++
+[capture clause] (parameters) -> return_type
+{
+ body;
+}
+```
+
+* Lambdas are not functions, they are functor object, which have overloaded `operator()`
+* return_type can be ommited, if not provided `auto` is use instead to infer return-type
+* Ways of storing lambdas - 
+  * Regular function pointer - Only works with an empty capture clause
+  * Using std::function
+  * auto - Stores lambda with its real type. But we cant use auto when we need to pass our lambda to a function
+
+```c++
+#include <functional>
+
+int main()
+{
+  // A regular function pointer. Only works with an empty capture clause.
+  double (*addNumbers1)(double, double){
+    [](double a, double b) {
+      return (a + b);
+    }
+  };
+
+  addNumbers1(1, 2);
+
+  // Using std::function. The lambda could have a non-empty capture clause (Next lesson).
+  std::function addNumbers2{ // note: pre-C++17, use std::function<double(double, double)> instead
+    [](double a, double b) {
+      return (a + b);
+    }
+  };
+
+  addNumbers2(3, 4);
+
+  // Using auto. Stores the lambda with its real type.
+  auto addNumbers3{
+    [](double a, double b) {
+      return (a + b);
+    }
+  };
+
+  addNumbers3(5, 6);
+
+  return 0;
+}
+```
+
+**Generic Lambdas** -
+* Lambdas with one or more auto parameters are called generic lambdas
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+   auto ptr{
+       [](auto x) -> void {
+           static int y = 1;
+           cout<<y<<" "<<x<<endl;
+           y++;
+       }
+   };
+   
+   ptr(4);  // 1 4
+   ptr("hello"); // 1 hello
+   ptr(3);  // 2 3
+
+	return 0;
+}
+```
+
+> **NOTE** - Lambdas can only access specific kinds of identifiers: `global identifiers`, `entities that are known at compile time`, and `entities with static storage duration`
+
+**Capture Clause** - 
+* The capture clause is used to (indirectly) give a lambda access to variables available in the surrounding scope that it normally would not have access to.
+* Captures default to `const` value. If we want to modify captured value we need to use `mutable` keyword. Also captures by value result in lambda recieving clone of captured variable not the original variable.
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int x = 5;
+    auto decrementAndPrint{
+        [x]() mutable
+        {
+            x--; // without mutable this line will give an error because x captured by lambda is clone of x and constant
+            cout<<x<<endl;
+        }
+    };
+    
+    decrementAndPrint(); // will print 4
+    cout<<x<<endl;  // value of x wont change as lambda recieved the clone of x. Will print 5
+
+	return 0;
+}
+```
+
+* Capturing by reference
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int x = 5;
+    auto decrementAndPrint{
+        [&x]() // captured by reference
+        {
+            x--; 
+            cout<<x<<endl;
+        }
+    };
+    
+    decrementAndPrint();
+    cout<<x<<endl;
+
+	return 0;
+}
+```
