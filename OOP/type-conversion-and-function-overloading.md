@@ -146,6 +146,8 @@ i d d
 > * Non-const references can only reference non-const l-values (e.g. non-const variables), so a reference parameter cannot accept an argument that is a const l-value or an r-value (e.g. literals and the results of expressions).
 > * We have to use const reference to work with const l-values or an r-value
 
+---
+
 > **NOTE** - We can also pass pointer by reference
 > ```c++
 > void foo(int*& ptr) // pass pointer by reference
@@ -153,4 +155,69 @@ i d d
 > 	ptr = nullptr; // this changes the actual ptr argument passed in, not a copy
 > }
 > ```
+
+---
+
+> **NOTE** - Addresses are actually passed by value. See code below for explanation - 
+> ```c++
+> #include <iostream>
+> void setToNull(int* tempPtr)
+> {
+>    // we're making tempPtr point at something else, not changing the value that tempPtr points to.
+>    tempPtr = nullptr; // use 0 instead if not C++11
+> }
+>
+> int main()
+> {
+>    // First we set ptr to the address of five, which means *ptr = 5
+>    int five{ 5 };
+>    int* ptr{ &five };
+>
+>    // This will print 5
+>    std::cout << *ptr;
+>
+>    // tempPtr will receive a copy of ptr
+>    setToNull(ptr);
+>
+>    // ptr is still set to the address of five!
+>    // If we really want to change value of ptr, then we have to pass ptr by reference
+>
+>    // This will print 5
+>    if (ptr)
+>        std::cout << *ptr;
+>    else
+>        std::cout << " ptr is null";
+>
+>    return 0;
+> }
+> ```
+
+---
  
+> **NOTE** - See code below on how to extend life-time / scope of a variable
+> ```c++
+> int returnByValue()
+> {
+>     return 5;
+> }
+>
+> int& returnByReference()
+> {
+>      static int x{ 5 }; // static ensures x isn't destroyed when the function ends
+>      return x;
+> }
+>
+> int main()
+> {
+>     int giana{ returnByReference() }; // case A -- ok, treated as return by value
+>     int& staticX { returnByReference() } ; // Case B -- ok, now we can access and modify static int x outside returnByReference();
+>     int& ref{ returnByValue() }; // case C -- compile error since the value is an r-value, and an r-value can't bind to a non-const reference
+>     const int& cref{ returnByValue() }; // case D -- ok, the lifetime of the return value is extended to the lifetime of cref
+> 
+>     return 0;
+> }
+>```
+ 
+---
+
+
