@@ -211,9 +211,11 @@ Ans. When there is memory allocation at runtime.
 
 ---
 
-[Link](https://www.geeksforgeeks.org/advanced-c-conversion-operators/)
+### Conversion operator ###
+[Link](https://www.geeksforgeeks.org/advanced-c-conversion-operators/) | [Link](https://www.learncpp.com/cpp-tutorial/overloading-typecasts/)
 
-### conversion operator ###
+* Conversion operator doesnt take any parameters
+* They dont have any return type, c++ assumes you will return the right thing
 
 ```c++
 class Fraction
@@ -236,9 +238,8 @@ int main() {
 
 ---
 
-[Link](https://www.geeksforgeeks.org/default-assignment-operator-and-references/)
-
 ### Assignment Operator and Reference variables ###
+[Link](https://www.geeksforgeeks.org/default-assignment-operator-and-references/)
 
 Compiler doesn’t creates default assignment operator in following cases:
 1. Class has a nonstatic data member of a const type or a reference type
@@ -264,9 +265,8 @@ int main()
 
 ---
 
-[Link](https://www.geeksforgeeks.org/overloading-stream-insertion-operators-c/)
-
 ### Overloading stream insertion (<< or >>) operators in C++ ###
+[Link](https://www.geeksforgeeks.org/overloading-stream-insertion-operators-c/) | [Link](https://www.learncpp.com/cpp-tutorial/overloading-the-io-operators/)
 
 1. cout is an object of ostream class and cin is an object istream class
 2. These operators must be overloaded as a global function. And if we want to allow them to access private data members of class, we must make them friend.
@@ -301,7 +301,8 @@ istream & operator >> (istream &in, Complex &c)
 
 ---
 
-[Link](https://www.geeksforgeeks.org/overloading-subscript-or-array-index-operator-in-c/)
+### Overloading subscript operator
+[Link](https://www.geeksforgeeks.org/overloading-subscript-or-array-index-operator-in-c/) | [Link](https://www.learncpp.com/cpp-tutorial/overloading-the-subscript-operator/)
 
 ```c++
 //sample codeblock from above link 
@@ -314,3 +315,43 @@ int& Array::operator[](int index)
     return ptr[index];
 }
 ```
+
+---
+
+### Overloading paranthesis operator
+[Link](https://www.learncpp.com/cpp-tutorial/overloading-the-parenthesis-operator/)
+
+* It is very strong operator, as there is no restriction on number of arguments in can have
+
+```c++
+#include <cassert> // for assert()
+#include<iostream>
+
+class Matrix
+{
+private:
+    double m_data[4][4]{};
+
+public:
+    double& operator()(int row, int col); // we can also write const version of this function, to work with const objects
+};
+
+double& Matrix::operator()(int row, int col)
+{
+    assert(col >= 0 && col < 4);
+    assert(row >= 0 && row < 4);
+
+    return m_data[row][col];
+}
+
+int main()
+{
+    Matrix matrix;
+    matrix(1, 2) = 4.5;
+    std::cout << matrix(1, 2) << '\n';
+
+    return 0;
+}
+```
+
+---
