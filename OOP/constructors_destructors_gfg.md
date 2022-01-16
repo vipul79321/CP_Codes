@@ -16,29 +16,86 @@ ClassName(){};
 
 >**NOTE** - We can intialize non-static member variables at the time of declaration in class
 >```c++
-> #include <iostream>
-> using namespace std;
-> class A{
->     public:
->     const int x{5};
->     int y{7};
->     
->     A() = default;
->     
->     A(int p, int q): x(p), y(q){      
->     }
-> };
-> int main()
-> {
->     A a;
->     A b(3,4);
-> 
->     cout<<a.x<<" "<<a.y<<endl;  // 5 7
->     cout<<b.x<<" "<<b.y<<endl; // 3 4
+>#include <iostream>
+>using namespace std;
+>class A{
+>    public:
+>    const int x{5};
+>    int y{7};
+>    
+>    A() = default;
+>    
+>    A(int p, int q): x(p), y(q){      
+>    }
+>};
+>int main()
+>{
+>    A a;
+>    A b(3,4);
 >
->     return 0;
+>    cout<<a.x<<" "<<a.y<<endl;  // 5 7
+>    cout<<b.x<<" "<<b.y<<endl; // 3 4
+>    return 0;
 >}
 >```
+---
+
+### Delegating constructors
+[Link](https://www.learncpp.com/cpp-tutorial/overlapping-and-delegating-constructors/)
+
+**Delegating Constructor** - 
+* Constructors are allowed to call other constructors from the same class. This process is called delegating constructors (or constructor chaining).
+* You can call one constructor from another constructor from `intializer-list`
+
+>**NOTE** - 
+>* A constructor that delegates to another constructor is not allowed to do any member initialization itself. So your constructors can delegate or initialize, but not both.
+>* Constructor are allowed to call non-constructor member functions (and non-member functions).
+
+```c++
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+class A{
+    public:
+
+    const int x{5};
+    int y{7};
+    
+    A() {
+        cout<<"Default constructor called. ";
+        setup();  // constructor can call some other member function do some common setup
+    }
+    
+    A(int p, int q): A(){ // delegating constructor as it is calling default constructor
+      //x = p; - this line will give error, as delegating constructor have read-only access to member variable
+      cout<<"In delegating constructor\n";
+    }
+    
+    A(int p) {
+        setup(); // common setup code shared between default and this constructor
+    }
+    
+    void setup() {
+        cout<<"Some Setup. ";
+    }
+};
+
+int main()
+{
+    A a(3,4); // default constructor called. Some setup. In delegating constructor
+    cout<<a.x<<" "<<a.y<<endl;  // 5 7
+    return 0;
+}
+```
 
 ---
 
