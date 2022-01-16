@@ -11,7 +11,34 @@ ClassName(){};
 * A constructor is automatically called when an object is created.
 * Types of constructors - Default Constructor, Parameterized Constructor, Copy Constructor.
 
-**Note** - We can have more than one constructor for class (Constructor Overloading)
+> **Note** - We can have more than one constructor for class (Constructor Overloading)
+---
+
+>**NOTE** - We can intialize non-static member variables at the time of declaration in class
+>```c++
+> #include <iostream>
+> using namespace std;
+> class A{
+>     public:
+>     const int x{5};
+>     int y{7};
+>     
+>     A() = default;
+>     
+>     A(int p, int q): x(p), y(q){      
+>     }
+> };
+> int main()
+> {
+>     A a;
+>     A b(3,4);
+> 
+>     cout<<a.x<<" "<<a.y<<endl;  // 5 7
+>     cout<<b.x<<" "<<b.y<<endl; // 3 4
+>
+>     return 0;
+>}
+>```
 
 ---
 
