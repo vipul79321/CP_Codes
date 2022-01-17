@@ -363,3 +363,71 @@ int main()
 	return 0;
 }
 ```
+
+---
+
+### FrankenObject
+[Link](https://www.learncpp.com/cpp-tutorial/object-slicing/) 
+
+```c++
+int main()
+{
+    Derived d1{ 5 };
+    Derived d2{ 6 };
+    Base& b{ d2 };
+
+    b = d1; // this line is problematic
+
+    return 0;
+}
+```
+
+**Explanation** - 
+* The problematic line is where things go astray. Since b points at d2, and we’re assigning d1 to b, you might think that the result would be that d1 would get copied into d2 -- and it would, if b were a Derived. 
+* But b is a Base, and the operator= that C++ provides for classes isn’t virtual by default. Consequently, only the Base portion of d1 is copied into d2.
+* As a result, you’ll discover that d2 now has the Base portion of d1 and the Derived portion of d2
+
+---
+
+### Printing Inherited Class using << operator and reference of base class
+[Link](https://www.learncpp.com/cpp-tutorial/printing-inherited-classes-using-operator/)
+
+* First, we set up operator<< as a friend in our base class as usual. But instead of having operator<< do the printing itself, we delegate that responsibility to a normal member function that can be virtualized!
+
+```c++
+class Base
+{
+public:
+	// Here's our overloaded operator<<
+	friend std::ostream& operator<<(std::ostream& out, const Base& b)
+	{
+		// Delegate printing responsibility for printing to member function print()
+		return b.print(out);
+	}
+
+	// We'll rely on member function print() to do the actual printing
+	// Because print is a normal member function, it can be virtualized
+	virtual std::ostream& print(std::ostream& out) const
+	{
+		out << "Base";
+		return out;
+	}
+};
+
+class Derived : public Base
+{
+public:
+	// Here's our override print function to handle the Derived case
+	std::ostream& print(std::ostream& out) const override
+	{
+		out << "Derived";
+		return out;
+	}
+};
+
+int main() {
+  Base& bref{ d };
+  std::cout << bref << '\n';  // works fine and print Derived
+  return 0;
+}
+```
