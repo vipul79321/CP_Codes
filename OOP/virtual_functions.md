@@ -1,6 +1,58 @@
-[Link](https://www.geeksforgeeks.org/output-of-c-program-set-12-2/)
+### Virtual Functions
+[Link](https://www.learncpp.com/cpp-tutorial/virtual-functions/)
+
+**Virtual functions and polymorphism**
+* A virtual function is a special type of function that, when called, resolves to the `most-derived version` of the function that exists between the base and derived class. 
+* This capability is known as polymorphism. 
+* A derived function is considered a match if it has the `same signature (name, parameter types, and whether it is const) and return type as the base version of the function`. Such functions are called **overrides**.
+
+>**NOTE** - If a function is marked as virtual, all matching overrides are also considered virtual, even if they are not explicitly marked as such.
+> **NOTE** - If we call a virtual function in constructor of base class, it wont resolve to any existing virtual function in derived class, as derived part of the object has not formed yet.
+
+**Covariant Return Types** | [Link](https://www.learncpp.com/cpp-tutorial/the-override-and-final-specifiers-and-covariant-return-types/)
+* It is an execption, where virtual function overrides can have different return types. Strictly speaking, If the return type of a virtual function is a pointer or a reference to a base class, override functions can return a pointer or a reference to a derived class.
+
+```c++
+#include <iostream>
+#include <string_view>
+
+class Base
+{
+public:
+	// This version of getThis() returns a pointer to a Base class
+	virtual Base* getThis() { std::cout << "called Base::getThis()\n"; return this; }
+	void printType() { std::cout << "returned a Base\n"; }
+};
+
+class Derived : public Base
+{
+public:
+	// Normally override functions have to return objects of the same type as the base function
+	// However, because Derived is derived from Base, it's okay to return Derived* instead of Base*
+	Derived* getThis() override { std::cout << "called Derived::getThis()\n";  return this; }
+	void printType() { std::cout << "returned a Derived\n"; }
+};
+
+int main()
+{
+	Derived d{};
+	Base* b{ &d };
+	d.getThis()->printType(); // calls Derived::getThis(), returns a Derived*, calls Derived::printType
+	b->getThis()->printType(); // calls Derived::getThis(), returns a Base*, calls Base::printType
+
+	return 0;
+}
+```
+>**NOTE** - C++ can’t dynamically select types, so you’ll always get the type that matches the actual version of the function being called
+>* In the above example, we first call d.getThis(). Since d is a Derived, this calls Derived::getThis(), which returns a Derived*. This Derived* is then used to call non-virtual function Derived::printType().
+>* Now the interesting case. We then call b->getThis(). Variable b is a Base pointer to a Derived object. Base::getThis() is a virtual function, so this calls Derived::getThis(). Although Derived::getThis() returns a Derived*, because Base version of the function returns a Base*, the returned Derived* is upcast to a Base*. Because Base::printType() is non-virtual, Base::printType() is called.
+>* In other words, in the above example, you only get a Derived* if you call getThis() with an object that is typed as a Derived object in the first place.
+>* Note that if printType() were virtual instead of non-virtual, the result of b->getThis() (an object of type Base*) would have undergone virtual function resolution, and Derived::printType() would have been called.
+
+---
 
 ### Virtual functions and Default Arguments ###
+[Link](https://www.geeksforgeeks.org/output-of-c-program-set-12-2/)
 
 Consider following code - 
 ```c++
@@ -225,9 +277,9 @@ int main()
 
 ---
 
-[Link](https://www.geeksforgeeks.org/g-fact-33/)
-
 ### RTTI (Run-time type Information) in C++ ###
+[Link](https://www.learncpp.com/cpp-tutorial/dynamic-casting/) | [Link](https://www.geeksforgeeks.org/g-fact-33/)
+
 In C++, RTTI (Run-time type information) is a mechanism that exposes information about an object’s data type at runtime and is available only for the classes which have at least one virtual function. 
 It allows the type of an object to be determined during program execution
 
@@ -243,7 +295,7 @@ class D: public B { };
 int main()
 {
 	B *b = new D;
-	D *d = dynamic_cast<D*>(b);   // -> wont work if B doesnt contain a virtual function.
+	D *d = dynamic_cast<D*>(b);   // -> wont work if B doesnt contain a virtual table.
 	if(d != NULL)
 		cout << "works";
 	else
@@ -252,4 +304,62 @@ int main()
 	return 0;
 }
 
+```
+
+See this code too - 
+
+```c++
+#include <iostream>
+#include <string>
+
+class Base
+{
+protected:
+	int m_value{};
+
+public:
+	Base(int value)
+		: m_value{value}
+	{
+	}
+
+	virtual ~Base() = default;
+};
+
+class Derived : public Base
+{
+protected:
+	std::string m_name{};
+
+public:
+	Derived(int value, const std::string& name)
+		: Base{value}, m_name{name}
+	{
+	}
+
+	const std::string& getName() const { return m_name; }
+};
+
+Base* getObject(bool returnDerived)
+{
+	if (returnDerived)
+		return new Derived{1, "Apple"};
+	else
+		return new Base{2};
+}
+
+int main()
+{
+	Base* b{ getObject(true) };
+
+	// how do we print the Derived object's name here, having only a Base pointer? Since getName() functionality doesnt exist in Base class
+	Derived* d{ dynamic_cast<Derived*>(b) }; // use dynamic cast to convert Base pointer into Derived pointer
+
+        if(d) // making sure dynamic cast didnt failed.
+	std::cout << "The name of the Derived is: " << d->getName() << '\n';
+
+	delete b;
+
+	return 0;
+}
 ```
