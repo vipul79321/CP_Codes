@@ -16,7 +16,7 @@
 ---
 
 ### Diamond Inheritance ###
-[Link](https://www.geeksforgeeks.org/multiple-inheritance-in-c/)
+[Link](https://www.geeksforgeeks.org/multiple-inheritance-in-c/) | [Link](https://www.learncpp.com/cpp-tutorial/virtual-base-classes/)
 
 ---
 
