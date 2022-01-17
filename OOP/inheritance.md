@@ -105,6 +105,52 @@ class B: public A {
     void fun(int i, int j){cout<<"something\n";}
 };
 ```
+---
+
+>**NOTE** - We change access specifier of any accessible base member in derived class | [Link](https://www.learncpp.com/cpp-tutorial/hiding-inherited-functionality/)
+```c++
+#include <iostream>
+class Base
+{
+protected:
+	int m_value {};
+
+public:
+	Base(int value)
+		: m_value { value }
+	{
+	}
+
+	int getValue() const { return m_value; }
+};
+
+class Derived : public Base
+{
+public:
+	Derived(int value)
+		: Base { value }
+	{
+	}
+	
+	using Base::m_value; // we have changed access specifier of m_value from protected to public
+
+
+	int getValue() = delete; // mark this function as inaccessible
+};
+
+int main()
+{
+	Derived derived { 7 };
+	std::cout<< derived.m_value<<" ";  // will work fine as we have made m_value public in derived class
+
+	// The following won't work because getValue() has been deleted!
+	std::cout << derived.getValue();
+	
+    // Ok. As m_value was accessible to derived and we have made it public in definition of Derived
+    std::cout <<static_cast<Base>(derived).getValue();
+	return 0;
+}
+```
 
 ---
 
