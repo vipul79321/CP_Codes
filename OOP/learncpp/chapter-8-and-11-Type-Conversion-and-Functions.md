@@ -113,6 +113,12 @@ void fun(T x)
     cout<<typeid(x).name()<<endl;
 }
 
+
+template<typename T, int z>
+void nonTypeTemplate(T x) {
+    cout<<z<<endl;
+}
+
 int main()
 {
     fun<double>(2);  // will call fun(double), as we are specifically mentioning that
@@ -125,6 +131,11 @@ int main()
     maximum<double,double>(1,2);  // will call maximum(double, double)
     maximum<>(1,2);  // will use template type deduction and will call maximum(int, int)
     maximum(1,2.2);  // will use template type deduction and will call maximum(int, double)
+    
+    nonTypeTemplate<int,5>(2); // Non-type parameter should be constexpr
+    const int z = 5;
+    nonTypeTemplate<int,z>(3); // Non-Type parameter should be constant
+    
    
     return 0;
 }
@@ -139,6 +150,8 @@ i d d
 d d d
 i i i
 i d d
+5
+5
 */
 ```
 
