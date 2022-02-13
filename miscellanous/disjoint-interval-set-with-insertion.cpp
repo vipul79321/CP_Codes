@@ -29,19 +29,6 @@ void disjoint_set(pair<ll,ll>p)
     if(it!=s.begin())
     {
         it--;
-        pair<ll,ll>q = *it;
-
-        if(!intersect(q,p))it++;
-        else
-        {
-            it = s.erase(it);
-
-            if(q.first < p.first)
-                s.insert(mp(q.first,min(p.first-1,q.second)));
-
-            if(q.second > p.second)
-                s.insert(mp(max(q.first,p.second+1),q.second));
-        }
     }
 
     while(it!=s.end())
