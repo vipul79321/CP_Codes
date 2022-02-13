@@ -285,6 +285,8 @@ void erased(int x)
             S.erase(S.lower_bound(x));
         else
             T.erase(T.lower_bound(x));
+        
+        balance();
     }
 }
 ```
