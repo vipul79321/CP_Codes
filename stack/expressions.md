@@ -123,12 +123,12 @@ string postfixToInfix(string postfix)
 [Link](https://www.geeksforgeeks.org/convert-infix-prefix-notation/)
 
 **Steps** - 
-* Reverse the given infix expression. And **change '(' to ')' and vice-versa**
+* **Reverse** the given infix expression. And **change '(' to ')' and vice-versa**
 * Obtain the postfix conversion of reversed infix exrpession with slight modification as follows - 
     * When we scan an operator
-       * If operator == '^', pop all the characters which have equal precedence than '^'
+       * If `operator == '^'`, pop all the characters which have equal precedence than `'^'`
        * else, pop all the characters which have **greater precedence than current operator**. 
-* Reverse the obtained postfix expression and return it as ans.
+* Finally, **Reverse** the obtained postfix expression and return it as ans.
 
 ```c++
 string infixToPrefix(string infix)
