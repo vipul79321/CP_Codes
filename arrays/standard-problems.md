@@ -166,7 +166,7 @@ int minimumSwaps(vector<int> nums) {
 
 ---
 
-## Difference Array
+### Difference Array
 [Link](https://www.geeksforgeeks.org/difference-array-range-update-query-o1/)
 
 **Problem Description** - Given an array with following queries - 
