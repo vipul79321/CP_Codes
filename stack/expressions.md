@@ -3,10 +3,10 @@
 > #### Prefix = Expression of form operator a b
 
 ## Why postfix representation of expression is better than infix | [Link](https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix/)
-Ans. The compiler scans the expression either from left to right or from right to left. 
-Consider the below expression: a op1 b op2 c op3 d where op1 = +, op2 = * , op3 = +
-The compiler first scans the expression to evaluate the expression b * c, then again scans the expression to add a to it. The result is then added to d after another scan.
-The repeated scanning makes it very in-efficient. It is better to convert the expression to postfix(or prefix) form before evaluation.
+* The compiler scans the expression either from left to right or from right to left. 
+* Consider the below expression: `a op1 b op2 c op3 d` where `op1 = +, op2 = * , op3 = +`
+* The compiler first scans the expression to evaluate the expression `b * c`, then again scans the expression to add `a` to it. The result is then added to `d` after another scan.
+* The repeated scanning makes it very in-efficient. It is better to convert the expression to postfix(or prefix) form before evaluation.
 
 ## Precedence order of operators
 ```c++
