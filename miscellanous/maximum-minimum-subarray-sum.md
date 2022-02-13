@@ -16,7 +16,7 @@
 
 ---
 
-**Problem Description** - Given an array find subarray whose length is in range [L,R] and sum is maximum among all such subarray.
+**Problem Description** - Given an array find subarray whose length is in range [L,R] and average is maximum among all such subarray.
 
 **Solution Description** - 
 * If L <= 1 then simply return maximum element in the array.
