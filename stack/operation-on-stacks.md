@@ -223,13 +223,13 @@ string simplifyExpression(string expr)
 
 **Solution Description** - 
 * Make segment tree, where
-  * st[id][0] - > length of longest balanced paranthesis subsequence in interval represented by id
-  * st[id][1] - > Count of invalid open paranthesis in interval represented by id
-  * st[id][2] - > Count of invalid close paranthesis in interval represented by id
+  * `st[id][0]` - length of longest balanced paranthesis subsequence in interval represented by id
+  * `st[id][1]` - Count of invalid open paranthesis in interval represented by id
+  * `st[id][2]` - Count of invalid close paranthesis in interval represented by id
 * Merging segment tree nodes - 
-  * st[id][0] = st[left][0] + st[right][0] + 2 * min(st[left][1], st[right][2]);
-  * st[id][1] = st[left][1] + st[right][1] - min(st[left][1], st[right][2]);
-  * st[id][2] = st[left][2] + st[right][2] - min(st[left][1], st[right][2]);
+  * `st[id][0] = st[left][0] + st[right][0] + 2 * min(st[left][1], st[right][2]);`
+  * `st[id][1] = st[left][1] + st[right][1] - min(st[left][1], st[right][2]);`
+  * `st[id][2] = st[left][2] + st[right][2] - min(st[left][1], st[right][2]);`
 
 ---
 
