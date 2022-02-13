@@ -17,7 +17,7 @@ while(set<limit) // consider set = 0011001110
    int x = r^set;       //x = 0000011110                     // To get back all the set bits + 1 extra bits created in previous step
    x = x/c;             //x = 0000001111                    // To bring all the set bits to the rightmost
    x = x>>2;            //x = 0000000011                   // To restore count of bits
-   set = x|r;           //set = 0011001011                // Finally
+   set = x|r;           //set = 0011010011                // Finally
 }
 ```
 
