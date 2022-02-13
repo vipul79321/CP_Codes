@@ -25,12 +25,10 @@ void disjoint_set(pair<ll,ll>p)
 {
 
     auto it = s.lower_bound(p);
-    // Removing / adjusting all the intervals intersecting with p
-    if(it!=s.begin())
-    {
-        it--;
-    }
+    
+    if(it!=s.begin())it--;
 
+    // Removing / adjusting all the intervals intersecting with p
     while(it!=s.end())
     {
         if(it->first > p.second)break;
