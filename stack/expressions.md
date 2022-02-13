@@ -289,7 +289,7 @@ string postfixToPrefix(string postfix)
 * For evaluating an infix expression follow below steps - 
   * Procedure is completely similar to conversion to postfix with following modification - 
     * Instead of printing operand, push them in value stack.
-    * Whenever performing pop operation, pop operator from operator-stack and pop A then B from value stack and push `A operator B` into value stack.
+    * Whenever performing pop operation, pop operator from operator-stack and pop A then B from value stack and push `B operator A` into value stack.
 
 
 
