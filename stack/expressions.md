@@ -1,6 +1,6 @@
-### Infix - > Expression of form a operator b
-### Postfix - > Expression of form a b operator
-### Prefix - > Expression of form operator a b
+> #### Infix =  Expression of form a operator b
+> #### Postfix = Expression of form a b operator
+> #### Prefix = Expression of form operator a b
 
 ## Why postfix representation of expression is better than infix | [Link](https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix/)
 Ans. The compiler scans the expression either from left to right or from right to left. 
