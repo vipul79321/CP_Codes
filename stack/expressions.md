@@ -31,7 +31,7 @@ int precedence(char c) {
 * If scanned character is an '(' push it in the stack.
 * If scanned character is an ')' pop till we encounter '('
 * If scanned character is an operator - 
-    * while precedence(st.top()) >= precendence(s[i]), pop and append them in result. That is pop all the characters in the stack which have **equal or greater precedence than current operator**.
+    * `while precedence(st.top()) >= precendence(s[i])`, pop and append them in result. That is pop all the characters in the stack which have **equal or greater precedence than current operator**.
     * Push current operator into stack
 * Finally after scanning is done, pop the stack and append them in result.
 
