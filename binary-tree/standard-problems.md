@@ -237,8 +237,8 @@ void iterativePreorder(node* root)
 * while curr != NULL
   * If left child is NULL, print current and move to current->right
   * Else find inorder predecessor of current -
-    * if predecessor->right == current then predecessor->right = NULL; and move to current->right;
-    * else predecessor->right = current; print current and then move to left child. current = current->left; 
+    * `if predecessor->right == current` then predecessor->right = NULL; and move to current->right;
+    * else make `predecessor->right = current;` print current and then move to left child. current = current->left; 
 
 ```c++
 void morrisPreorderTraversal(TreeNode * root)
