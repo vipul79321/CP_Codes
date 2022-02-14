@@ -75,7 +75,7 @@ void union_sets(int a, int b) {
 * We need to output the final color of all elements after processing all the queries
 
 **Solution Description** - 
-* Maintain a dsu for whole array such that `parent[i] == i` for i from [0,L]`
+* Maintain a dsu for whole array such that `parent[i] == i for i from [0,L]`
 * Each DSU will point to next uncolored element or itself
 * Process queries in the reverse order i.e, last to first
 * We will use path-compression technique to achieve an average time complexity of `O(nlogn)`
