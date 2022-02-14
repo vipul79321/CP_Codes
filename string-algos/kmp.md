@@ -59,7 +59,7 @@ vector<int> prefix_count(string s)
     for(int i=0;i<n;i++)
       ans[prefix[i]]++;  // number of time prefix[i] occurs in prefix array.   ------ Step - 1
     
-    for(int n-1;i>0;i--) // since we know the occurence of prefix of length i, then we need to add this value to prefix[i-1]; ----- Step - 2
+    for(int i=n-1;i>0;i--) // since we know the occurence of prefix of length i, then we need to add this value to prefix[i-1]; ----- Step - 2
       ans[prefix[i-1]] = ans[prefix[i-1]] + ans[i];
      
     for(int i=0;i<=n;i++)
