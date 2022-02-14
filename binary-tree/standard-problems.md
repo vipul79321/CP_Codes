@@ -160,7 +160,7 @@ void morrisInorderTraversal(TreeNode * root)
         else
         {
             TreeNode* predecessor = curr->left;
-            while(predecessor->right != NULL || predecessor->right != curr)
+            while(predecessor->right != NULL && predecessor->right != curr)
             {
                 predecessor = predecessor->right;
             }
@@ -257,7 +257,7 @@ void morrisPreorderTraversal(TreeNode * root)
         else
         {
             TreeNode* predecessor = curr->left;
-            while(predecessor->right != NULL || predecessor->right != curr)
+            while(predecessor->right != NULL && predecessor->right != curr)
             {
                 predecessor = predecessor->right;
             }
@@ -360,7 +360,48 @@ void postOrderIterative(struct Node* root)
 **Postorder Traversal without recursion or stack** | [Link](https://www.geeksforgeeks.org/postorder-traversal-binary-tree-without-recursion-without-stack/)
 
 **Solution Approach** -
-* There is no morris approach for postorder traversal. But we can morris preorder in reverse form (root, right, left) and push it in stack and finally print content of stack [stackoverflow link](https://stackoverflow.com/a/56682968/14137254)
+* There is no morris approach for postorder traversal. But we can morris preorder in reverse form (root, right, left) and push it in stack and finally print content of stack [stackoverflow link](https://stackoverflow.com/a/56682968/14137254) | [Link](https://leetcode.com/problems/binary-tree-postorder-traversal/)
+
+```c++
+vector<int> postorderTraversal(TreeNode* root) {
+
+    TreeNode* curr = root;
+    vector<int>postorder;
+
+    while(curr != NULL)
+    {
+        if(curr->right == NULL)
+        {
+            postorder.push_back(curr->val);
+            curr = curr->left;
+        }
+        else
+        {
+            TreeNode* successor = curr->right;
+            while(successor->left != NULL && successor->left != curr) // find inorder successor of curr
+            {
+                successor = successor->left;
+            }
+
+            if(successor->left == NULL) // if first time visiting curr, print it and move to right tree
+            {
+                successor->left = curr;
+                postorder.push_back(curr->val);
+                curr = curr->right;
+            }
+            else // if second time visiting curr move to left child
+            {
+                successor->left = NULL;
+                curr = curr->left;
+            }
+        }
+    }
+
+    reverse(postorder.begin(),postorder.end()); // finally reverse the vector to retrieve the required postorder traversal
+    return postorder;
+
+}
+```
 * Another thing we can do is use a visited and parent map and do standard dfs in required manner.
 
 **Solution Approach without using extra-space** - 
