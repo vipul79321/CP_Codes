@@ -7,7 +7,7 @@
 * A function of the following form is called Polynomial Rolling Hash Function
 
 ```math
-hash(s) = s[0] + s[1] * p^2 + s[2] * p^3 ... s[n-1] * p^n-1 mod m
+hash(s) = s[0] + s[1] * p + s[2] * p^2 ... s[n-1] * p^n-1 mod m
 ```
 
 Where, p & m are both prime number. 
