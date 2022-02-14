@@ -93,7 +93,7 @@ return ans;
 int n = txt.size(), m = pat.size();
 for(int i=0; i+m-1 < n;i++)
 {
-    if(get_hash(n, i, i+m-1, text_hash) == (hash_pat * pow_p[index])%mod) // Multiply hash_pat by pow_p[i], so that both hash value are multiplied by same power of p.
+    if(get_hash(n, i, i+m-1, text_hash) == (hash_pat * pow_p[i])%mod) // Multiply hash_pat by pow_p[i], so that both hash value are multiplied by same power of p.
     {
         occurences.push_back(i);
     }
