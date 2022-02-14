@@ -36,15 +36,20 @@ using namespace std;
 #define pb push_back
 #define INF 1e6
 
-void restore_path(int v, int s ,vector<vector<int> >&p)
+void restore_path(int src, int dest ,vector<vector<int> >&pred)
 {
-    if(p[s][v]==-1){cout<<"No path"<<endl;return;}
-    while(s!=v)
+    if(pred[src][dest]==-1){cout<<"No path"<<endl;return;}
+    
+    vector<int>path;
+    while(dest != src)
     {
-        cout<<v<<" ";
-        v = p[s][v];
+        path.pb(dest);
+        dest = pred[src][dest];
     }
-    cout<<endl;
+    path.pb(src);
+    reverse(path.begin(),path.end());
+    
+    for(auto vertices:path)cout<<vertices<<" ";
 }
 
 void solve(int test)
@@ -54,23 +59,24 @@ void solve(int test)
    cin>>n>>m;
 
 
-   vector<vector<int> >d(n,vector<int>(n,INF));
-   vector<vector<int> >p(n,vector<int>(n,-1));
+   vector<vector<int> >dist(n,vector<int>(n,INF));
+   vector<vector<int> >pred(n,vector<int>(n,-1));
 
    int i,j,k;
 
-   for(i=0;i<n;i++)d[i][i] = 0;
+   for(i=0;i<n;i++)dist[i][i] = 0;
 
    for(i=0;i<m;i++)
    {
        int a,b,c;
        cin>>a>>b>>c;
 
-       d[a][b] = c;
-       p[a][b] = a;
+       dist[a][b] = c;
+       pred[a][b] = a;
 
-       d[b][a] = c;
-       p[b][a] = b;
+       // Assuming undirected graph
+       dist[b][a] = c;
+       pred[b][a] = b;
    }
 
    for(k=0;k<n;k++)
@@ -79,15 +85,16 @@ void solve(int test)
        {
            for(j=0;j<n;j++)
            {
-               if(d[i][k]<INF && d[k][j] < INF && d[i][j] > d[i][k] + d[k][j])  // Important part - To never use undefined distance hence check < INF
+               if(dist[i][k]<INF && dist[k][j] < INF && dist[i][j] > dist[i][k] + dist[k][j])  // Important part - To never use undefined distance hence check < INF
                {
-                   d[i][j] = d[i][k] + d[k][j];
-                   p[i][j] = p[k][j];
+                   dist[i][j] = dist[i][k] + dist[k][j];
+                   pred[i][j] = pred[k][j];
                }
            }
        }
    }
 
+   // Check if Negative cycle exist or not
    bool flag = 0;
    for(int i=0;i<n;i++)if(dist[i][i] < 0){flag = 1;break;}
     
@@ -104,18 +111,27 @@ void solve(int test)
            }
        }
    }
+   
    if(flag){cout<<"Negative cycle found"; return;}
       
-   for(i=0;i<n;i++){
-    for(j=0;j<n;j++)cout<<d[i][j]<<" ";cout<<endl;}
+   for(i=0;i<n;i++) 
+   {
+        for(j=0;j<n;j++)
+            cout<<dist[i][j]<<" ";
+        cout<<endl;
+   }
 
     cout<<endl;
 
-   for(i=0;i<n;i++){
-    for(j=0;j<n;j++)cout<<p[i][j]<<" ";cout<<endl;}
+   for(i=0;i<n;i++)
+   {
+        for(j=0;j<n;j++)
+            cout<<pred[i][j]<<" ";
+        cout<<endl;
+   }
     cout<<endl;
 
-   restore_path(0,6,p);
+   restore_path(0,6,pred);
 }
 
 int main()
