@@ -38,13 +38,13 @@ void dfs(int u, vector<vector<int> >&adj)
             dfs(x,adj);
             low[u] = min(low[u],low[x]);
         }
-        else if(instack[x] == 1)  // IMPORTANT CHECK
+        else if(instack[x] == 1)  // IMPORTANT CHECK - Making sure it is back-edge
         {
             low[u] = min(low[u],tin[x]);
         }
     }
 
-    if(low[u] == tin[u])   // head of scc find
+    if(low[u] == tin[u])   // Condition for head of scc
     {
         vector<int>v;
         while(!st.empty() && st.top()!=u)
@@ -63,7 +63,6 @@ void dfs(int u, vector<vector<int> >&adj)
         cnt++;
     }
 }
-
 
 
 void solve(int test)
