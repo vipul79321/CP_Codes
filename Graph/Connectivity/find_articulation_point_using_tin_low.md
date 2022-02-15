@@ -11,7 +11,7 @@
 **Code Description** - 
 * Call dfs from any node
 * Inside dfs function
-  * Intialize `tin[u] = low[u] = curr_time, child = 0, parent[u] = par`
+  * Initialize `tin[u] = low[u] = curr_time, child = 0, parent[u] = par`
   * Loop through all the neighbors v of u:
     * if v is visited then update `low[u] = min(low[u], tin[v])`
     * else 
