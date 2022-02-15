@@ -35,7 +35,7 @@ void dfs(int u,vector<vector<pair<int,int> > >&adj,int par)
     for(auto p:adj[u])
     {
         int v = p.first, id = p.second;
-        if(used[id]!=0)continue;
+        if(used[id]!=0)continue; // Edge has already been assigned direction. This can happen in case of forward edge( which are just duplicate of back edge in undirected graph)
 
         if(edges[id].first == u && edges[id].second == v)used[id] = 1;
         else
