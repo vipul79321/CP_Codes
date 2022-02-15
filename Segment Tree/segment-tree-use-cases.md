@@ -23,11 +23,11 @@
 ---
 
 ### Range-Max queries and number of times it appears in that range
-  * st[node] will have two attribute - max and cnt
+  * `st[node]` will have two attribute - `max` and `cnt`
   * merge will be like this
-    * if st[left].max  > st[right].max return st[left]
-    * if st[right].max > st[left].max return st[right]
-    * return new_node(st[left].max, st[left].cnt + st[right].cnt)
+    * `if st[left].max  > st[right].max return st[left]`
+    * `if st[right].max > st[left].max return st[right]`
+    * `return new_node(st[left].max, st[left].cnt + st[right].cnt)`
 
 ---
 
