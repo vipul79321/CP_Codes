@@ -799,7 +799,7 @@ return ans;
 * Transition - 
     * `dp[0][1] = 1;`
     * `if j == 0 && i not in positions then dp[i][j] = dp[i-1][j+1]`, putting a close bracket.
-    * else `if j == 0 && i in positions then dp[i][j] = 0`, cant put a closing bracket.
+    * else `if j == 0 && i in positions then dp[i][j] = 0`, cant put a opening bracket.
     * else `if i in position then dp[i][j] = dp[i-1][j-1];`
     * else `dp[i][j] = dp[i-1][j-1] + dp[i-1][j+1];`
 * Finally ans will be `dp[2n][0];`
