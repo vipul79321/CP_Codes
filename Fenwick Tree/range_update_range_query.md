@@ -1,5 +1,5 @@
 ### Range Update and Range Queries
-[Link](https://cp-algorithms.com/data_structures/fenwick.html#toc-tgt-11)
+[Link](https://cp-algorithms.com/data_structures/fenwick.html#3-range-updates-and-range-queries)
 
 **Problem Description** - 
 * Given an array with following two types of queries - 
