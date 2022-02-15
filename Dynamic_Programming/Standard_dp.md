@@ -85,7 +85,7 @@ Transitions -
 
 ---
 
-## Maximum Games Played by winner - Good one. Have to think inversely.
+## Maximum Games Played by winner - Good one.
 [Link](https://www.geeksforgeeks.org/maximum-games-played-winner/)
 
 * Given N players, output maximum number of games played by winner, with condition that two players are allowed to compete against one another if and only if difference between number of games played by them is <=1.
