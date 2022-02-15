@@ -100,10 +100,10 @@ int get_first(int low, int high, int st_index, int l, int r, int target)
 
 **Solution Description** - 
 * Make a segment tree, whose node will have 4 attributes
-  *  st_node.ans = ans for range represented by st_node
-  *  st_node.pref = largest prefix sum of the range represented by st_node
-  *  st_node.suff = largest suffix sum of the range represented by st_node
-  *  st_node.sum = Total sum of range represented by st_node
+  *  `st_node.ans` = ans for range represented by st_node
+  *  `st_node.pref` = largest prefix sum of the range represented by st_node
+  *  `st_node.suff` = largest suffix sum of the range represented by st_node
+  *  `st_node.sum` = Total sum of range represented by st_node
 * Using proper combine node function we can answer each query in O(logn)
 * See code below for more details - 
 
