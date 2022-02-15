@@ -1,8 +1,9 @@
-[Link]()
+[Link](https://cp-algorithms.com/graph/topological-sort.html)
 
 **Topological Sort** - `O(n+m)`
 * Graph should be acyclic. 
 * Topological order will be the reverse order of exiting dfs.
+* If there is edge `u->v` in graph then `index_of_u_in_topo_sort < index_of_v_in_topo_sort`
 
 ```c++
 int n; // number of vertices
