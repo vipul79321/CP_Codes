@@ -38,7 +38,7 @@ void dfs(int u, vector<vector<int> >&adj)
             dfs(x,adj);
             low[u] = min(low[u],low[x]);
         }
-        else if(instack[x] == 1)  // IMPORTANT CHECK - Making sure it is back-edge
+        else if(instack[x] == 1)  // IMPORTANT CHECK
         {
             low[u] = min(low[u],tin[x]);
         }
