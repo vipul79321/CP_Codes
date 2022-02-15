@@ -1,7 +1,8 @@
-// Standard Digit dp
-// Problem Link - https://vjudge.net/problem/LightOJ-1068
-// Problem statement - Find count of numbers in range [a,b] whose value and sum of digit is divisible by k.
-// 
+/*
+* Standard Digit DP
+* Problem Link - https://vjudge.net/problem/LightOJ-1068
+* Problem statement - Find count of numbers in range [a,b] whose value and sum of digit is divisible by k.
+*/ 
 
 #include<bits/stdc++.h>
 using namespace std;
