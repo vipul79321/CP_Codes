@@ -14,17 +14,15 @@ using namespace std;
 #define fast ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 #define pb push_back
 
-int n;
+int max_x, max_y;
 vector<vector<int> >bit;
 
 void update(int x, int y, int val)
 {
     x++,y++;
-    int x1=x ,y1 = y;
-
-    for(x=x1; x<=n; x+=x&(-x))
+    for(x;x<=max_x; x+=x&(-x))
     {
-        for(y=y1; y<=n; y+=y&(-y))
+        for(y;y<=max_y; y+=y&(-y))
         {
             bit[x][y] += val;
         }
@@ -34,11 +32,11 @@ void update(int x, int y, int val)
 int sum(int x, int y)
 {
     x++,y++;
-    int x1=x ,y1 = y;
+    
     int s = 0;
-    for(x=x1; x>0; x-=x&(-x))
+    for(x; x>0; x-=x&(-x))
     {
-        for(y=y1; y>0; y-=y&(-y))
+        for(y; y>0; y-=y&(-y))
         {
             s += bit[x][y];
         }
@@ -48,8 +46,10 @@ int sum(int x, int y)
 
 void solve(int test)
 {
+    int n;
     cin>>n;
-    bit.resize(n+1,vector<int>(n+1,0));
+    max_x = max_y = n;
+    bit.resize(max_x+1,vector<int>(max_y+1,0));
 
     int q;
     cin>>q;
