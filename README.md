@@ -44,6 +44,7 @@
 * Manacher Algorithm
 
 ### Queries Type problem
+* Offline solve
 * Segment Tree - Standard | Merge-Sort Segment Tree | Lazy Segment Tree
 * Fenwick Tree
 * Sparse Table
