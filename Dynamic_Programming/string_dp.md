@@ -111,7 +111,7 @@ void printAll(string s, string t,
  ```c++
  // Similar to finding LCS(s,s) such that i!=j
  for(i=1;i<=n;i++)
-  for(j=0;j<=m;j++)
+  for(j=1;j<=m;j++)
   {
      if(s[i-1] == t[j-1] && i!=j)lcs[i][j] = lcs[i-1][j-1] + 1;
      else
@@ -153,7 +153,7 @@ for(int len=3;len<=n;len++) {
         int j = i+len-1;
         if(s[i] == s[j])lps[i][j] = lps[i+1][j-1] + 1;
         
-        lps[i][j] = max(lps[i][j],max(lps[i-1][j],lps[i][j-1]));
+        lps[i][j] = max(lps[i][j],max(lps[i+1][j],lps[i][j-1]));
     }
 }
 return lps[0][n-1];
