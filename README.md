@@ -56,3 +56,15 @@
 * Queue
 * Linked List
 * Binary Tree
+
+
+### Steps to follow during Google-Interview
+
+* Understand the Question
+* Write down all the input and its form
+* Write down one example and get ans of it, if not provided by interviewer
+* Think Of Solution and its time complexity
+* Discuss the solution with the recruiter at the same time dry run
+* Discuss corner cases
+* Write code
+* Dry run on code and corner cases
