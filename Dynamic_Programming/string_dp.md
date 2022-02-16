@@ -142,7 +142,7 @@ void printAll(string s, string t,
 
 **Calculations**
 ```c++
-lps[n][n] = 0; // lps[i][j] represents length of longest common palindromic subsequence of s[i..j]
+lps[n][n] = 0; // lps[i][j] represents length of longest palindromic subsequence of s[i..j]
 for(i=0;i<n;i++)lps[i][i] = 1;
 for(i=0;i<n-1;i++) {
     if(s[i] == s[i+1])lps[i][i+1] = 2;
@@ -166,22 +166,22 @@ return lps[0][n-1];
 
 ---
 
-* **Counting**
+* **Counting number of palindrome subsequences**
 ```c++
-countLPS[n][n] = 0;
-for(i=0;i<n;i++)countLPS[i][i] = 1;
+countPS[n][n] = 0;
+for(i=0;i<n;i++)countPS[i][i] = 1;
 for(i=0;i<n-1;i++) {
-    if(s[i] == s[i+1])countLPS[i][i+1] = 3;
+    if(s[i] == s[i+1])countPS[i][i+1] = 3;
 }
 
 for(int len=3;len<=n;len++) {
     for(int i=0;i<=n-len;i++) {
         int j = i+len-1;
         if(s[i] == s[j]) {
-            countLPS[i][j] = countLPS[i][j-1] + countLPS[i+1][j] + 1;
+            countPS[i][j] = countPS[i][j-1] + countPS[i+1][j] + 1;
         }
         else {
-            countLPS[i][j] = countLPS[i][j-1] + countLPS[i+1][j] - countLPS[i+1][j-1];
+            countPS[i][j] = countLPS[i][j-1] + countPS[i+1][j] - countPS[i+1][j-1];
         }
     }
 }
