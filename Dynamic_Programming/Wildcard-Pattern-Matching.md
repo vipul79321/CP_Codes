@@ -117,8 +117,8 @@ if (pattern[0] == '+')
 // subproblems
 struct DP lookup[m + 1][n + 1];
 
-// lookup[i][j].value - Stores whether it is possible to match text[0..i-1] and pattern[0..j-1]
-// lookup[i][j].ch - Stores last character used in matching text[0..i-1] and pattern[0..j-1]
+// lookup[i][j].value - Stores whether it is possible to match pattern[0..i-1] and text[0..j-1]
+// lookup[i][j].ch - Stores last character used in matching pattern[0..i-1] and text[0..j-1]
 
 // initialize lookup table to false
 for (int i = 0; i <= m; i++)
