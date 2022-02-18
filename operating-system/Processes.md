@@ -8,7 +8,7 @@
 * Program is an **static** entity while Process is a **dynamic** entity
 * Program is a **passive entity** as it resides in the **secondary memory**, whereas Process is an **active entity** as it is created during execution and loaded into the **main memory**.
 
-### Describe Various sections in which Process memmory is divided 
+### Describe Various sections in which Process memory is divided 
 * **Text Section** - contains **compiled program code**, read in from non-volatile storage when the program is launched.
 * **Data Section** - contains **global and static variables**, allocated and initialized prior to executing main.
 * **Heap** - Used to handle dynamic memory allocation via new, malloc, delete etc
