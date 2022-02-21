@@ -103,7 +103,7 @@ public:
 
 class B: public A {
 public:
-	void fun(int x){ cout<<"\n B::fun() called "; }	   -----------> non - virtual and virtual method was hidden due to this.
+	void fun(int x){ cout<<"\n B::fun() called "; }	   -----------> non-virtual. virtual method was hidden due to this.
 };
 
 class C: public B {
