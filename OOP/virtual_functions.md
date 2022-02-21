@@ -93,7 +93,7 @@ Output will be Derived::fun(), x = 10   <------------------------- Default value
 ### Virtual functions in derived classes ###
 1. In C++, once a member function is declared as a virtual function in a base class, it becomes virtual in every class derived from that base class. 
 2. In other words, it is not necessary to use the keyword virtual in the derived class while declaring redefined versions of the virtual base class function.
-3. **Given that the function signature remains same in derived class **
+3. **Given that the function signature remains same in derived class**
 
 ```c++
 class A {
