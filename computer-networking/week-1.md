@@ -28,7 +28,7 @@
 * Therefore hubs are not used anymore
 
 ##### Switches
-* A hub is a **data layer device** that allows for connections from many computers at once.
+* A switch is a **data layer device** that allows for connections from many computers at once.
 * Being a data layer device, this means that a switch can actually inspect the contents of the ethernet protocol data being sent around the network. Determine which system the data is intended for and then only send that data to that one system. 
 * This reduces/eliminates collision domain and lead to fewer re-transmissions and higher overall throughput.
 
