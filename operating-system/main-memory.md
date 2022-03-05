@@ -210,7 +210,6 @@
       * CPU generates logical address `page no.|offset` 
       * It is checked in TLB, TLB miss if not present
       * Now it will check that page no. in page-table present in main-memory
-      * Corresponding frame number is retrieved from TLB entry and physical address is generated
       * TLB is updated with new PTE using various page-replacement techniques
     * _Effective Memory Access Time (EMAT)_
       * `EMAT = h*(c+m) + (1-h)*(c+2m)`
