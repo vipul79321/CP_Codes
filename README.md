@@ -1,5 +1,4 @@
-### Approaching a problem 
-
+## Approaching a problem 
 
 ### Algorithms
 
@@ -58,8 +57,9 @@
 * Linked List
 * Binary Tree
 
+---
 
-### Steps to follow during Google-Interview
+## Steps to follow during Google-Interview
 
 * Understand the Question
 * Write down all the input and its form
@@ -70,8 +70,9 @@
 * Write code
 * Dry run on code and corner cases
 
+---
 
-### Code writing rules to be followed in Google Interview
+## Code writing rules to be followed in Google Interview
 1. Try to make code, as **modular** as possible.
 2. Make self explanatory data structures. For e.g - In case of 2D point, make a struct point
 ```c++
