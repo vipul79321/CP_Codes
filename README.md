@@ -69,3 +69,19 @@
 * Discuss corner cases
 * Write code
 * Dry run on code and corner cases
+
+
+### Code writing rules to be followed in Google Interview
+1. Try to make code, as **modular** as possible.
+2. Make self explanatory data structures. For e.g - In case of 2D point, make a struct point
+```c++
+struct Point
+{
+  int x,y;
+}
+```
+3. Naming
+    * **Variable** names should be self-explanatory with underscores in between. For e.g - `adjacency_list`
+    * **Function** names should be self-explanatory with each first letter capitalised. For e.g. - `MyCustomSort`
+    * **Constants** are prefixed by k. For e.g. - `const int kDaysInAWeek = 7;`
+    * **Class data members** are named similarly as variable names with an extra trailing underscore. For e.g. - `my_class_data_member_`
