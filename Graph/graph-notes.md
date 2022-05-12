@@ -225,7 +225,7 @@ void find_cycle() {
 
 ---
 
-### Shortest path of length atmost K
+### Number of paths of length atmost K
 [Link](https://cp-algorithms.com/graph/fixed_length_paths.html#toc-tgt-1)
 
 **Problem Description** - 
