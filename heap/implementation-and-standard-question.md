@@ -291,11 +291,14 @@ void erased(int x)
 }
 ```
 
-
-
-
-
-
+* Utility function to support insertion - `insert(x)`
+```c++
+void insert(int x)
+{
+   S.insert(x);
+   balance();
+}
+```
 
 
 
