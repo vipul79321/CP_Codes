@@ -4,9 +4,7 @@
 void dfs(int u, vector<vector<int> >&adj,int level, int par)
 {
     visited[u] = 1;
-    curr++;
-    tin[u] = curr;
-    curr++;
+    tin[u] = curr++;
     h[u] = level;
     dp[u][0] = par;
     first[u] = euler.size();
@@ -16,10 +14,8 @@ void dfs(int u, vector<vector<int> >&adj,int level, int par)
     {
         if(!visited[v]){dfs(v,adj,level+1,u);euler.pb(u);}
     }
-    curr++;
-    tout[u] = curr;
-    curr++;
-
+  
+    tout[u] = curr++;
 }
 
 ```
