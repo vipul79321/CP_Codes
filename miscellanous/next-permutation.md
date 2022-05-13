@@ -127,7 +127,7 @@ string ans = "";
 int depth = 0, K;
 for(int i=0;i<2*n;i++)
 {
-    if(dp[2*n-(i+1)][depth+1] <=  K)
+    if(dp[2*n-(i+1)][depth+1] >=  K)
     {
         depth++;
         ans = ans + '(';
