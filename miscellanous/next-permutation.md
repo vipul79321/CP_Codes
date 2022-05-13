@@ -147,7 +147,7 @@ return ans;
 ### Lexographically next K-combination
 [Link](https://cp-algorithms.com/combinatorics/generating_combinations.html#toc-tgt-0)
 
-* Find rightmost index which is not at its maximal value and assign it, its maximal value.
+* Find rightmost index which is not at its maximal value and increment it.
 * Now for all the indexes to the right of that index, assign them value = nums[j-1] + 1;
 
 See code for more details - 
