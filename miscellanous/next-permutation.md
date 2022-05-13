@@ -136,7 +136,7 @@ for(int i=0;i<2*n;i++)
     {
         K -= dp[2*n - (i+1)][depth+1];
         depth--;
-        ans = ans + '(';
+        ans = ans + ')';
     }
 }
 return ans;
