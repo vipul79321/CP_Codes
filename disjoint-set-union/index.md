@@ -1,7 +1,7 @@
 <details>
 <summary><a href="https://github.com/vipul79321/CP_Codes/tree/main/disjoint-set-union">Disjoint Set Union</a></summary>
 
-+ <a href="https://github.com/vipul79321/CP_Codes/blob/main/disjoint-set-union.md#disjoint-set-union">DSU Introduction</a>
++ <a href="https://github.com/vipul79321/CP_Codes/blob/main/disjoint-set-union/disjoint-set-union.md#disjoint-set-union">DSU Introduction</a>
 + DSU Use Cases
   + <a href="https://github.com/vipul79321/CP_Codes/blob/main/disjoint-set-union.md#compress-jumps-along-a-segment--painting-subarrays-offline">Compress jumps along a segment | Painting subarrays offline</a>
   + <a href="https://github.com/vipul79321/CP_Codes/blob/main/disjoint-set-union.md#support-distance-upto-representative">Support Distance upto Representative</a>
