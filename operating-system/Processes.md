@@ -181,4 +181,6 @@ Some key points -
 ![RPC Working](https://media.geeksforgeeks.org/wp-content/uploads/operating-system-remote-procedure-call-1.png)
 ![RPC Structure](https://media.geeksforgeeks.org/wp-content/uploads/operating-system-remote-call-procedure-working.png)
 
-
+### Pipes | [Link](https://www.techgeekbuzz.com/os-interview-questions/)
+* **Un-named Pipe or Pipe** - A pipe is a method for exchanging information between inter-related processes(e.g parent & child). They only support one-way communication.
+* **Named Pipe** - They are similar to Un-named pipes but are used when we want to communicate between unrelated processes.
