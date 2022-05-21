@@ -64,7 +64,7 @@
   * **Pull migration** involves idle processors taking processes from the ready queues of other processors. 
 
 
-> **NOTE** -  One needs to be careful, while balancing load, as time saved in balancing load, may be lost in building cache for that process in the new processor
+> **Note** -  One needs to be careful, while balancing load, as time saved in balancing load, may be lost in building cache for that process in the new processor
 
 ---
 
