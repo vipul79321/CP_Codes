@@ -1,5 +1,12 @@
 [Link](https://www2.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/5_Synchronization.html)
 
+### Process Synchronization | [Link](https://www.interviewbit.com/operating-system-interview-questions/#process-synchronization)
+* Process synchronization is basically a way to coordinate processes that use shared resources or data.
+* It aims at maintaining data consistency with the help of mutual exclusion in critical section
+
+### Critical Section | [Link](https://www.careerride.com/Operating-System-Interview-Questions.aspx)
+* It is a section of code which can be executed only by one process at a time to maintain data consistency.
+
 ### Critical Section Problem 
 In Cooperative Processes - 
 * Only one process in the group can be allowed to execute in their critical section at any one time. 
@@ -23,7 +30,7 @@ Remainder Section
 
 > **NOTE** - In all the solutions for critical section, it is assumed that entry code and exit code will be **Atomic**.
 
-### Peterson's Solution | Turn Variable
+### Peterson's Solution | Turn Variable | Software Based Solution
 * **turn** - Whose turn is it to go into critical section
 * **flag[i]** - Whether process i wants to go into critical section or not. 1 if yes
 
