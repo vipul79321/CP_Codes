@@ -36,7 +36,7 @@
 
 ---
 
-> **NOTE** - The process scheduler schedules only the kernel threads.
+> **Note** - The process scheduler schedules only the kernel threads.
 
 ---
 
