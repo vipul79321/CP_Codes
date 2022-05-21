@@ -109,8 +109,11 @@
 
 ### Orphan Processes | [Link](https://www.gmarik.info/blog/2012/orphan-vs-zombie-vs-daemon-processes/)
 * An **Orphan process** is a running process whose parent process has finished or terminated.
-* A **Daemon process** is an intentionally orphaned process in order to have a background process.
 
+### Daemon Processes | [Link](https://en.wikipedia.org/wiki/Daemon_(computing)) | [Link](https://www.ibm.com/docs/en/aix/7.1?topic=processes-)
+* In multitasking computer operating systems, a **daemon** is a computer program that runs as a background process, rather than being under the direct control of an interactive user.
+* Daemons are usually started when the system starts, and they run until the system stops.
+* Daemon process typically performs system services and is available at all times to more than one task or user.
 
 ### Zombie Processes | [Link](https://www.tutorialspoint.com/what-is-zombie-process-in-linux)
 * A zombie process is a process whose execution is completed but it still has an entry in the process table. 
