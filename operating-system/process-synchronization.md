@@ -84,8 +84,15 @@ do{
 }while(true);
 ```
 
-### Semaphores
-* Semaphores consist of `wait()` and `signal()` operations, which are guaranteed to be atomic.
+### Mutex
+* Its functions are based upon a **locking mechanism**. It is used give access to a resource to only one process at a time.
+
+---
+>**Note** - [Difference between Mutex & Semaphore](https://afteracademy.com/blog/difference-between-mutex-and-semaphore-in-operating-system)
+---
+
+### Semaphores | [Link](https://www.interviewbit.com/operating-system-interview-questions/#semaphore-and-its-types)
+* Semaphore is a **signaling mechanism**. It only holds one positive integer value. It is simply used to solve the problem or issue of critical sections in the synchronization process by using two atomic operations i.e., `wait()` and `signal()`. 
 
 **Implementation Consisting of Spin-Lock and also the problem of starvation** - 
 ```c++
@@ -116,10 +123,10 @@ do{
 }while(true);
 ```
 
-> **_NOTE:_**
+> **Note**
 > * One problem with the implementation shown here, ( and in the hardware solutions presented earlier ), is the busy loop used to block processes in the acquire phase. These types of locks are referred to as **spinlocks**, because the CPU just sits and spins while blocking the process.
-> * Spinlocks are wasteful of cpu cycles, and are a really bad idea on single-cpu single-threaded machines, because the spinlock blocks the entire computer, and doesn't allow any other process to release the lock. ( Until the scheduler kicks the spinning process off of the cpu. )
-> * On the other hand, spinlocks do not incur the overhead of a context switch, so they are effectively used on multi-threaded machines when it is expected that the lock will be released after a short time.
+> * Spinlocks are wasteful of cpu cycles, and are a really bad idea on **single-cpu single-threaded machines**, because the spinlock blocks the entire computer, and doesn't allow any other process to release the lock. ( Until the scheduler kicks the spinning process off of the cpu. )
+> * On the other hand, spinlocks do not incur the overhead of a context switch, so they are effectively used on **multi-threaded machines** when it is expected that the lock will be released after a short time.
 
 **Implementation resolving spin-lock and also the problem of starvation** - 
 
