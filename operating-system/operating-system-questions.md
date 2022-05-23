@@ -32,3 +32,53 @@
 * It also locates kernel and loads into main-memory after which programs start execution
 
 ---
+
+### What is kernel in OS | [Link](https://www.interviewbit.com/operating-system-interview-questions/#kernel-and-its-functions-os)
+
+* The kernel is basically a computer program usually considered as a central component or module of OS. 
+* It is responsible for handling, managing, and controlling all operations of computer systems and hardware. 
+* Whenever the system starts, the kernel is loaded first and remains in the main memory. 
+* It also acts as an interface between user applications and hardware.
+
+---
+
+### What is difference between Kernel and OS | [Link](https://www.interviewbit.com/operating-system-interview-questions/#kernel-vs-os) | [Link](https://stackoverflow.com/questions/3315730/what-is-the-difference-between-the-operating-system-and-the-kernel)
+
+* The kernel is part of the operating system and closer to the hardware it provides low level services like:
+  * device driver
+  * process management
+  * memory management
+  * system calls
+* An operating system also includes applications like the user interface (shell, gui, tools, and services).
+
+---
+
+### What are different types of kernels | [Link](https://www.interviewbit.com/operating-system-interview-questions/#difference-between-microkernel-and-monolithic-kernel) | [Link](https://en.wikipedia.org/wiki/Kernel_(operating_system))
+
+* **Monolithic Kernels** - 
+  * In a monolithic kernel, all OS services run along with the main kernel thread, thus also residing in the same memory area. This approach provides rich and powerful hardware access.
+  * It is fast
+  * It uses signals and sockets for IPC
+  * Disadvantages
+    * If a service crashes, the whole system crashes in a monolithic kernel.
+    * With increase in size, large kernels are difficult to maintain   
+* **Micro Kernels** - 
+  * It is a minimal OS that executes only important functions of OS. Other services are moved out into severs.
+  * It uses message queues to achieve IPC
+  * Used in all modern OSes
+  * Advantages
+    * If a service crashes, it may not affect on working of the microkernel.
+    * It is easy to maintain and extendible   
+
+---
+
+### What is Spooling in OS | [Link](https://www.geeksforgeeks.org/what-exactly-spooling-is-all-about/)
+
+* SPOOL is an acronym for **simultaneous peripheral operations on-line**
+* It is a kind of buffering mechanism or a process in which data is temporarily held to be used and executed by a device, program or the system.
+* E.g - 
+  * The most common can be found in I/O devices like keyboard printers and mouse. 
+  * For example, In printer, the documents/files that are sent to the printer are first stored in the memory or the printer spooler. 
+  * Once the printer is ready, it fetches the data from the spool and prints it.
+
+---
