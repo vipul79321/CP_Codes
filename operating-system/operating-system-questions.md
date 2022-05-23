@@ -94,3 +94,19 @@
 * When a process finishes execution, then the operating system terminates the process via the exit system call. 
 * Only the parent process can cause the termination of its child processes, so when the parent process completes execution and is terminated, then its child process also gets terminated automatically.
 * This phenomenon of a process triggering the termination of another process is known as cascading termination.
+
+---
+
+### What are system calls | [Link](https://en.wikipedia.org/wiki/System_call)
+
+* In computing, a system call is the programmatic way in which a computer program requests a service from the kernel of the operating system.
+
+---
+
+### What are overlays in os | [Link](https://www.interviewbit.com/operating-system-interview-questions/#overlays-in-operating-system)
+
+* Overlays is basically a programming method that divides processes into pieces so that instructions that are important and need can be saved in memory.
+* It does not need any type of support from the OS. 
+* It can run programs that are bigger in size than physical memory by only keeping only important data and instructions that can be needed at any given time.
+
+---
