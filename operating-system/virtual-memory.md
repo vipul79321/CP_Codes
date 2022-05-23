@@ -33,25 +33,32 @@
   * After the page has been brought to memory, I/O wait is removed and the process page table is updated by marking that page as `valid`
   * **The instruction that caused page fault trap has to be restarted from the begining**
 
-**NOTE**It 
-* Hardware support required for Virtual Memory is - **Page Table** and **Swap Space**
-* **Swap Space** -  It is used as virtual memory which contains process memory images. Whenever our computer runs short of physical memory it uses its virtual memory and stores information in memory on disk. Swap space helps the computer’s operating system in pretending that it has more RAM than it actually has. | [Link](https://www.geeksforgeeks.org/swap-space-in-operating-system/)
-* **Backing Store** - Backing store is typically part of a hard disk that is used by a paging or swapping system to store information not currently in main memory. Backing store is slower and cheaper than main memory. It is generally used as synonym for Swap Space | [Link](https://www.memorymanagement.org/glossary/b.html)
+---
 
-
-**NOTE**
-* One crucial part while handling page fault trap is that instruction has to be restarted again, for most architecture this is not as issue as a single instruction wont modify a large block of data, but for some architecture this may be an issue
-* To overcome above issue, system can access both ends of the block before executing the instruction, guaranteeing that the necessary pages get paged in before the instruction begins.
-
-**NOTE** - `Pure Demand Paging` - When No pages are swapped into memory until they are requested by page faults
-
-**NOTE** - Effective access time of demand paging - `EMAT = (1-p)*m + p*f`, where p is page fault rate, m is memory access time, f is page fault service time
+>**Note**
+>* Hardware support required for Virtual Memory is - **Page Table** and **Swap Space**
+>* **Swap Space** -  It is used as virtual memory which contains process memory images. Whenever our computer runs short of physical memory it uses its virtual memory and stores information in memory on disk. Swap space helps the computer’s operating system in pretending that it has more RAM than it actually has. | [Link](https://www.geeksforgeeks.org/swap-space-in-operating-system/)
+>* **Backing Store** - Backing store is typically part of a hard disk that is used by a paging or swapping system to store information not currently in main memory. Backing store is slower and cheaper than main memory. It is generally used as synonym for Swap Space | [Link](https://www.memorymanagement.org/glossary/b.html)
 
 ---
 
-**NOTE** - There are majorly two important task in Virtual Memory Management
-* Page Replacement Strategy - It deals with how to select a page for replacement when there are no free frames available.
-* Frame Allocation Strategy - It deals with how many frames are allocated to each process ( and to other needs )
+>**Note**
+>* One crucial part while handling page fault trap is that instruction has to be restarted again, for most architecture this is not as issue as a single instruction wont modify a large block of data, but for some architecture this may be an issue
+>* To overcome above issue, system can access both ends of the block before executing the instruction, guaranteeing that the necessary pages get paged in before the instruction begins.
+
+---
+
+>**Note** - `Pure Demand Paging` - When No pages are swapped into memory until they are requested by page faults
+
+---
+
+>**Note** - Effective access time of demand paging - `EMAT = (1-p)*m + p*f`, where p is page fault rate, m is memory access time, f is page fault service time
+
+---
+
+>**Note** - There are majorly two important task in Virtual Memory Management
+>* **Page Replacement Strategy** - It deals with how to select a page for replacement when there are no free frames available.
+>* **Frame Allocation Strategy** - It deals with how many frames are allocated to each process ( and to other needs )
 
 ---
 
@@ -78,10 +85,10 @@
     * The LRU page will always be at the bottom of the stack. 
     * Because this requires removing objects from the middle of the stack, a **doubly linked list** is the recommended data structure.
 
-**NOTE** - 
-* LRU and Optimal Page replacement algorithm gives same number of page faults for reference string S and its reverse
-* LRU and Optimal Page replacement algorithm doesnt exhibit Belady's Anomaly
-* LRU and Optimal Page replacement algorithm falls in the category of **Stack Algorithm**(A stack algorithm is one in which the pages kept in memory for a frame set of size N will always be a subset of the pages kept for a frame size of N + 1)
+>**Note** - 
+>* LRU and Optimal Page replacement algorithm gives same number of page faults for reference string S and its reverse
+>* LRU and Optimal Page replacement algorithm doesnt exhibit Belady's Anomaly
+>* LRU and Optimal Page replacement algorithm falls in the category of **Stack Algorithm**(A stack algorithm is one in which the pages kept in memory for a frame set of size N will always be a subset of the pages kept for a frame size of N + 1)
 
 #### Least Frequently Used
 * Maintain a counter for each page indicating how many times this page has been used
@@ -195,9 +202,9 @@
 
 * Rather than accessing data files directly via the file system with every file access, data files can be paged into memory the same as process files, resulting in much faster accesses ( except of course when page-faults occur. ) This is known as **memory-mapping a file.**
 
-**NOTE** 
-* File writes are made to the memory page frames, and are not immediately written out to disk. They are written to disk during flush system call or so
-* Memory-mapped files can be easily shared among processes by simply adding entry for that in process's page table
+>**Note** 
+>* File writes are made to the memory page frames, and are not immediately written out to disk. They are written to disk during flush system call or so
+>* Memory-mapped files can be easily shared among processes by simply adding entry for that in process's page table
 
 ---
 
