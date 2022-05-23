@@ -82,3 +82,7 @@
   * Once the printer is ready, it fetches the data from the spool and prints it.
 
 ---
+
+### What is Race Condition | [Q32](https://www.techgeekbuzz.com/os-interview-questions/)
+
+* It is a situation that occurs when different operations are performed on the same data simultaneously, and the outcome of the execution depends on the order of the operations performed on the data. Evidently, the race condition can provide an undesirable outcome.
