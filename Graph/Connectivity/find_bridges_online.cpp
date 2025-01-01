@@ -1,3 +1,5 @@
+// Link - https://cp-algorithms.com/graph/bridge-searching-online.html
+// Refer above only. Below code seems suspicious.
 // A 2 edge component is component from which we can remove 1 or less edge and it will still remain connected.
 
 
