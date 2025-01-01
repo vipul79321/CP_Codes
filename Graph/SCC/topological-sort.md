@@ -24,7 +24,7 @@ bool dfs(int v) {
        }
    }
    rec[v] = 0;
-   ans.push_back(u);
+   ans.push_back(v);
    return false;
 }
 
